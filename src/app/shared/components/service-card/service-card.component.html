@@ -1,7 +1,5 @@
 <article class="nx-service-card nx-card nx-card--hover">
-  <span class="nx-icon-tile nx-service-card__icon">
-    <svg [lucideIcon]="category().icon" [size]="24"></svg>
-  </span>
+  <span class="nx-service-card__number">{{ number() < 10 ? '0' + number() : number() }}</span>
   <h3 class="nx-service-card__title">{{ category().titleKey | translate }}</h3>
   <p class="nx-service-card__description">{{ category().descriptionKey | translate }}</p>
 

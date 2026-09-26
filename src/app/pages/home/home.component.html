@@ -29,7 +29,7 @@
     <div class="nx-grid nx-services-preview__grid">
       @for (category of categories; track category.id; let i = $index) {
         <div [nxReveal]="i">
-          <app-service-card [category]="category" [showItems]="false" />
+          <app-service-card [category]="category" [showItems]="false" [number]="i + 1" />
         </div>
       }
     </div>

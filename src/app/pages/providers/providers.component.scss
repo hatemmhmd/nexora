@@ -23,6 +23,7 @@
 
   h3 {
     font-size: 17px;
+    text-transform: uppercase;
   }
 
   p {
@@ -30,4 +31,10 @@
     color: var(--nx-text-muted);
     line-height: 1.6;
   }
+}
+
+.nx-provider-benefits__number {
+  font-family: var(--nx-font-mono);
+  font-size: 14px;
+  color: var(--nx-text-muted);
 }

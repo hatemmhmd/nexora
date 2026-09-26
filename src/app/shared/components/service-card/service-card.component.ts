@@ -14,4 +14,5 @@ import { ServiceCategory } from '../../../core/models';
 export class ServiceCardComponent {
   readonly category = input.required<ServiceCategory>();
   readonly showItems = input(true);
+  readonly number = input.required<number>();
 }

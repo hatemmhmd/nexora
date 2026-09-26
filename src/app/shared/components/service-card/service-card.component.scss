@@ -6,8 +6,15 @@
   height: 100%;
 }
 
+.nx-service-card__number {
+  font-family: var(--nx-font-mono);
+  font-size: 14px;
+  color: var(--nx-text-muted);
+}
+
 .nx-service-card__title {
   font-size: 19px;
+  text-transform: uppercase;
 }
 
 .nx-service-card__description {

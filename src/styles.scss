@@ -249,8 +249,15 @@ select {
 // ---------------------------------------------------------------------------
 // Cards
 // ---------------------------------------------------------------------------
+// Plain bordered box, no fill/shadow/radius — matches the reference site's
+// own cards. A dedicated ruleset rather than `card-surface` since that
+// mixin still serves the rounded, filled look elsewhere (form panels, the
+// services CTA box).
 .nx-card {
-  @include card-surface;
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--nx-border);
+  transition: background var(--nx-transition), border-color var(--nx-transition);
   padding: 32px;
 }
 
@@ -341,7 +348,10 @@ textarea.nx-field__control {
 }
 
 .nx-audience__item {
-  @include card-surface;
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--nx-border);
+  transition: background var(--nx-transition), border-color var(--nx-transition);
   padding: 26px 22px;
   text-align: center;
   display: flex;

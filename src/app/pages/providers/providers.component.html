@@ -13,9 +13,7 @@
     <div class="nx-grid nx-provider-benefits__grid">
       @for (item of benefits; track item.titleKey; let i = $index) {
         <div class="nx-card nx-card--hover nx-provider-benefits__card" [nxReveal]="i">
-          <span class="nx-icon-tile">
-            <svg [lucideIcon]="item.icon" [size]="22"></svg>
-          </span>
+          <span class="nx-provider-benefits__number">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</span>
           <h3>{{ item.titleKey | translate }}</h3>
           <p>{{ item.descriptionKey | translate }}</p>
         </div>

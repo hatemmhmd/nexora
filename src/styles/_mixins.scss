@@ -29,7 +29,7 @@
 @mixin card-hover {
   &:hover {
     border-color: var(--nx-accent-soft);
-    background: linear-gradient(var(--nx-accent-soft), var(--nx-accent-soft)), var(--nx-surface);
+    background: var(--nx-accent-soft);
   }
 }
 
