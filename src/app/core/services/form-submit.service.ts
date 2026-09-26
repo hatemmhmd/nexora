@@ -11,6 +11,10 @@ export class FormSubmitService {
   private readonly http = inject(HttpClient);
 
   submit(subject: string, data: Record<string, unknown>) {
-    return this.http.post(ENDPOINT, { ...data, _subject: subject, _template: 'table' });
+    // Optional fields left blank (budget, delivery date, notes, ...) would
+    // otherwise show up as empty rows in the email table — drop them so
+    // the email only lists what the requester actually filled in.
+    const filled = Object.fromEntries(Object.entries(data).filter(([, value]) => value !== '' && value != null));
+    return this.http.post(ENDPOINT, { ...filled, _subject: subject, _template: 'table' });
   }
 }
