@@ -1,19 +1,12 @@
+// A plain divided list, no individual boxes — one continuous bordered
+// sheet with a rule between each question, matching the site's flat,
+// line-led language instead of a stack of rounded panels.
 .nx-faq {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  border-block-start: 1px solid var(--nx-border);
 }
 
 .nx-faq__item {
-  border: 1px solid var(--nx-border);
-  border-radius: var(--nx-radius-md);
-  background: var(--nx-surface);
-  overflow: hidden;
-  transition: border-color var(--nx-transition-fast);
-
-  &.is-open {
-    border-color: var(--nx-accent);
-  }
+  border-block-end: 1px solid var(--nx-border);
 }
 
 .nx-faq__question {
@@ -22,14 +15,19 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 20px 22px;
+  padding-block: 24px;
   background: transparent;
   border: none;
   cursor: pointer;
   text-align: start;
-  font-size: 16px;
-  font-weight: 600;
+  font-family: var(--nx-font-heading);
+  font-size: 19px;
   color: var(--nx-text);
+  transition: color var(--nx-transition-fast);
+
+  &:hover {
+    color: var(--nx-accent);
+  }
 }
 
 .nx-faq__chevron {
@@ -43,9 +41,10 @@
 }
 
 .nx-faq__answer {
-  padding: 0 22px 20px;
+  padding-block-end: 24px;
+  padding-inline-end: 32px;
   color: var(--nx-text-muted);
-  font-size: 14.5px;
+  font-size: 15px;
   line-height: 1.7;
   animation: nx-fade-in var(--nx-transition) ease;
 }
