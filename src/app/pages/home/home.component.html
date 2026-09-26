@@ -12,42 +12,7 @@
         </a>
         <a routerLink="/services" class="nx-btn-outline">{{ 'home.hero.secondaryCta' | translate }}</a>
       </div>
-    </div>
-
-    <!-- Compass-style orbit diagram: the client at the top feeds into the
-         NEXORA hub, which radiates out to the three provider categories on
-         a clean N/E/S/W cross — a calmer, more deliberate mark than the old
-         scattered-node network diagram. -->
-    <div class="nx-hero__visual" aria-hidden="true" nxReveal="2">
-      <div class="nx-hero__orbit-ring nx-hero__orbit-ring--outer"></div>
-      <div class="nx-hero__orbit-ring nx-hero__orbit-ring--inner"></div>
-
-      <span class="nx-hero__spoke nx-hero__spoke--n"><span class="nx-hero__spoke-dot nx-hero__spoke-dot--v"></span></span>
-      <span class="nx-hero__spoke nx-hero__spoke--e"><span class="nx-hero__spoke-dot nx-hero__spoke-dot--h"></span></span>
-      <span class="nx-hero__spoke nx-hero__spoke--s"><span class="nx-hero__spoke-dot nx-hero__spoke-dot--v"></span></span>
-      <span class="nx-hero__spoke nx-hero__spoke--w"><span class="nx-hero__spoke-dot nx-hero__spoke-dot--h"></span></span>
-
-      <div class="nx-hero__node nx-hero__node--hub">
-        <div class="nx-hero__hub-ring"></div>
-        <span class="nx-hero__hub-mark">N</span>
-      </div>
-
-      <div class="nx-hero__node nx-hero__node--client">
-        <svg [lucideIcon]="'user'" [size]="18"></svg>
-        <span>{{ 'home.hero.visual.client' | translate }}</span>
-      </div>
-
-      <div class="nx-hero__node nx-hero__node--p1">
-        <svg [lucideIcon]="'laptop'" [size]="18"></svg>
-      </div>
-      <div class="nx-hero__node nx-hero__node--p2">
-        <svg [lucideIcon]="'palette'" [size]="18"></svg>
-      </div>
-      <div class="nx-hero__node nx-hero__node--p3">
-        <svg [lucideIcon]="'briefcase-business'" [size]="18"></svg>
-      </div>
-
-      <p class="nx-hero__caption">{{ 'home.hero.visual.caption' | translate }}</p>
+      <p class="nx-hero__tagline">{{ 'home.hero.visual.caption' | translate }}</p>
     </div>
   </div>
 </section>

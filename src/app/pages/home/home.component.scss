@@ -46,16 +46,10 @@
   }
 }
 
+// Text-only hero, no illustration — matches the reference's own hero,
+// which is copy over a plain dark background with no supporting diagram.
 .nx-hero__inner {
-  display: grid;
-  gap: 48px;
-  align-items: center;
-  grid-template-columns: 1fr;
-
-  @include bp-lg {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 32px;
-  }
+  display: flex;
 }
 
 .nx-hero__copy {
@@ -63,18 +57,18 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 22px;
-  max-width: 560px;
+  max-width: 640px;
 }
 
 .nx-hero__title {
-  font-size: clamp(34px, 5.4vw, 58px);
+  font-size: clamp(36px, 6vw, 64px);
 }
 
 .nx-hero__subtitle {
   font-size: 18px;
   line-height: 1.7;
   color: var(--nx-text-muted);
-  max-width: 480px;
+  max-width: 520px;
 }
 
 .nx-hero__actions {
@@ -84,257 +78,12 @@
   margin-block-start: 6px;
 }
 
-// --- Hero connection diagram ---
-.nx-hero__visual {
-  position: relative;
-  display: none;
-  aspect-ratio: 1 / 0.85;
-  width: 100%;
-  // Pinned to LTR on purpose: the connecting SVG lines are drawn with raw
-  // (non-logical) coordinates, so the node bubbles below must resolve their
-  // `inset-inline-start` the same way in both languages or the lines and
-  // bubbles drift apart under RTL. The diagram is decorative, not text, so
-  // this doesn't affect the page's actual reading direction.
-  direction: ltr;
-
-  @include bp-lg {
-    display: block;
-  }
-}
-
-// Decorative orbit rings behind the hub — pure depth, no content. The
-// outer one turns almost imperceptibly slowly for a quiet "alive" feel.
-.nx-hero__orbit-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.nx-hero__orbit-ring--outer {
-  width: 84%;
-  height: 84%;
-  border: 1px dashed rgba(255, 255, 255, 0.14);
-  animation: nx-orbit 70s linear infinite;
-}
-
-.nx-hero__orbit-ring--inner {
-  width: 58%;
-  height: 58%;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-// Straight N/E/S/W spokes from the hub to each node — plain top/left
-// percentage math (no rotation trig needed for a fixed compass layout).
-.nx-hero__spoke {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.nx-hero__spoke--n,
-.nx-hero__spoke--s {
-  width: 2px;
-  height: 40%;
-}
-
-.nx-hero__spoke--e,
-.nx-hero__spoke--w {
-  width: 40%;
-  height: 2px;
-}
-
-.nx-hero__spoke--n {
-  transform: translate(-50%, -100%);
-  background: linear-gradient(to top, rgba(var(--nx-accent-rgb), 0.4), transparent);
-}
-
-.nx-hero__spoke--s {
-  transform: translate(-50%, 0%);
-  background: linear-gradient(to bottom, rgba(var(--nx-accent-rgb), 0.4), transparent);
-}
-
-.nx-hero__spoke--e {
-  transform: translate(0%, -50%);
-  background: linear-gradient(to right, rgba(var(--nx-accent-rgb), 0.4), transparent);
-}
-
-.nx-hero__spoke--w {
-  transform: translate(-100%, -50%);
-  background: linear-gradient(to left, rgba(var(--nx-accent-rgb), 0.4), transparent);
-}
-
-.nx-hero__spoke-dot {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--nx-blue-400);
-  box-shadow: 0 0 6px 1px var(--nx-blue-400);
-}
-
-.nx-hero__spoke-dot--v {
-  left: 50%;
-  transform: translateX(-50%);
-  animation: nx-spoke-travel-v 3s ease-in-out infinite;
-}
-
-.nx-hero__spoke-dot--h {
-  top: 50%;
-  transform: translateY(-50%);
-  animation: nx-spoke-travel-h 3s ease-in-out infinite;
-}
-
-.nx-hero__spoke--e .nx-hero__spoke-dot--h,
-.nx-hero__spoke--s .nx-hero__spoke-dot--v {
-  animation-delay: 0.5s;
-}
-
-.nx-hero__spoke--w .nx-hero__spoke-dot--h {
-  animation-delay: 1s;
-}
-
-@keyframes nx-spoke-travel-v {
-  0%,
-  100% {
-    top: 0%;
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-@keyframes nx-spoke-travel-h {
-  0%,
-  100% {
-    left: 0%;
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-// Every node — client, hub, providers — shares the same "glass" surface
-// and glow family so the diagram reads as one consistent system instead
-// of a mix of one-off treatments.
-.nx-hero__node {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(var(--nx-accent-rgb), 0.08);
-  color: var(--nx-blue-400);
-  animation: nx-float 6s ease-in-out infinite;
-}
-
-.nx-hero__node--client {
-  inset-inline-start: 50%;
-  top: 8%;
-  border-radius: var(--nx-radius-full);
-  padding: 10px 18px 10px 14px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--nx-white);
-  animation-delay: 0.2s;
-
-  svg {
-    color: var(--nx-blue-400);
-  }
-}
-
-.nx-hero__node--hub {
-  inset-inline-start: 50%;
-  top: 50%;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--nx-blue-600), var(--nx-blue-400));
-  border-color: transparent;
-  box-shadow: 0 20px 44px rgba(var(--nx-accent-rgb), 0.4);
-  animation: none;
-  z-index: 1;
-}
-
-.nx-hero__hub-ring {
-  position: absolute;
-  inset: -10px;
-  border-radius: 50%;
-  border: 1.5px solid var(--nx-blue-400);
-  opacity: 0.5;
-  animation: nx-pulse-ring 2.6s ease-out infinite;
-}
-
-.nx-hero__hub-mark {
-  font-family: var(--nx-font-heading-en);
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--nx-accent-ink);
-  letter-spacing: -0.02em;
-}
-
-.nx-hero__node--p1,
-.nx-hero__node--p2,
-.nx-hero__node--p3 {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-}
-
-// East / South / West — the client sits at North, completing the compass.
-.nx-hero__node--p1 {
-  inset-inline-start: 90%;
-  top: 50%;
-  animation-delay: 0.4s;
-}
-
-.nx-hero__node--p2 {
-  inset-inline-start: 50%;
-  top: 90%;
-  animation-delay: 0.9s;
-}
-
-.nx-hero__node--p3 {
-  inset-inline-start: 10%;
-  top: 50%;
-  animation-delay: 1.4s;
-}
-
-.nx-hero__caption {
-  position: absolute;
-  // Clears the South node (~40% of the box radius below center, so its
-  // bottom edge lands a bit above the box's own bottom edge) with room to
-  // spare, instead of the two overlapping.
-  bottom: -46px;
-  left: 0;
-  right: 0;
-  text-align: center;
+.nx-hero__tagline {
   font-family: var(--nx-font-heading);
-  font-size: 16px;
+  font-size: 17px;
   font-style: italic;
-  color: var(--nx-text-inverse-muted);
+  color: var(--nx-blue-400);
+  margin-block-start: 4px;
 }
 
 // ============================= SERVICES PREVIEW =============================
