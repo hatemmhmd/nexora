@@ -1,0 +1,28 @@
+.nx-not-found {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.nx-not-found__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding-block: 64px;
+
+  h1 {
+    font-size: clamp(28px, 4vw, 40px);
+  }
+
+  p {
+    color: var(--nx-text-muted);
+    max-width: 420px;
+  }
+}
+
+.nx-not-found__icon {
+  width: 64px;
+  height: 64px;
+}

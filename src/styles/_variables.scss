@@ -1,0 +1,102 @@
+// NEXORA design tokens
+// All colors, spacing and radii are exposed as CSS custom properties so
+// components never hardcode values (see docs in README).
+
+:root {
+  // Core palette
+  --nx-navy-950: #0b1220;
+  --nx-navy-900: #111827;
+  --nx-navy-800: #0d1a30;
+  --nx-blue-600: #2563eb;
+  --nx-blue-500: #3b82f6;
+  --nx-blue-400: #3a6ff7;
+  --nx-slate-50: #f8fafc;
+  --nx-slate-100: #eef2f8;
+  --nx-white: #ffffff;
+  --nx-gray-200: #e2e8f0;
+  --nx-gray-300: #cbd5e1;
+  --nx-gray-400: #94a3b8;
+  --nx-gray-600: #475569;
+  --nx-charcoal: #1e2530;
+
+  // Semantic tokens
+  --nx-bg: var(--nx-white);
+  --nx-bg-alt: var(--nx-slate-50);
+  --nx-bg-dark: var(--nx-navy-950);
+  --nx-surface: var(--nx-white);
+  --nx-surface-dark: var(--nx-navy-900);
+  --nx-text: var(--nx-navy-950);
+  --nx-text-muted: var(--nx-gray-600);
+  --nx-text-inverse: var(--nx-white);
+  --nx-text-inverse-muted: #aab4c8;
+  --nx-border: var(--nx-gray-200);
+  --nx-border-dark: rgba(255, 255, 255, 0.12);
+  --nx-primary: var(--nx-navy-900);
+  --nx-accent: var(--nx-blue-600);
+  --nx-accent-soft: rgba(37, 99, 235, 0.1);
+  --nx-accent-gradient: linear-gradient(135deg, var(--nx-blue-600), var(--nx-blue-400));
+  --nx-header-bg: rgba(255, 255, 255, 0.86);
+  --nx-overlay-hover: rgba(13, 26, 48, 0.04);
+
+  // Radii
+  --nx-radius-sm: 8px;
+  --nx-radius-md: 14px;
+  --nx-radius-lg: 22px;
+  --nx-radius-full: 999px;
+
+  // Shadows
+  --nx-shadow-sm: 0 1px 2px rgba(13, 26, 48, 0.06);
+  --nx-shadow-md: 0 8px 24px rgba(13, 26, 48, 0.08);
+  --nx-shadow-lg: 0 24px 56px rgba(13, 26, 48, 0.14);
+
+  // Layout
+  --nx-container: 1220px;
+  --nx-container-narrow: 820px;
+  --nx-gutter: 24px;
+  --nx-header-height: 76px;
+
+  // Typography
+  --nx-font-en: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  --nx-font-ar: 'Almarai', -apple-system, sans-serif;
+  --nx-font: var(--nx-font-en);
+  --nx-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  // Motion
+  --nx-transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --nx-transition: 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  --nx-transition-slow: 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.lang-ar {
+  --nx-font: var(--nx-font-ar);
+}
+
+// ---------------------------------------------------------------------------
+// Dark theme — toggled via [data-theme="dark"] on <html> (see ThemeService).
+// Same token names, dark values. Components never branch on theme directly;
+// they just read the token.
+// ---------------------------------------------------------------------------
+:root[data-theme='dark'] {
+  --nx-bg: var(--nx-navy-950);
+  --nx-bg-alt: #121a2c;
+  --nx-bg-dark: #070b14;
+  --nx-surface: #101a2e;
+  --nx-surface-dark: #0a1120;
+  --nx-text: #f3f5f9;
+  --nx-text-muted: #97a3b8;
+  --nx-text-inverse: #f8fafc;
+  --nx-text-inverse-muted: #97a3b8;
+  --nx-border: rgba(255, 255, 255, 0.1);
+  --nx-border-dark: rgba(255, 255, 255, 0.12);
+  --nx-primary: #24304c;
+  --nx-accent: var(--nx-blue-500);
+  --nx-accent-soft: rgba(59, 130, 246, 0.18);
+  --nx-accent-gradient: linear-gradient(135deg, var(--nx-blue-600), var(--nx-blue-400));
+  --nx-header-bg: rgba(11, 18, 32, 0.8);
+  --nx-overlay-hover: rgba(255, 255, 255, 0.06);
+  --nx-icon-tile-sheen: rgba(255, 255, 255, 0.06);
+
+  --nx-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --nx-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --nx-shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.5);
+}

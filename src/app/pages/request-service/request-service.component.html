@@ -1,0 +1,67 @@
+<section class="nx-page-header">
+  <div class="nx-container">
+    <div nxReveal>
+      <span class="nx-eyebrow">{{ 'requestService.eyebrow' | translate }}</span>
+      <h1>{{ 'requestService.pageTitle' | translate }}</h1>
+      <p>{{ 'requestService.pageDescription' | translate }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-request-page">
+  <div class="nx-container">
+    <div class="nx-request-page__layout">
+      <aside class="nx-request-page__sidebar" nxReveal>
+        <div class="nx-request-page__trust">
+          <div class="nx-request-page__trust-item">
+            <span class="nx-icon-tile">
+              <svg [lucideIcon]="'clock'" [size]="18"></svg>
+            </span>
+            <span>{{ 'requestService.trust.response' | translate }}</span>
+          </div>
+          <div class="nx-request-page__trust-item">
+            <span class="nx-icon-tile">
+              <svg [lucideIcon]="'user-check'" [size]="18"></svg>
+            </span>
+            <span>{{ 'requestService.trust.dedicated' | translate }}</span>
+          </div>
+          <div class="nx-request-page__trust-item">
+            <span class="nx-icon-tile">
+              <svg [lucideIcon]="'shield-check'" [size]="18"></svg>
+            </span>
+            <span>{{ 'requestService.trust.noObligation' | translate }}</span>
+          </div>
+        </div>
+
+        <div class="nx-request-page__steps">
+          <h3 class="nx-request-page__steps-title">{{ 'requestService.sidebar.whatHappens' | translate }}</h3>
+
+          <div class="nx-request-page__step-list">
+            @for (step of steps; track step.number; let last = $last) {
+              <div class="nx-request-page__step">
+                <div class="nx-request-page__step-marker">
+                  <span class="nx-request-page__step-num">{{ step.number }}</span>
+                  @if (!last) {
+                    <span class="nx-request-page__step-line"></span>
+                  }
+                </div>
+                <div class="nx-request-page__step-body">
+                  <strong>{{ step.titleKey | translate }}</strong>
+                  <p>{{ step.descriptionKey | translate }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </aside>
+
+      <!-- No scroll-reveal here on purpose: this panel is tall (multi-section
+           form) and the reveal directive's visibility threshold could stay
+           unmet — leaving the page's main CTA invisible — depending on
+           viewport height. It should just always be there. -->
+      <div class="nx-form-panel nx-request-page__form">
+        <app-request-form />
+      </div>
+    </div>
+  </div>
+</section>

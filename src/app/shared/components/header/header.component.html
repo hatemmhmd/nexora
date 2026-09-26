@@ -1,0 +1,75 @@
+<header class="nx-header" [class.is-scrolled]="isScrolled()">
+  <div class="nx-header__bar nx-container">
+    <a routerLink="/" class="nx-header__logo" (click)="closeMobileMenu()">
+      <app-logo-mark />
+    </a>
+
+    <nav class="nx-header__nav" aria-label="Primary">
+      @for (item of navItems; track item.path) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          class="nx-header__link"
+        >
+          {{ item.labelKey | translate }}
+        </a>
+      }
+    </nav>
+
+    <div class="nx-header__actions">
+      <div class="nx-header__controls">
+        <app-theme-toggle class="nx-header__theme" />
+        <app-language-switcher class="nx-header__lang" />
+      </div>
+      <span class="nx-header__divider" aria-hidden="true"></span>
+      <a routerLink="/request-service" class="nx-btn-accent nx-header__cta">
+        {{ 'nav.requestService' | translate }}
+        <svg class="nx-flip-rtl" [lucideIcon]="'arrow-right'" [size]="15"></svg>
+      </a>
+      <button
+        type="button"
+        class="nx-header__burger"
+        [class.is-open]="isMobileMenuOpen()"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-label="Toggle menu"
+      >
+        <span class="nx-header__burger-icon">
+          <span class="nx-header__burger-line"></span>
+          <span class="nx-header__burger-line"></span>
+          <span class="nx-header__burger-line"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+@if (isMobileMenuOpen()) {
+  <div class="nx-header__mobile">
+    <nav class="nx-header__mobile-nav" aria-label="Mobile">
+      @for (item of navItems; track item.path; let i = $index) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          class="nx-header__mobile-link"
+          [style.animation-delay.ms]="i * 50"
+          (click)="closeMobileMenu()"
+        >
+          {{ item.labelKey | translate }}
+        </a>
+      }
+    </nav>
+    <div class="nx-header__mobile-footer">
+      <div class="nx-header__mobile-controls">
+        <app-theme-toggle />
+        <app-language-switcher />
+      </div>
+      <a routerLink="/request-service" class="nx-btn-accent" (click)="closeMobileMenu()">
+        {{ 'nav.requestService' | translate }}
+        <svg class="nx-flip-rtl" [lucideIcon]="'arrow-right'" [size]="15"></svg>
+      </a>
+    </div>
+  </div>
+}

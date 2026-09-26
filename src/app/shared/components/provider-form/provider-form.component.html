@@ -1,0 +1,125 @@
+@if (isSubmitted()) {
+  <div class="nx-form-success">
+    <span class="nx-form-success__icon">
+      <svg [lucideIcon]="'circle-check'" [size]="32"></svg>
+    </span>
+    <h3>{{ 'providers.form.success.title' | translate }}</h3>
+    <p>{{ 'providers.form.success.message' | translate }}</p>
+    <button type="button" class="nx-btn-outline" (click)="submitAnother()">
+      {{ 'form.success.another' | translate }}
+    </button>
+  </div>
+} @else {
+  <form class="nx-provider-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="nx-form-grid">
+      <div class="nx-field">
+        <label class="nx-field__label" for="p-fullName">
+          <svg [lucideIcon]="'user'" [size]="16"></svg>
+          {{ 'form.fields.fullName' | translate }}
+        </label>
+        <input id="p-fullName" type="text" class="nx-field__control" formControlName="fullName" [placeholder]="'form.placeholders.fullName' | translate" />
+        @if (f.fullName.invalid && f.fullName.touched) {
+          <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+        }
+      </div>
+
+      <div class="nx-field">
+        <label class="nx-field__label" for="p-companyName">
+          <svg [lucideIcon]="'building-2'" [size]="16"></svg>
+          {{ 'form.fields.companyName' | translate }}
+          <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
+        </label>
+        <input id="p-companyName" type="text" class="nx-field__control" formControlName="companyName" [placeholder]="'form.placeholders.companyName' | translate" />
+      </div>
+
+      <div class="nx-field">
+        <label class="nx-field__label" for="p-email">
+          <svg [lucideIcon]="'mail'" [size]="16"></svg>
+          {{ 'form.fields.email' | translate }}
+        </label>
+        <input id="p-email" type="email" class="nx-field__control" formControlName="email" [placeholder]="'form.placeholders.email' | translate" />
+        @if (f.email.invalid && f.email.touched) {
+          <span class="nx-field__error">{{ 'form.errors.email' | translate }}</span>
+        }
+      </div>
+
+      <div class="nx-field">
+        <label class="nx-field__label" for="p-phone">
+          <svg [lucideIcon]="'phone'" [size]="16"></svg>
+          {{ 'form.fields.phone' | translate }}
+        </label>
+        <input id="p-phone" type="tel" class="nx-field__control" formControlName="phone" [placeholder]="'form.placeholders.phone' | translate" />
+        @if (f.phone.invalid && f.phone.touched) {
+          <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+        }
+      </div>
+
+      <div class="nx-field">
+        <label class="nx-field__label" for="p-country">
+          <svg [lucideIcon]="'globe'" [size]="16"></svg>
+          {{ 'form.fields.country' | translate }}
+        </label>
+        <app-select id="p-country" [options]="countries" [placeholder]="'form.placeholders.select'" formControlName="country" />
+        @if (f.country.invalid && f.country.touched) {
+          <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+        }
+      </div>
+
+      <div class="nx-field">
+        <label class="nx-field__label" for="p-serviceCategory">
+          <svg [lucideIcon]="'layers'" [size]="16"></svg>
+          {{ 'form.fields.serviceCategory' | translate }}
+        </label>
+        <app-select id="p-serviceCategory" [options]="categories" [placeholder]="'form.placeholders.select'" formControlName="serviceCategory" />
+        @if (f.serviceCategory.invalid && f.serviceCategory.touched) {
+          <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+        }
+      </div>
+
+      <div class="nx-field nx-field--full">
+        <label class="nx-field__label" for="servicesOffered">
+          <svg [lucideIcon]="'sparkles'" [size]="16"></svg>
+          {{ 'providers.form.fields.servicesOffered' | translate }}
+        </label>
+        <input id="servicesOffered" type="text" class="nx-field__control" formControlName="servicesOffered" [placeholder]="'providers.form.placeholders.servicesOffered' | translate" />
+        @if (f.servicesOffered.invalid && f.servicesOffered.touched) {
+          <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+        }
+      </div>
+
+      <div class="nx-field">
+        <label class="nx-field__label" for="experience">
+          <svg [lucideIcon]="'award'" [size]="16"></svg>
+          {{ 'providers.form.fields.experience' | translate }}
+        </label>
+        <app-select id="experience" [options]="experienceOptions" [placeholder]="'form.placeholders.select'" formControlName="experience" />
+        @if (f.experience.invalid && f.experience.touched) {
+          <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+        }
+      </div>
+
+      <div class="nx-field">
+        <label class="nx-field__label" for="portfolio">
+          <svg [lucideIcon]="'link-2'" [size]="16"></svg>
+          {{ 'providers.form.fields.portfolio' | translate }}
+          <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
+        </label>
+        <input id="portfolio" type="url" class="nx-field__control" formControlName="portfolio" [placeholder]="'providers.form.placeholders.portfolio' | translate" />
+      </div>
+
+      <div class="nx-field nx-field--full">
+        <label class="nx-field__label" for="p-notes">
+          <svg [lucideIcon]="'notebook-pen'" [size]="16"></svg>
+          {{ 'form.fields.notes' | translate }}
+          <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
+        </label>
+        <textarea id="p-notes" class="nx-field__control" formControlName="notes" rows="3" [placeholder]="'form.placeholders.notes' | translate"></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="nx-btn-accent nx-provider-form__submit">
+      <svg [lucideIcon]="'send'" [size]="18"></svg>
+      {{ 'providers.form.submit' | translate }}
+    </button>
+  </form>
+}

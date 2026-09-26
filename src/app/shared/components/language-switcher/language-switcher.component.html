@@ -1,0 +1,12 @@
+<button
+  type="button"
+  class="nx-lang-switch"
+  [class.nx-lang-switch--compact]="compact()"
+  (click)="lang.toggleLanguage()"
+  [attr.aria-label]="lang.isRtl ? 'Switch to English' : 'التبديل إلى العربية'"
+>
+  <svg [lucideIcon]="'globe'" [size]="16"></svg>
+  <span class="nx-lang-switch__option" [class.is-active]="lang.currentLang() === 'en'">EN</span>
+  <span class="nx-lang-switch__divider">|</span>
+  <span class="nx-lang-switch__option" [class.is-active]="lang.currentLang() === 'ar'">AR</span>
+</button>

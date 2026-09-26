@@ -1,0 +1,92 @@
+@use '../../../../styles/mixins' as *;
+
+.nx-step {
+  display: flex;
+  gap: 20px;
+
+  @include bp-md {
+    flex-direction: column;
+    gap: 24px;
+    flex: 1;
+  }
+}
+
+.nx-step__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+
+  @include bp-md {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.nx-step__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--nx-radius-full);
+  background: var(--nx-primary);
+  color: var(--nx-white);
+  flex-shrink: 0;
+  box-shadow: var(--nx-shadow-md);
+}
+
+.nx-step__line {
+  width: 2px;
+  flex: 1;
+  min-height: 32px;
+  background: var(--nx-border);
+  margin-block: 8px;
+
+  @include bp-md {
+    width: auto;
+    height: 2px;
+    flex: 1;
+    margin: 0;
+    margin-inline-start: 12px;
+  }
+}
+
+.nx-step--last .nx-step__marker {
+  @include bp-md {
+    // keep icon aligned even without a trailing line
+  }
+}
+
+.nx-step__body {
+  padding-block-end: 12px;
+
+  @include bp-md {
+    padding-block-end: 0;
+  }
+}
+
+.nx-step__number {
+  display: inline-block;
+  font-family: var(--nx-font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--nx-accent);
+  margin-block-end: 6px;
+}
+
+body.lang-ar .nx-step__number {
+  font-family: var(--nx-font);
+}
+
+.nx-step__title {
+  font-size: 18px;
+  margin-block-end: 8px;
+}
+
+.nx-step__description {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--nx-text-muted);
+}

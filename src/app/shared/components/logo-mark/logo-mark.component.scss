@@ -1,0 +1,43 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nx-logo {
+  height: 32px;
+  width: auto;
+  overflow: visible;
+}
+
+.nx-logo--icon {
+  height: 34px;
+}
+
+// Theme-aware by default: --nx-text already resolves to the brand's dark
+// navy (#0D1A30) in light mode and near-white in dark mode, so a plain
+// <app-logo-mark /> adapts automatically wherever the site theme applies.
+.nx-logo__ring {
+  stroke: var(--nx-text);
+  transition: stroke var(--nx-transition);
+}
+
+.nx-logo__word {
+  fill: var(--nx-text);
+  transition: fill var(--nx-transition);
+}
+
+.nx-logo__dot {
+  fill: var(--nx-blue-400);
+}
+
+// Forces the light-on-dark brand color for surfaces that are always dark
+// regardless of the site's own light/dark theme (footer, hero).
+.nx-logo--inverse {
+  .nx-logo__ring {
+    stroke: #f3f5f9;
+  }
+
+  .nx-logo__word {
+    fill: #f3f5f9;
+  }
+}

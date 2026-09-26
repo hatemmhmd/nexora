@@ -1,0 +1,72 @@
+@use '../../../styles/mixins' as *;
+
+.nx-about-intro {
+  p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--nx-text-muted);
+
+    & + p {
+      margin-block-start: 20px;
+    }
+  }
+}
+
+.nx-about-pillars {
+  padding-block-start: 0;
+}
+
+.nx-about-pillars__grid {
+  grid-template-columns: 1fr;
+
+  @include bp-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.nx-about-pillars__card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    color: var(--nx-text-muted);
+    line-height: 1.7;
+  }
+}
+
+.nx-about-cta {
+  padding-block-start: 0;
+}
+
+.nx-about-cta__box {
+  border-radius: var(--nx-radius-lg);
+  background: var(--nx-bg-alt);
+  padding: clamp(40px, 6vw, 64px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  h2 {
+    font-size: clamp(24px, 3.2vw, 32px);
+    max-width: 560px;
+  }
+
+  p {
+    color: var(--nx-text-muted);
+    max-width: 480px;
+  }
+}
+
+.nx-about-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}

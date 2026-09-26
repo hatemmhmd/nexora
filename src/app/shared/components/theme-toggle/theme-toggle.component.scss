@@ -1,0 +1,25 @@
+.nx-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--nx-radius-full);
+  border: 1px solid var(--nx-border);
+  background: transparent;
+  color: var(--nx-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--nx-transition-fast), border-color var(--nx-transition-fast), color var(--nx-transition-fast);
+
+  &:hover {
+    color: var(--nx-accent);
+    border-color: var(--nx-accent);
+    background: var(--nx-accent-soft);
+  }
+}
+
+.nx-theme-toggle--compact {
+  width: 34px;
+  height: 34px;
+}

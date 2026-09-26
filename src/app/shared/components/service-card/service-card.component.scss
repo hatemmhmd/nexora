@@ -1,0 +1,40 @@
+.nx-service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  height: 100%;
+}
+
+.nx-service-card__title {
+  font-size: 19px;
+}
+
+.nx-service-card__description {
+  color: var(--nx-text-muted);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+.nx-service-card__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-block-start: 4px;
+  padding-block-start: 16px;
+  border-top: 1px solid var(--nx-border);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--nx-text);
+
+    svg {
+      color: var(--nx-accent);
+      flex-shrink: 0;
+    }
+  }
+}

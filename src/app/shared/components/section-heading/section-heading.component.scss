@@ -1,0 +1,35 @@
+.nx-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 680px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.nx-heading--start {
+  align-items: flex-start;
+  text-align: start;
+  margin-inline: 0;
+}
+
+.nx-heading__title {
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.nx-heading__description {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--nx-text-muted);
+}
+
+.nx-heading--inverse {
+  .nx-heading__title {
+    color: var(--nx-white);
+  }
+
+  .nx-heading__description {
+    color: var(--nx-text-inverse-muted);
+  }
+}

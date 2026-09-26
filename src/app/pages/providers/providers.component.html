@@ -1,0 +1,42 @@
+<section class="nx-page-header">
+  <div class="nx-container">
+    <div nxReveal>
+      <span class="nx-eyebrow">{{ 'providers.eyebrow' | translate }}</span>
+      <h1>{{ 'providers.pageTitle' | translate }}</h1>
+      <p>{{ 'providers.pageDescription' | translate }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-provider-benefits">
+  <div class="nx-container">
+    <div class="nx-grid nx-provider-benefits__grid">
+      @for (item of benefits; track item.titleKey; let i = $index) {
+        <div class="nx-card nx-card--hover nx-provider-benefits__card" [nxReveal]="i">
+          <span class="nx-icon-tile">
+            <svg [lucideIcon]="item.icon" [size]="22"></svg>
+          </span>
+          <h3>{{ item.titleKey | translate }}</h3>
+          <p>{{ item.descriptionKey | translate }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-provider-apply">
+  <div class="nx-container nx-container--narrow">
+    <app-section-heading
+      [eyebrow]="'providers.form.eyebrow' | translate"
+      [title]="'providers.form.title' | translate"
+      [description]="'providers.form.description' | translate"
+    />
+
+    <!-- No scroll-reveal: this panel is tall enough that the reveal
+         directive's visibility threshold could go unmet on shorter
+         viewports, leaving the form invisible. -->
+    <div class="nx-form-panel">
+      <app-provider-form />
+    </div>
+  </div>
+</section>

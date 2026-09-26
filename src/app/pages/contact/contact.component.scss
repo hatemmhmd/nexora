@@ -1,0 +1,59 @@
+@use '../../../styles/mixins' as *;
+
+.nx-contact__grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+
+  @include bp-lg {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 48px;
+  }
+}
+
+.nx-contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nx-contact__info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  h3 {
+    font-size: 15px;
+    margin-block-end: 4px;
+  }
+
+  a,
+  p {
+    font-size: 14.5px;
+    color: var(--nx-text-muted);
+  }
+
+  a:hover {
+    color: var(--nx-accent);
+  }
+}
+
+.nx-contact__form-panel {
+  margin-block-start: 0;
+  height: fit-content;
+}
+
+.nx-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  button {
+    align-self: flex-start;
+    padding-inline: 30px;
+  }
+}
+
+.nx-contact-faq__list {
+  margin-block-start: 40px;
+}

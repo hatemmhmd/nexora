@@ -1,0 +1,18 @@
+<article class="nx-service-card nx-card nx-card--hover">
+  <span class="nx-icon-tile nx-service-card__icon">
+    <svg [lucideIcon]="category().icon" [size]="24"></svg>
+  </span>
+  <h3 class="nx-service-card__title">{{ category().titleKey | translate }}</h3>
+  <p class="nx-service-card__description">{{ category().descriptionKey | translate }}</p>
+
+  @if (showItems()) {
+    <ul class="nx-service-card__items">
+      @for (itemKey of category().itemKeys; track itemKey) {
+        <li>
+          <svg [lucideIcon]="'check'" [size]="14"></svg>
+          <span>{{ itemKey | translate }}</span>
+        </li>
+      }
+    </ul>
+  }
+</article>

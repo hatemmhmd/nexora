@@ -1,0 +1,25 @@
+.nx-legal__notice {
+  padding: 16px 20px;
+  border-radius: var(--nx-radius-sm);
+  background: var(--nx-bg-alt);
+  color: var(--nx-text-muted);
+  font-size: 14px;
+  margin-block-end: 36px;
+}
+
+.nx-legal__section {
+  & + .nx-legal__section {
+    margin-block-start: 32px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-block-end: 10px;
+  }
+
+  p {
+    color: var(--nx-text-muted);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+}

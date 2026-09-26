@@ -1,0 +1,165 @@
+@if (isSubmitted()) {
+  <div class="nx-form-success">
+    <span class="nx-form-success__icon">
+      <svg [lucideIcon]="'circle-check'" [size]="32"></svg>
+    </span>
+    <h3>{{ 'form.success.title' | translate }}</h3>
+    <p>{{ 'form.success.message' | translate }}</p>
+    <button type="button" class="nx-btn-outline" (click)="submitAnother()">
+      {{ 'form.success.another' | translate }}
+    </button>
+  </div>
+} @else {
+  <form class="nx-request-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="nx-form-section">
+      <div class="nx-form-section__head">
+        <span class="nx-form-section__index">01</span>
+        <h3 class="nx-form-section__title">{{ 'form.sections.yourDetails' | translate }}</h3>
+      </div>
+
+      <div class="nx-form-grid">
+        <div class="nx-field">
+          <label class="nx-field__label" for="fullName">
+            <svg [lucideIcon]="'user'" [size]="16"></svg>
+            {{ 'form.fields.fullName' | translate }}
+          </label>
+          <input id="fullName" type="text" class="nx-field__control" formControlName="fullName" [placeholder]="'form.placeholders.fullName' | translate" />
+          @if (f.fullName.invalid && f.fullName.touched) {
+            <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+          }
+        </div>
+
+        <div class="nx-field">
+          <label class="nx-field__label" for="companyName">
+            <svg [lucideIcon]="'building-2'" [size]="16"></svg>
+            {{ 'form.fields.companyName' | translate }}
+            <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
+          </label>
+          <input id="companyName" type="text" class="nx-field__control" formControlName="companyName" [placeholder]="'form.placeholders.companyName' | translate" />
+        </div>
+
+        <div class="nx-field">
+          <label class="nx-field__label" for="email">
+            <svg [lucideIcon]="'mail'" [size]="16"></svg>
+            {{ 'form.fields.email' | translate }}
+          </label>
+          <input id="email" type="email" class="nx-field__control" formControlName="email" [placeholder]="'form.placeholders.email' | translate" />
+          @if (f.email.invalid && f.email.touched) {
+            <span class="nx-field__error">{{ 'form.errors.email' | translate }}</span>
+          }
+        </div>
+
+        <div class="nx-field">
+          <label class="nx-field__label" for="phone">
+            <svg [lucideIcon]="'phone'" [size]="16"></svg>
+            {{ 'form.fields.phone' | translate }}
+          </label>
+          <input id="phone" type="tel" class="nx-field__control" formControlName="phone" [placeholder]="'form.placeholders.phone' | translate" />
+          @if (f.phone.invalid && f.phone.touched) {
+            <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="nx-form-section">
+      <div class="nx-form-section__head">
+        <span class="nx-form-section__index">02</span>
+        <h3 class="nx-form-section__title">{{ 'form.sections.serviceDetails' | translate }}</h3>
+      </div>
+
+      <div class="nx-form-grid">
+        <div class="nx-field">
+          <label class="nx-field__label" for="country">
+            <svg [lucideIcon]="'globe'" [size]="16"></svg>
+            {{ 'form.fields.country' | translate }}
+          </label>
+          <app-select id="country" [options]="countries" [placeholder]="'form.placeholders.select'" formControlName="country" />
+          @if (f.country.invalid && f.country.touched) {
+            <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+          }
+        </div>
+
+        <div class="nx-field">
+          <label class="nx-field__label" for="serviceCategory">
+            <svg [lucideIcon]="'layers'" [size]="16"></svg>
+            {{ 'form.fields.serviceCategory' | translate }}
+          </label>
+          <app-select id="serviceCategory" [options]="categories" [placeholder]="'form.placeholders.select'" formControlName="serviceCategory" />
+          @if (f.serviceCategory.invalid && f.serviceCategory.touched) {
+            <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+          }
+        </div>
+
+        <div class="nx-field nx-field--full">
+          <label class="nx-field__label" for="serviceRequired">
+            <svg [lucideIcon]="'sparkles'" [size]="16"></svg>
+            {{ 'form.fields.serviceRequired' | translate }}
+          </label>
+          <input id="serviceRequired" type="text" class="nx-field__control" formControlName="serviceRequired" [placeholder]="'form.placeholders.serviceRequired' | translate" />
+          @if (f.serviceRequired.invalid && f.serviceRequired.touched) {
+            <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+          }
+        </div>
+
+        <div class="nx-field nx-field--full">
+          <label class="nx-field__label" for="description">
+            <svg [lucideIcon]="'file-text'" [size]="16"></svg>
+            {{ 'form.fields.description' | translate }}
+          </label>
+          <textarea id="description" class="nx-field__control" formControlName="description" rows="5" [placeholder]="'form.placeholders.description' | translate"></textarea>
+          @if (f.description.invalid && f.description.touched) {
+            <span class="nx-field__error">{{ 'form.errors.description' | translate }}</span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="nx-form-section">
+      <div class="nx-form-section__head">
+        <span class="nx-form-section__index">03</span>
+        <h3 class="nx-form-section__title">{{ 'form.sections.budgetTimeline' | translate }}</h3>
+      </div>
+
+      <div class="nx-form-grid">
+        <div class="nx-field">
+          <label class="nx-field__label" for="budget">
+            <svg [lucideIcon]="'wallet'" [size]="16"></svg>
+            {{ 'form.fields.budget' | translate }}
+            <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
+          </label>
+          <app-select id="budget" [options]="budgetOptions" [placeholder]="'form.placeholders.select'" formControlName="budget" />
+        </div>
+
+        <div class="nx-field">
+          <label class="nx-field__label" for="deliveryDate">
+            <svg [lucideIcon]="'calendar'" [size]="16"></svg>
+            {{ 'form.fields.deliveryDate' | translate }}
+            <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
+          </label>
+          <input id="deliveryDate" type="date" class="nx-field__control" formControlName="deliveryDate" />
+        </div>
+
+        <div class="nx-field nx-field--full">
+          <label class="nx-field__label" for="notes">
+            <svg [lucideIcon]="'notebook-pen'" [size]="16"></svg>
+            {{ 'form.fields.notes' | translate }}
+            <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
+          </label>
+          <textarea id="notes" class="nx-field__control" formControlName="notes" rows="3" [placeholder]="'form.placeholders.notes' | translate"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="nx-request-form__footer">
+      <p class="nx-request-form__note">
+        <svg [lucideIcon]="'shield-check'" [size]="15"></svg>
+        {{ 'form.privacyNote' | translate }}
+      </p>
+      <button type="submit" class="nx-btn-accent nx-request-form__submit">
+        <svg [lucideIcon]="'send'" [size]="18"></svg>
+        {{ 'form.submit' | translate }}
+      </button>
+    </div>
+  </form>
+}

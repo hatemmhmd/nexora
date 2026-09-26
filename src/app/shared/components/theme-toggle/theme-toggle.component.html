@@ -1,0 +1,10 @@
+<button
+  type="button"
+  class="nx-theme-toggle"
+  [class.nx-theme-toggle--compact]="compact()"
+  (click)="theme.toggleTheme()"
+  [attr.aria-label]="theme.isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+  [attr.aria-pressed]="theme.isDark"
+>
+  <svg [lucideIcon]="theme.isDark ? 'moon' : 'sun'" [size]="17"></svg>
+</button>

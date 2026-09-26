@@ -1,0 +1,69 @@
+<section class="nx-page-header">
+  <div class="nx-container">
+    <div nxReveal>
+      <span class="nx-eyebrow">{{ 'about.eyebrow' | translate }}</span>
+      <h1>{{ 'about.pageTitle' | translate }}</h1>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-about-intro">
+  <div class="nx-container nx-container--narrow" nxReveal>
+    <p>{{ 'about.paragraph1' | translate }}</p>
+    <p>{{ 'about.paragraph2' | translate }}</p>
+  </div>
+</section>
+
+<section class="nx-section nx-about-pillars">
+  <div class="nx-container">
+    <div class="nx-grid nx-about-pillars__grid">
+      <div class="nx-card nx-about-pillars__card" nxReveal>
+        <span class="nx-icon-tile">
+          <svg [lucideIcon]="'compass'" [size]="24"></svg>
+        </span>
+        <h3>{{ 'about.vision.title' | translate }}</h3>
+        <p>{{ 'about.vision.description' | translate }}</p>
+      </div>
+      <div class="nx-card nx-about-pillars__card" [nxReveal]="1">
+        <span class="nx-icon-tile">
+          <svg [lucideIcon]="'target'" [size]="24"></svg>
+        </span>
+        <h3>{{ 'about.mission.title' | translate }}</h3>
+        <p>{{ 'about.mission.description' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-audience">
+  <div class="nx-container">
+    <app-section-heading
+      [eyebrow]="'whoWeServe.eyebrow' | translate"
+      [title]="'whoWeServe.title' | translate"
+      [description]="'whoWeServe.description' | translate"
+    />
+
+    <div class="nx-audience__row">
+      @for (item of whoWeServe; track item.titleKey; let i = $index) {
+        <div class="nx-audience__item" [nxReveal]="i">
+          <span class="nx-icon-tile">
+            <svg [lucideIcon]="item.icon" [size]="20"></svg>
+          </span>
+          <h3>{{ item.titleKey | translate }}</h3>
+          <p>{{ item.descriptionKey | translate }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-about-cta">
+  <div class="nx-container nx-about-cta__box" nxReveal>
+    <h2>{{ 'about.cta.title' | translate }}</h2>
+    <p>{{ 'about.cta.description' | translate }}</p>
+    <div class="nx-about-cta__actions">
+      <a routerLink="/request-service" class="nx-btn-accent">{{ 'home.hero.primaryCta' | translate }}</a>
+      <a routerLink="/providers" class="nx-btn-outline">{{ 'about.cta.providersLink' | translate }}</a>
+    </div>
+  </div>
+</section>

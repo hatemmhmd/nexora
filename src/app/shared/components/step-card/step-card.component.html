@@ -1,0 +1,15 @@
+<div class="nx-step" [class.nx-step--last]="isLast()">
+  <div class="nx-step__marker">
+    <span class="nx-step__icon">
+      <svg [lucideIcon]="step().icon" [size]="22"></svg>
+    </span>
+    @if (!isLast()) {
+      <span class="nx-step__line" aria-hidden="true"></span>
+    }
+  </div>
+  <div class="nx-step__body">
+    <span class="nx-step__number">{{ step().number }}</span>
+    <h3 class="nx-step__title">{{ step().titleKey | translate }}</h3>
+    <p class="nx-step__description">{{ step().descriptionKey | translate }}</p>
+  </div>
+</div>

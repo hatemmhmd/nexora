@@ -1,0 +1,39 @@
+<div class="nx-select" [class.is-open]="isOpen()" [class.is-disabled]="disabled()">
+  <button
+    type="button"
+    class="nx-select__trigger"
+    [id]="id()"
+    [disabled]="disabled()"
+    (click)="toggle()"
+    role="combobox"
+    aria-haspopup="listbox"
+    [attr.aria-expanded]="isOpen()"
+    [attr.aria-controls]="id() + '-listbox'"
+  >
+    <span class="nx-select__value" [class.is-placeholder]="!triggerLabelKey">
+      {{ (triggerLabelKey || placeholder()) | translate }}
+    </span>
+    <svg class="nx-select__chevron" [lucideIcon]="'chevron-down'" [size]="18"></svg>
+  </button>
+
+  @if (isOpen()) {
+    <ul class="nx-select__panel" [class.nx-select__panel--up]="openUpward()" role="listbox" [id]="id() + '-listbox'">
+      @for (opt of options(); track opt.value; let i = $index) {
+        <li
+          class="nx-select__option"
+          [class.is-selected]="opt.value === value()"
+          [class.is-active]="i === activeIndex()"
+          role="option"
+          [attr.aria-selected]="opt.value === value()"
+          (click)="selectOption(opt)"
+          (mouseenter)="activeIndex.set(i)"
+        >
+          <span>{{ opt.labelKey | translate }}</span>
+          @if (opt.value === value()) {
+            <svg [lucideIcon]="'check'" [size]="16"></svg>
+          }
+        </li>
+      }
+    </ul>
+  }
+</div>

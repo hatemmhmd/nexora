@@ -1,0 +1,57 @@
+@use '../../../../styles/mixins' as *;
+
+.nx-provider-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.nx-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  @include bp-md {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.nx-field--full {
+  @include bp-md {
+    grid-column: 1 / -1;
+  }
+}
+
+.nx-provider-form__submit {
+  align-self: flex-start;
+  padding-inline: 34px;
+}
+
+.nx-form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 48px 24px;
+
+  h3 {
+    font-size: 22px;
+  }
+
+  p {
+    color: var(--nx-text-muted);
+    max-width: 440px;
+  }
+}
+
+.nx-form-success__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: var(--nx-radius-full);
+  background: var(--nx-accent-soft);
+  color: var(--nx-accent);
+}

@@ -1,0 +1,131 @@
+@use '../../../../styles/mixins' as *;
+
+.nx-request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nx-form-section {
+  padding-block: 28px;
+  border-top: 1px solid var(--nx-border);
+
+  &:first-child {
+    padding-block-start: 0;
+    border-top: none;
+  }
+}
+
+.nx-form-section__head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-block-end: 24px;
+}
+
+.nx-form-section__index {
+  font-family: var(--nx-font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--nx-accent);
+}
+
+body.lang-ar .nx-form-section__index {
+  font-family: var(--nx-font);
+}
+
+.nx-form-section__title {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.nx-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  @include bp-md {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.nx-field--full {
+  @include bp-md {
+    grid-column: 1 / -1;
+  }
+}
+
+.nx-request-form__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding-block-start: 24px;
+  border-top: 1px solid var(--nx-border);
+
+  @include bp-md {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.nx-request-form__note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--nx-text-muted);
+  order: 2;
+
+  @include bp-md {
+    order: 1;
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: var(--nx-accent);
+  }
+}
+
+.nx-request-form__submit {
+  align-self: stretch;
+  justify-content: center;
+  padding-inline: 34px;
+  order: 1;
+
+  @include bp-md {
+    align-self: auto;
+    justify-content: center;
+    order: 2;
+  }
+}
+
+.nx-form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 48px 24px;
+
+  h3 {
+    font-size: 22px;
+  }
+
+  p {
+    color: var(--nx-text-muted);
+    max-width: 440px;
+  }
+}
+
+.nx-form-success__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: var(--nx-radius-full);
+  background: var(--nx-accent-soft);
+  color: var(--nx-accent);
+}

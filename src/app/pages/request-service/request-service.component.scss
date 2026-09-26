@@ -1,0 +1,132 @@
+@use '../../../styles/mixins' as *;
+
+.nx-request-page__layout {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+
+  @include bp-lg {
+    grid-template-columns: 0.85fr 1.4fr;
+    gap: 48px;
+  }
+}
+
+.nx-request-page__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  @include bp-lg {
+    position: sticky;
+    top: calc(var(--nx-header-height) + 24px);
+  }
+}
+
+.nx-request-page__trust {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  border-radius: var(--nx-radius-lg);
+  background: var(--nx-bg-alt);
+  border: 1px solid var(--nx-border);
+}
+
+.nx-request-page__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--nx-text);
+
+  .nx-icon-tile {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.nx-request-page__steps-title {
+  font-family: var(--nx-font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--nx-text-muted);
+  margin-block-end: 20px;
+}
+
+body.lang-ar .nx-request-page__steps-title {
+  font-family: var(--nx-font);
+  text-transform: none;
+}
+
+.nx-request-page__step-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.nx-request-page__step {
+  display: flex;
+  gap: 14px;
+}
+
+.nx-request-page__step-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nx-request-page__step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--nx-accent-soft);
+  color: var(--nx-accent);
+  font-family: var(--nx-font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+body.lang-ar .nx-request-page__step-num {
+  font-family: var(--nx-font);
+}
+
+.nx-request-page__step-line {
+  width: 2px;
+  flex: 1;
+  min-height: 24px;
+  background: var(--nx-border);
+  margin-block: 4px;
+}
+
+.nx-request-page__step-body {
+  padding-block-end: 20px;
+
+  strong {
+    display: block;
+    font-size: 14.5px;
+    margin-block-end: 4px;
+  }
+
+  p {
+    font-size: 13px;
+    color: var(--nx-text-muted);
+    line-height: 1.6;
+  }
+}
+
+.nx-request-page__form {
+  margin-block-start: 0;
+}

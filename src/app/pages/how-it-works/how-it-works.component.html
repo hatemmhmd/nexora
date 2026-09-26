@@ -1,0 +1,32 @@
+<section class="nx-page-header">
+  <div class="nx-container">
+    <div nxReveal>
+      <span class="nx-eyebrow">{{ 'howItWorks.eyebrow' | translate }}</span>
+      <h1>{{ 'howItWorks.title' | translate }}</h1>
+      <p>{{ 'howItWorks.pageDescription' | translate }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section">
+  <div class="nx-container nx-container--narrow">
+    <div class="nx-timeline">
+      @for (step of steps; track step.number; let last = $last; let i = $index) {
+        <div [nxReveal]="i">
+          <app-step-card [step]="step" [isLast]="last" />
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-how-cta">
+  <div class="nx-container nx-how-cta__box" nxReveal>
+    <h2>{{ 'home.finalCta.title' | translate }}</h2>
+    <p>{{ 'home.finalCta.description' | translate }}</p>
+    <a routerLink="/request-service" class="nx-btn-accent">
+      {{ 'home.hero.primaryCta' | translate }}
+      <svg class="nx-flip-rtl" [lucideIcon]="'arrow-right'" [size]="18"></svg>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+import { ProcessStep } from '../models';
+
+export const PROCESS_STEPS: ProcessStep[] = [
+  {
+    number: '01',
+    icon: 'message-square-text',
+    titleKey: 'howItWorks.steps.tell.title',
+    descriptionKey: 'howItWorks.steps.tell.description',
+  },
+  {
+    number: '02',
+    icon: 'search',
+    titleKey: 'howItWorks.steps.find.title',
+    descriptionKey: 'howItWorks.steps.find.description',
+  },
+  {
+    number: '03',
+    icon: 'settings-2',
+    titleKey: 'howItWorks.steps.manage.title',
+    descriptionKey: 'howItWorks.steps.manage.description',
+  },
+  {
+    number: '04',
+    icon: 'package-check',
+    titleKey: 'howItWorks.steps.deliver.title',
+    descriptionKey: 'howItWorks.steps.deliver.description',
+  },
+];

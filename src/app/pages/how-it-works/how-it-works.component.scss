@@ -1,0 +1,31 @@
+.nx-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nx-how-cta {
+  padding-block-start: 0;
+}
+
+.nx-how-cta__box {
+  border-radius: var(--nx-radius-lg);
+  background: var(--nx-bg-dark);
+  padding: clamp(40px, 6vw, 64px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--nx-white);
+
+  h2 {
+    font-size: clamp(24px, 3.2vw, 32px);
+    max-width: 560px;
+  }
+
+  p {
+    color: var(--nx-text-inverse-muted);
+    max-width: 480px;
+  }
+}

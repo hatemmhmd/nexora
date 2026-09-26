@@ -1,0 +1,19 @@
+<section class="nx-page-header">
+  <div class="nx-container">
+    <h1>{{ titleKey() | translate }}</h1>
+    <p>{{ 'legal.lastUpdated' | translate }}</p>
+  </div>
+</section>
+
+<section class="nx-section nx-legal">
+  <div class="nx-container nx-container--narrow nx-legal__body">
+    <p class="nx-legal__notice">{{ 'legal.notice' | translate }}</p>
+
+    @for (key of sectionKeys(); track key) {
+      <div class="nx-legal__section">
+        <h2>{{ key + '.heading' | translate }}</h2>
+        <p>{{ key + '.body' | translate }}</p>
+      </div>
+    }
+  </div>
+</section>

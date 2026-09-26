@@ -1,0 +1,10 @@
+<section class="nx-not-found">
+  <div class="nx-container nx-not-found__inner">
+    <span class="nx-icon-tile nx-not-found__icon">
+      <svg [lucideIcon]="'compass'" [size]="30"></svg>
+    </span>
+    <h1>{{ 'notFound.title' | translate }}</h1>
+    <p>{{ 'notFound.description' | translate }}</p>
+    <a routerLink="/" class="nx-btn-primary">{{ 'notFound.cta' | translate }}</a>
+  </div>
+</section>

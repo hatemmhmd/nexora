@@ -1,0 +1,222 @@
+<!-- ============================= HERO ============================= -->
+<section class="nx-hero">
+  <div class="nx-container nx-hero__inner">
+    <div class="nx-hero__copy" nxReveal>
+      <span class="nx-eyebrow">{{ 'home.hero.eyebrow' | translate }}</span>
+      <h1 class="nx-hero__title">{{ 'home.hero.title' | translate }}</h1>
+      <p class="nx-hero__subtitle">{{ 'home.hero.subtitle' | translate }}</p>
+      <div class="nx-hero__actions">
+        <a routerLink="/request-service" class="nx-btn-accent">
+          {{ 'home.hero.primaryCta' | translate }}
+          <svg class="nx-flip-rtl" [lucideIcon]="'arrow-right'" [size]="18"></svg>
+        </a>
+        <a routerLink="/services" class="nx-btn-outline">{{ 'home.hero.secondaryCta' | translate }}</a>
+      </div>
+    </div>
+
+    <div class="nx-hero__visual" aria-hidden="true" nxReveal="2">
+      <svg class="nx-hero__lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path id="nxLine1" class="nx-hero__line" d="M18 54 L50 54" />
+        <path id="nxLine2" class="nx-hero__line" d="M50 54 L84 26" />
+        <path id="nxLine3" class="nx-hero__line" d="M50 54 L90 54" />
+        <path id="nxLine4" class="nx-hero__line" d="M50 54 L84 82" />
+
+        <circle class="nx-hero__pulse" r="1.1">
+          <animateMotion dur="3.2s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+            <mpath href="#nxLine1" />
+          </animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" repeatCount="indefinite" />
+        </circle>
+        <circle class="nx-hero__pulse" r="1.1">
+          <animateMotion dur="3.2s" begin="0.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+            <mpath href="#nxLine2" />
+          </animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" begin="0.5s" repeatCount="indefinite" />
+        </circle>
+        <circle class="nx-hero__pulse" r="1.1">
+          <animateMotion dur="3.2s" begin="0.9s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+            <mpath href="#nxLine3" />
+          </animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" begin="0.9s" repeatCount="indefinite" />
+        </circle>
+        <circle class="nx-hero__pulse" r="1.1">
+          <animateMotion dur="3.2s" begin="1.3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+            <mpath href="#nxLine4" />
+          </animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" begin="1.3s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+
+      <div class="nx-hero__node nx-hero__node--client">
+        <svg [lucideIcon]="'user'" [size]="18"></svg>
+        <span>{{ 'home.hero.visual.client' | translate }}</span>
+      </div>
+
+      <div class="nx-hero__node nx-hero__node--hub">
+        <div class="nx-hero__hub-ring"></div>
+        <span class="nx-hero__hub-mark">N</span>
+      </div>
+
+      <div class="nx-hero__node nx-hero__node--p1">
+        <svg [lucideIcon]="'laptop'" [size]="16"></svg>
+      </div>
+      <div class="nx-hero__node nx-hero__node--p2">
+        <svg [lucideIcon]="'palette'" [size]="16"></svg>
+      </div>
+      <div class="nx-hero__node nx-hero__node--p3">
+        <svg [lucideIcon]="'briefcase-business'" [size]="16"></svg>
+      </div>
+
+      <p class="nx-hero__caption">{{ 'home.hero.visual.caption' | translate }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SERVICE CATEGORIES ==================== -->
+<section class="nx-section nx-services-preview nx-section--texture">
+  <div class="nx-container">
+    <app-section-heading
+      [eyebrow]="'home.services.eyebrow' | translate"
+      [title]="'home.services.title' | translate"
+      [description]="'home.services.description' | translate"
+    />
+
+    <div class="nx-grid nx-services-preview__grid">
+      @for (category of categories; track category.id; let i = $index) {
+        <div [nxReveal]="i">
+          <app-service-card [category]="category" [showItems]="false" />
+        </div>
+      }
+    </div>
+
+    <div class="nx-services-preview__more" nxReveal>
+      <div class="nx-services-preview__more-text">
+        <span class="nx-icon-tile nx-services-preview__more-icon">
+          <svg [lucideIcon]="'sparkles'" [size]="20"></svg>
+        </span>
+        <p>{{ 'home.services.cantFind' | translate }}</p>
+      </div>
+      <a routerLink="/request-service" class="nx-btn-primary">{{ 'home.services.customCta' | translate }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="nx-section nx-how-preview">
+  <div class="nx-container">
+    <app-section-heading
+      [eyebrow]="'howItWorks.eyebrow' | translate"
+      [title]="'howItWorks.title' | translate"
+    />
+
+    <div class="nx-how-preview__steps">
+      @for (step of steps; track step.number; let last = $last; let i = $index) {
+        <div [nxReveal]="i">
+          <app-step-card [step]="step" [isLast]="last" />
+        </div>
+      }
+    </div>
+
+    <div class="nx-how-preview__link" nxReveal>
+      <a routerLink="/how-it-works" class="nx-btn-outline">{{ 'home.howItWorks.viewFull' | translate }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHY NEXORA ==================== -->
+<section class="nx-section nx-why nx-why--dark">
+  <div class="nx-container">
+    <app-section-heading
+      [eyebrow]="'whyNexora.eyebrow' | translate"
+      [title]="'whyNexora.title' | translate"
+      [inverse]="true"
+    />
+
+    <div class="nx-why__grid">
+      @for (item of whyNexora; track item.titleKey; let i = $index) {
+        <div
+          class="nx-why__card"
+          [class.nx-why__card--lg]="i === 0"
+          [nxReveal]="i"
+        >
+          <span class="nx-icon-tile nx-why__icon">
+            <svg [lucideIcon]="item.icon" [size]="i === 0 ? 28 : 22"></svg>
+          </span>
+          <h3>{{ item.titleKey | translate }}</h3>
+          <p>{{ item.descriptionKey | translate }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ==================== NEXORA VS. AGENCY VS. MARKETPLACE ==================== -->
+<section class="nx-section nx-compare">
+  <div class="nx-container">
+    <app-section-heading
+      [eyebrow]="'comparison.eyebrow' | translate"
+      [title]="'comparison.title' | translate"
+      [description]="'comparison.description' | translate"
+    />
+
+    <div class="nx-compare__scroll" nxReveal>
+      <div class="nx-compare__table">
+        <div class="nx-compare__row nx-compare__row--head">
+          <div class="nx-compare__label"></div>
+          <div class="nx-compare__col">{{ 'comparison.columns.agency' | translate }}</div>
+          <div class="nx-compare__col">{{ 'comparison.columns.marketplace' | translate }}</div>
+          <div class="nx-compare__col nx-compare__col--nexora">{{ 'comparison.columns.nexora' | translate }}</div>
+        </div>
+
+        @for (row of comparisonRows; track row.labelKey) {
+          <div class="nx-compare__row">
+            <div class="nx-compare__label">{{ row.labelKey | translate }}</div>
+            <div class="nx-compare__col">
+              <svg [class]="'nx-compare__icon nx-compare__icon--' + row.agency" [lucideIcon]="comparisonIcon(row.agency)" [size]="18"></svg>
+            </div>
+            <div class="nx-compare__col">
+              <svg [class]="'nx-compare__icon nx-compare__icon--' + row.marketplace" [lucideIcon]="comparisonIcon(row.marketplace)" [size]="18"></svg>
+            </div>
+            <div class="nx-compare__col nx-compare__col--nexora">
+              <svg [class]="'nx-compare__icon nx-compare__icon--' + row.nexora" [lucideIcon]="comparisonIcon(row.nexora)" [size]="18"></svg>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHO WE SERVE ==================== -->
+<section class="nx-section nx-audience nx-section--texture">
+  <div class="nx-container">
+    <app-section-heading
+      [eyebrow]="'whoWeServe.eyebrow' | translate"
+      [title]="'whoWeServe.title' | translate"
+    />
+
+    <div class="nx-audience__row">
+      @for (item of whoWeServe; track item.titleKey; let i = $index) {
+        <div class="nx-audience__item" [nxReveal]="i">
+          <span class="nx-icon-tile">
+            <svg [lucideIcon]="item.icon" [size]="20"></svg>
+          </span>
+          <h3>{{ item.titleKey | translate }}</h3>
+          <p>{{ item.descriptionKey | translate }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section class="nx-section nx-final-cta">
+  <div class="nx-container nx-final-cta__box" nxReveal>
+    <h2>{{ 'home.finalCta.title' | translate }}</h2>
+    <p>{{ 'home.finalCta.description' | translate }}</p>
+    <div class="nx-final-cta__actions">
+      <a routerLink="/request-service" class="nx-btn-accent">{{ 'home.hero.primaryCta' | translate }}</a>
+      <a routerLink="/contact" class="nx-btn-outline-inverse">{{ 'nav.contact' | translate }}</a>
+    </div>
+  </div>
+</section>

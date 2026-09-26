@@ -1,0 +1,15 @@
+<div
+  class="nx-heading"
+  [class.nx-heading--start]="align() === 'start'"
+  [class.nx-heading--inverse]="inverse()"
+>
+  @if (eyebrow()) {
+    <span class="nx-heading__eyebrow" [class.nx-eyebrow--inverse]="inverse()" [class.nx-eyebrow]="!inverse()">
+      {{ eyebrow() }}
+    </span>
+  }
+  <h2 class="nx-heading__title">{{ title() }}</h2>
+  @if (description()) {
+    <p class="nx-heading__description">{{ description() }}</p>
+  }
+</div>

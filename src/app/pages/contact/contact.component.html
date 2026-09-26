@@ -1,0 +1,119 @@
+<section class="nx-page-header">
+  <div class="nx-container">
+    <div nxReveal>
+      <span class="nx-eyebrow">{{ 'contact.eyebrow' | translate }}</span>
+      <h1>{{ 'contact.pageTitle' | translate }}</h1>
+      <p>{{ 'contact.pageDescription' | translate }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-contact">
+  <div class="nx-container nx-contact__grid">
+    <div class="nx-contact__info" nxReveal>
+      <div class="nx-contact__info-item">
+        <span class="nx-icon-tile"><svg [lucideIcon]="'mail'" [size]="20"></svg></span>
+        <div>
+          <h3>{{ 'contact.info.emailLabel' | translate }}</h3>
+          <a href="mailto:hello@nexora.com">hello&#64;nexora.com</a>
+        </div>
+      </div>
+
+      <div class="nx-contact__info-item">
+        <span class="nx-icon-tile"><svg [lucideIcon]="'phone'" [size]="20"></svg></span>
+        <div>
+          <h3>{{ 'contact.info.phoneLabel' | translate }}</h3>
+          <a href="tel:+971400000000">+971 4 000 0000</a>
+        </div>
+      </div>
+
+      <div class="nx-contact__info-item">
+        <span class="nx-icon-tile"><svg [lucideIcon]="'message-circle'" [size]="20"></svg></span>
+        <div>
+          <h3>{{ 'contact.info.whatsappLabel' | translate }}</h3>
+          <a href="https://wa.me/971500000000" target="_blank" rel="noopener">+971 50 000 0000</a>
+        </div>
+      </div>
+
+      <div class="nx-contact__info-item">
+        <span class="nx-icon-tile"><svg [lucideIcon]="'map-pin'" [size]="20"></svg></span>
+        <div>
+          <h3>{{ 'contact.info.uae' | translate }}</h3>
+          <p>{{ 'contact.info.uaeAddress' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="nx-contact__info-item">
+        <span class="nx-icon-tile"><svg [lucideIcon]="'map-pin'" [size]="20"></svg></span>
+        <div>
+          <h3>{{ 'contact.info.jordan' | translate }}</h3>
+          <p>{{ 'contact.info.jordanAddress' | translate }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="nx-form-panel nx-contact__form-panel">
+      @if (isSubmitted()) {
+        <div class="nx-form-success">
+          <span class="nx-form-success__icon">
+            <svg [lucideIcon]="'circle-check'" [size]="32"></svg>
+          </span>
+          <h3>{{ 'form.success.title' | translate }}</h3>
+          <p>{{ 'form.success.message' | translate }}</p>
+          <button type="button" class="nx-btn-outline" (click)="submitAnother()">
+            {{ 'form.success.another' | translate }}
+          </button>
+        </div>
+      } @else {
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="nx-contact__form">
+          <div class="nx-field">
+            <label class="nx-field__label" for="c-fullName">
+              <svg [lucideIcon]="'user'" [size]="16"></svg>
+              {{ 'form.fields.fullName' | translate }}
+            </label>
+            <input id="c-fullName" type="text" class="nx-field__control" formControlName="fullName" [placeholder]="'form.placeholders.fullName' | translate" />
+            @if (f.fullName.invalid && f.fullName.touched) {
+              <span class="nx-field__error">{{ 'form.errors.required' | translate }}</span>
+            }
+          </div>
+
+          <div class="nx-field">
+            <label class="nx-field__label" for="c-email">
+              <svg [lucideIcon]="'mail'" [size]="16"></svg>
+              {{ 'form.fields.email' | translate }}
+            </label>
+            <input id="c-email" type="email" class="nx-field__control" formControlName="email" [placeholder]="'form.placeholders.email' | translate" />
+            @if (f.email.invalid && f.email.touched) {
+              <span class="nx-field__error">{{ 'form.errors.email' | translate }}</span>
+            }
+          </div>
+
+          <div class="nx-field">
+            <label class="nx-field__label" for="c-message">
+              <svg [lucideIcon]="'file-text'" [size]="16"></svg>
+              {{ 'contact.form.message' | translate }}
+            </label>
+            <textarea id="c-message" class="nx-field__control" formControlName="message" rows="5" [placeholder]="'contact.form.messagePlaceholder' | translate"></textarea>
+            @if (f.message.invalid && f.message.touched) {
+              <span class="nx-field__error">{{ 'form.errors.description' | translate }}</span>
+            }
+          </div>
+
+          <button type="submit" class="nx-btn-accent">
+            <svg [lucideIcon]="'send'" [size]="18"></svg>
+            {{ 'contact.form.submit' | translate }}
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-contact-faq" id="faq">
+  <div class="nx-container nx-container--narrow">
+    <app-section-heading [eyebrow]="'faq.eyebrow' | translate" [title]="'faq.title' | translate" />
+    <div class="nx-contact-faq__list" nxReveal>
+      <app-faq-accordion [items]="faqItems" />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+<section class="nx-page-header">
+  <div class="nx-container">
+    <div nxReveal>
+      <span class="nx-eyebrow">{{ 'services.eyebrow' | translate }}</span>
+      <h1>{{ 'services.pageTitle' | translate }}</h1>
+      <p>{{ 'services.pageDescription' | translate }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="nx-section">
+  <div class="nx-container">
+    <div class="nx-grid nx-services-grid">
+      @for (category of categories; track category.id; let i = $index) {
+        <div [nxReveal]="i">
+          <app-service-card [category]="category" [showItems]="true" />
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="nx-section nx-services-cta">
+  <div class="nx-container nx-services-cta__box" nxReveal>
+    <span class="nx-icon-tile nx-services-cta__icon">
+      <svg [lucideIcon]="'sparkles'" [size]="26"></svg>
+    </span>
+    <h2>{{ 'home.services.cantFind' | translate }}</h2>
+    <p>{{ 'services.customDescription' | translate }}</p>
+    <a routerLink="/request-service" class="nx-btn-accent">{{ 'home.services.customCta' | translate }}</a>
+  </div>
+</section>

@@ -1,0 +1,302 @@
+@use '../../../../styles/mixins' as *;
+
+.nx-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nx-header-bg);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--nx-transition), box-shadow var(--nx-transition), background var(--nx-transition);
+
+  &.is-scrolled {
+    border-color: var(--nx-border);
+    box-shadow: 0 4px 24px rgba(13, 26, 48, 0.06);
+  }
+}
+
+:root[data-theme='dark'] .nx-header.is-scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.nx-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nx-header-height);
+  gap: 32px;
+  // Tighter side padding than the standard container gutter (24px) at every
+  // size, including laptop/desktop — the header is chrome, not body copy,
+  // so it can sit closer to the viewport edge. Deliberately never reaches
+  // the old 24px value, even on very wide screens.
+  padding-inline: 16px;
+  // Pinned to LTR on purpose: the logo, primary nav and action cluster
+  // should stay in the same physical order (logo start / nav center /
+  // actions end) in both languages, like most bilingual product sites —
+  // it shouldn't mirror just because the page switched to Arabic. Each
+  // control's own text still renders in its own language normally; this
+  // only fixes the three regions' left-to-right order.
+  direction: ltr;
+
+  @include bp-lg {
+    padding-inline: 20px;
+  }
+}
+
+.nx-header__logo {
+  display: inline-flex;
+  flex-shrink: 0;
+  transition: opacity var(--nx-transition-fast);
+
+  &:hover {
+    opacity: 0.82;
+  }
+}
+
+.nx-header__nav {
+  display: none;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+
+  @include bp-nav {
+    display: flex;
+  }
+}
+
+.nx-header__link {
+  position: relative;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: var(--nx-text-muted);
+  transition: color var(--nx-transition-fast);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: 16px;
+    bottom: 2px;
+    height: 2px;
+    border-radius: var(--nx-radius-full);
+    background: var(--nx-accent);
+    transform: scaleX(0);
+    transition: transform var(--nx-transition-fast);
+  }
+
+  &:hover {
+    color: var(--nx-text);
+  }
+
+  &.is-active {
+    color: var(--nx-text);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.nx-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.nx-header__controls {
+  display: none;
+  align-items: center;
+  gap: 8px;
+
+  @include bp-md {
+    display: flex;
+  }
+}
+
+.nx-header__divider {
+  display: none;
+  width: 1px;
+  height: 24px;
+  background: var(--nx-border);
+
+  @include bp-md {
+    display: block;
+  }
+}
+
+.nx-header__cta {
+  display: none;
+  padding-block: 11px;
+  padding-inline: 20px 22px;
+  font-size: 14px;
+
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  @include bp-md {
+    display: inline-flex;
+  }
+}
+
+.nx-header__burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--nx-radius-full);
+  border: 1px solid var(--nx-border);
+  background: var(--nx-surface);
+  cursor: pointer;
+  transition: border-color var(--nx-transition-fast), background var(--nx-transition-fast);
+
+  &:hover {
+    border-color: var(--nx-accent);
+    background: var(--nx-accent-soft);
+
+    .nx-header__burger-line {
+      background: var(--nx-accent);
+    }
+  }
+
+  @include bp-nav {
+    display: none;
+  }
+}
+
+// Classic 3-line-to-X morph: each line is absolutely positioned inside a
+// small fixed box so the rotate/translate happens around a shared center.
+.nx-header__burger-icon {
+  position: relative;
+  width: 18px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.nx-header__burger-line {
+  position: absolute;
+  inset-inline: 0;
+  height: 2px;
+  border-radius: var(--nx-radius-full);
+  background: var(--nx-text);
+  transition: transform var(--nx-transition), opacity var(--nx-transition-fast), background var(--nx-transition-fast);
+
+  &:nth-child(1) {
+    top: 0;
+  }
+
+  &:nth-child(2) {
+    top: 6px;
+  }
+
+  &:nth-child(3) {
+    top: 12px;
+  }
+}
+
+.nx-header__burger.is-open .nx-header__burger-line {
+  &:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  &:nth-child(2) {
+    opacity: 0;
+  }
+
+  &:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+// Full-screen takeover instead of a small dropdown — fills everything
+// below the sticky header, with its own scroll if content is tall.
+.nx-header__mobile {
+  position: fixed;
+  inset-block-start: var(--nx-header-height);
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 90;
+  background: var(--nx-surface);
+  padding: 28px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: nx-header-mobile-in var(--nx-transition) cubic-bezier(0.16, 1, 0.3, 1);
+
+  @include bp-nav {
+    display: none;
+  }
+}
+
+@keyframes nx-header-mobile-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nx-mobile-link-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nx-header__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  padding-block-start: 8px;
+}
+
+.nx-header__mobile-link {
+  padding: 16px 18px;
+  border-radius: var(--nx-radius-md);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--nx-text);
+  opacity: 0;
+  animation: nx-mobile-link-in 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  &.is-active {
+    color: var(--nx-accent);
+    background: var(--nx-accent-soft);
+  }
+}
+
+.nx-header__mobile-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--nx-border);
+
+  a.nx-btn-accent {
+    justify-content: center;
+    padding-block: 15px;
+  }
+}
+
+.nx-header__mobile-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

@@ -1,0 +1,18 @@
+<div class="nx-faq">
+  @for (item of items(); track item.questionKey; let i = $index) {
+    <div class="nx-faq__item" [class.is-open]="openIndex() === i">
+      <button
+        type="button"
+        class="nx-faq__question"
+        (click)="toggle(i)"
+        [attr.aria-expanded]="openIndex() === i"
+      >
+        <span>{{ item.questionKey | translate }}</span>
+        <svg class="nx-faq__chevron" [lucideIcon]="'chevron-down'" [size]="20"></svg>
+      </button>
+      @if (openIndex() === i) {
+        <p class="nx-faq__answer">{{ item.answerKey | translate }}</p>
+      }
+    </div>
+  }
+</div>
