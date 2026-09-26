@@ -54,96 +54,47 @@
   }
 }
 
-.nx-header__nav {
-  display: none;
-  align-items: center;
-  gap: 2px;
-  flex: 1;
-  justify-content: center;
-  min-width: 0;
-
-  @include bp-nav {
-    display: flex;
-  }
-}
-
-.nx-header__link {
-  position: relative;
-  padding: 9px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--nx-text-muted);
-  transition: color var(--nx-transition-fast);
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset-inline: 16px;
-    bottom: 2px;
-    height: 2px;
-    border-radius: var(--nx-radius-full);
-    background: var(--nx-accent);
-    transform: scaleX(0);
-    transition: transform var(--nx-transition-fast);
-  }
-
-  &:hover {
-    color: var(--nx-text);
-  }
-
-  &.is-active {
-    color: var(--nx-text);
-
-    &::after {
-      transform: scaleX(1);
-    }
-  }
-}
-
+// Deliberately no inline nav links or CTA in the bar at any width — same
+// minimal pattern as the reference header (yousefafandi.com): logo, one
+// accent pill, one hamburger. Every link lives in the full-screen overlay.
 .nx-header__actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
-.nx-header__controls {
-  display: none;
-  align-items: center;
-  gap: 8px;
+// Header-scoped override: the shared language switcher is normally a
+// bordered, transparent pill (see language-switcher.component.scss); here
+// it becomes a solid accent pill, matching the reference's amber
+// location-pill button.
+.nx-header__lang {
+  ::ng-deep .nx-lang-switch {
+    border-color: transparent;
+    background: var(--nx-accent);
+    color: var(--nx-accent-ink);
 
-  @include bp-md {
-    display: flex;
-  }
-}
+    svg {
+      display: none;
+    }
 
-.nx-header__divider {
-  display: none;
-  width: 1px;
-  height: 24px;
-  background: var(--nx-border);
-
-  @include bp-md {
-    display: block;
-  }
-}
-
-.nx-header__cta {
-  display: none;
-  padding-block: 11px;
-  padding-inline: 20px 22px;
-  font-size: 14px;
-
-  svg {
-    width: 15px;
-    height: 15px;
+    &:hover {
+      background: var(--nx-blue-400);
+    }
   }
 
-  @include bp-md {
-    display: inline-flex;
+  ::ng-deep .nx-lang-switch__option {
+    color: var(--nx-accent-ink);
+    opacity: 0.6;
+
+    &.is-active {
+      opacity: 1;
+    }
+  }
+
+  ::ng-deep .nx-lang-switch__divider {
+    color: var(--nx-accent-ink);
+    opacity: 0.4;
   }
 }
 
@@ -151,25 +102,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--nx-radius-full);
-  border: 1px solid var(--nx-border);
-  background: var(--nx-surface);
+  border: none;
+  background: var(--nx-primary);
   cursor: pointer;
-  transition: border-color var(--nx-transition-fast), background var(--nx-transition-fast);
+  transition: background var(--nx-transition-fast);
 
   &:hover {
-    border-color: var(--nx-accent);
-    background: var(--nx-accent-soft);
+    background: var(--nx-accent);
 
     .nx-header__burger-line {
-      background: var(--nx-accent);
+      background: var(--nx-accent-ink);
     }
-  }
-
-  @include bp-nav {
-    display: none;
   }
 }
 
@@ -187,7 +133,9 @@
   inset-inline: 0;
   height: 2px;
   border-radius: var(--nx-radius-full);
-  background: var(--nx-text);
+  // Always white: the burger button is a solid dark circle regardless of
+  // site theme, so its lines never need to flip for light mode.
+  background: var(--nx-white);
   transition: transform var(--nx-transition), opacity var(--nx-transition-fast), background var(--nx-transition-fast);
 
   &:nth-child(1) {
@@ -203,7 +151,25 @@
   }
 }
 
+// Open state swaps the dark circle for a solid white square with a plain
+// dark X — same distinct "close" affordance as the reference header,
+// rather than just morphing the lines in place.
+.nx-header__burger.is-open {
+  background: var(--nx-white);
+  border-radius: var(--nx-radius-sm);
+
+  &:hover {
+    background: var(--nx-white);
+
+    .nx-header__burger-line {
+      background: var(--nx-accent-ink);
+    }
+  }
+}
+
 .nx-header__burger.is-open .nx-header__burger-line {
+  background: var(--nx-accent-ink);
+
   &:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
   }
@@ -218,22 +184,24 @@
 }
 
 // Full-screen takeover instead of a small dropdown — fills everything
-// below the sticky header, with its own scroll if content is tall.
+// below the sticky header, with its own scroll if content is tall. Always
+// dark regardless of the site's light/dark theme, same "fixed-dark anchor"
+// idea as the hero/footer, matching the reference's black nav overlay.
 .nx-header__mobile {
   position: fixed;
   inset-block-start: var(--nx-header-height);
   inset-inline: 0;
   inset-block-end: 0;
   z-index: 90;
-  background: var(--nx-surface);
-  padding: 28px 20px 24px;
+  background: var(--nx-bg-dark);
+  padding: 8px 20px 28px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   animation: nx-header-mobile-in var(--nx-transition) cubic-bezier(0.16, 1, 0.3, 1);
 
-  @include bp-nav {
-    display: none;
+  @include bp-lg {
+    padding-inline: 20px;
   }
 }
 
@@ -260,24 +228,40 @@
 .nx-header__mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   flex: 1;
   padding-block-start: 8px;
+
+  @include bp-lg {
+    padding-block-start: 24px;
+  }
 }
 
+// Full-width, divider-separated rows instead of rounded hover pills — each
+// link reads as a row in a list, not a button, matching the reference's
+// uppercase serif nav list.
 .nx-header__mobile-link {
-  padding: 16px 18px;
-  border-radius: var(--nx-radius-md);
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--nx-text);
+  display: flex;
+  align-items: center;
+  padding-block: 20px;
+  border-block-end: 1px solid var(--nx-border-dark);
+  font-family: var(--nx-font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--nx-text-inverse);
   opacity: 0;
+  transition: color var(--nx-transition-fast);
   animation: nx-mobile-link-in 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
+  @include bp-lg {
+    padding-block: 26px;
+    font-size: 34px;
+  }
+
+  &:hover,
   &.is-active {
-    color: var(--nx-accent);
-    background: var(--nx-accent-soft);
+    color: var(--nx-blue-400);
   }
 }
 
@@ -287,7 +271,6 @@
   gap: 16px;
   margin-top: 16px;
   padding-top: 20px;
-  border-top: 1px solid var(--nx-border);
 
   a.nx-btn-accent {
     justify-content: center;
@@ -300,4 +283,44 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+
+  ::ng-deep .nx-theme-toggle {
+    border-color: var(--nx-border-dark);
+    color: var(--nx-text-inverse-muted);
+
+    &:hover {
+      color: var(--nx-white);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+}
+
+.nx-header__mobile-social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--nx-radius-full);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--nx-text-inverse-muted);
+    transition: background var(--nx-transition-fast), color var(--nx-transition-fast);
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      background: var(--nx-accent);
+      color: var(--nx-accent-ink);
+    }
+  }
 }
