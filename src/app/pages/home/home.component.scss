@@ -171,13 +171,13 @@
   background: var(--nx-bg-dark);
 }
 
-// Bento layout: one featured card (2×2) plus five regular cells tessellate
-// a clean 3×3 grid at desktop width with no gaps. Stacks to a single column
-// on mobile, where the featured card just reads as the first, taller item.
+// Plain bordered cells, uniform size, numbered instead of iconed — matches
+// the reference's own feature-list cards rather than a decorative bento
+// grid.
 .nx-why__grid {
   margin-block-start: 48px;
   display: grid;
-  gap: 16px;
+  gap: 20px;
   grid-template-columns: 1fr;
 
   @include bp-sm {
@@ -186,18 +186,11 @@
 
   @include bp-lg {
     grid-template-columns: repeat(3, 1fr);
-    // A floor, not a fixed height — keeps the tessellated look while letting
-    // a row grow if a card's text needs more room than 150px (longer
-    // strings, Arabic wrapping to two lines) instead of overflowing past
-    // the card's border.
-    grid-auto-rows: minmax(150px, auto);
   }
 }
 
 .nx-why__card {
-  padding: 28px;
-  border-radius: var(--nx-radius-lg);
-  background: rgba(255, 255, 255, 0.04);
+  padding: 32px 28px;
   border: 1px solid var(--nx-border-dark);
   display: flex;
   flex-direction: column;
@@ -205,8 +198,9 @@
 
   h3 {
     color: var(--nx-white);
-    font-size: 18px;
-    margin-block: 16px 8px;
+    font-size: 19px;
+    text-transform: uppercase;
+    margin-block: 22px 10px;
   }
 
   p {
@@ -216,39 +210,15 @@
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.28);
   }
 }
 
-.nx-why__card--lg {
-  background: linear-gradient(155deg, rgba(var(--nx-accent-rgb), 0.16), rgba(255, 255, 255, 0.04));
-
-  @include bp-lg {
-    grid-column: span 2;
-    grid-row: span 2;
-    padding: 36px;
-    justify-content: center;
-  }
-
-  h3 {
-    font-size: 22px;
-  }
-
-  p {
-    font-size: 15.5px;
-    max-width: 380px;
-  }
-}
-
-.nx-why__card--lg .nx-why__icon {
-  width: 60px;
-  height: 60px;
-}
-
-.nx-why__icon {
-  background: rgba(var(--nx-accent-rgb), 0.16);
-  color: var(--nx-blue-400);
+.nx-why__number {
+  font-family: var(--nx-font-mono);
+  font-size: 14px;
+  color: var(--nx-text-inverse-muted);
 }
 
 // ============================= COMPARISON TABLE =============================

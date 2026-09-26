@@ -129,18 +129,21 @@ body.lang-ar .nx-eyebrow--inverse {
   }
 }
 
+// Flat outlined circle instead of a gradient-filled square tile — reads as
+// a mark, not a decorative box, closer to the reference site's plain
+// bordered icon badges.
 @mixin icon-tile($size: 52px) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: $size;
   height: $size;
-  border-radius: var(--nx-radius-md);
-  background: linear-gradient(150deg, var(--nx-accent-soft), rgba(var(--nx-accent-rgb), 0.02));
-  border: 1px solid var(--nx-accent-soft);
-  box-shadow: inset 0 1px 0 var(--nx-icon-tile-sheen, rgba(255, 255, 255, 0.4));
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--nx-border);
   color: var(--nx-accent);
   flex-shrink: 0;
+  transition: border-color var(--nx-transition-fast), background var(--nx-transition-fast);
 }
 
 @mixin focus-ring {

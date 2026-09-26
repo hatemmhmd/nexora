@@ -79,14 +79,8 @@
 
     <div class="nx-why__grid">
       @for (item of whyNexora; track item.titleKey; let i = $index) {
-        <div
-          class="nx-why__card"
-          [class.nx-why__card--lg]="i === 0"
-          [nxReveal]="i"
-        >
-          <span class="nx-icon-tile nx-why__icon">
-            <svg [lucideIcon]="item.icon" [size]="i === 0 ? 28 : 22"></svg>
-          </span>
+        <div class="nx-why__card" [nxReveal]="i">
+          <span class="nx-why__number">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</span>
           <h3>{{ item.titleKey | translate }}</h3>
           <p>{{ item.descriptionKey | translate }}</p>
         </div>
