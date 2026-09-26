@@ -282,30 +282,32 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--nx-text);
-
-  svg {
-    width: 16px;
-    height: 16px;
-    color: var(--nx-accent);
-  }
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--nx-text-muted);
 
   .nx-field__optional {
     font-weight: 400;
-    color: var(--nx-text-muted);
+    text-transform: none;
+    letter-spacing: normal;
   }
 }
 
+// Plain underline instead of a filled, rounded box — quieter and closer to
+// the site's flat, bordered chrome than a boxed SaaS-style input. No focus
+// glow either; the border simply deepens to the accent color.
 .nx-field__control {
   width: 100%;
-  padding: 13px 16px;
-  border-radius: var(--nx-radius-sm);
-  border: 1px solid var(--nx-border);
-  background: var(--nx-bg-alt);
+  padding-block: 12px;
+  padding-inline: 2px;
+  border: none;
+  border-block-end: 1px solid var(--nx-border);
+  border-radius: 0;
+  background: transparent;
   color: var(--nx-text);
-  transition: border-color var(--nx-transition-fast), box-shadow var(--nx-transition-fast), background var(--nx-transition-fast);
+  transition: border-color var(--nx-transition-fast);
 
   &::placeholder {
     color: var(--nx-gray-400);
@@ -314,14 +316,20 @@ select {
   &:focus {
     outline: none;
     border-color: var(--nx-accent);
-    background: var(--nx-surface);
-    box-shadow: 0 0 0 4px var(--nx-accent-soft);
   }
 }
 
+// The one exception: a multi-line field reads better as a bordered box than
+// a lone bottom rule, so it keeps a full (sharp-cornered) border.
 textarea.nx-field__control {
+  padding: 14px 16px;
+  border: 1px solid var(--nx-border);
   resize: vertical;
   min-height: 120px;
+
+  &:focus {
+    border-color: var(--nx-accent);
+  }
 }
 
 .nx-field__error {
@@ -371,10 +379,14 @@ textarea.nx-field__control {
 }
 
 // ---------------------------------------------------------------------------
-// Form panel — wraps the request/provider forms in a card surface
+// Form panel — a plain bordered sheet, not a rounded/shadowed card. Keeps a
+// surface fill (unlike content cards) since a form genuinely benefits from
+// reading as one distinct panel to fill in.
 // ---------------------------------------------------------------------------
 .nx-form-panel {
-  @include card-surface;
+  position: relative;
+  background: var(--nx-surface);
+  border: 1px solid var(--nx-border);
   margin-block-start: 44px;
   padding: clamp(24px, 5vw, 44px);
 }

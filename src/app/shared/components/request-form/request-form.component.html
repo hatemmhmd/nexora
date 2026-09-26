@@ -20,7 +20,6 @@
       <div class="nx-form-grid">
         <div class="nx-field">
           <label class="nx-field__label" for="fullName">
-            <svg [lucideIcon]="'user'" [size]="16"></svg>
             {{ 'form.fields.fullName' | translate }}
           </label>
           <input id="fullName" type="text" class="nx-field__control" formControlName="fullName" [placeholder]="'form.placeholders.fullName' | translate" />
@@ -31,7 +30,6 @@
 
         <div class="nx-field">
           <label class="nx-field__label" for="companyName">
-            <svg [lucideIcon]="'building-2'" [size]="16"></svg>
             {{ 'form.fields.companyName' | translate }}
             <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
           </label>
@@ -40,7 +38,6 @@
 
         <div class="nx-field">
           <label class="nx-field__label" for="email">
-            <svg [lucideIcon]="'mail'" [size]="16"></svg>
             {{ 'form.fields.email' | translate }}
           </label>
           <input id="email" type="email" class="nx-field__control" formControlName="email" [placeholder]="'form.placeholders.email' | translate" />
@@ -51,7 +48,6 @@
 
         <div class="nx-field">
           <label class="nx-field__label" for="phone">
-            <svg [lucideIcon]="'phone'" [size]="16"></svg>
             {{ 'form.fields.phone' | translate }}
           </label>
           <input id="phone" type="tel" class="nx-field__control" formControlName="phone" [placeholder]="'form.placeholders.phone' | translate" />
@@ -71,7 +67,6 @@
       <div class="nx-form-grid">
         <div class="nx-field">
           <label class="nx-field__label" for="country">
-            <svg [lucideIcon]="'globe'" [size]="16"></svg>
             {{ 'form.fields.country' | translate }}
           </label>
           <app-select id="country" [options]="countries" [placeholder]="'form.placeholders.select'" formControlName="country" />
@@ -82,7 +77,6 @@
 
         <div class="nx-field">
           <label class="nx-field__label" for="serviceCategory">
-            <svg [lucideIcon]="'layers'" [size]="16"></svg>
             {{ 'form.fields.serviceCategory' | translate }}
           </label>
           <app-select id="serviceCategory" [options]="categories" [placeholder]="'form.placeholders.select'" formControlName="serviceCategory" />
@@ -93,7 +87,6 @@
 
         <div class="nx-field nx-field--full">
           <label class="nx-field__label" for="serviceRequired">
-            <svg [lucideIcon]="'sparkles'" [size]="16"></svg>
             {{ 'form.fields.serviceRequired' | translate }}
           </label>
           <input id="serviceRequired" type="text" class="nx-field__control" formControlName="serviceRequired" [placeholder]="'form.placeholders.serviceRequired' | translate" />
@@ -104,7 +97,6 @@
 
         <div class="nx-field nx-field--full">
           <label class="nx-field__label" for="description">
-            <svg [lucideIcon]="'file-text'" [size]="16"></svg>
             {{ 'form.fields.description' | translate }}
           </label>
           <textarea id="description" class="nx-field__control" formControlName="description" rows="5" [placeholder]="'form.placeholders.description' | translate"></textarea>
@@ -124,7 +116,6 @@
       <div class="nx-form-grid">
         <div class="nx-field">
           <label class="nx-field__label" for="budget">
-            <svg [lucideIcon]="'wallet'" [size]="16"></svg>
             {{ 'form.fields.budget' | translate }}
             <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
           </label>
@@ -133,7 +124,6 @@
 
         <div class="nx-field">
           <label class="nx-field__label" for="deliveryDate">
-            <svg [lucideIcon]="'calendar'" [size]="16"></svg>
             {{ 'form.fields.deliveryDate' | translate }}
             <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
           </label>
@@ -142,7 +132,6 @@
 
         <div class="nx-field nx-field--full">
           <label class="nx-field__label" for="notes">
-            <svg [lucideIcon]="'notebook-pen'" [size]="16"></svg>
             {{ 'form.fields.notes' | translate }}
             <span class="nx-field__optional">({{ 'form.optional' | translate }})</span>
           </label>

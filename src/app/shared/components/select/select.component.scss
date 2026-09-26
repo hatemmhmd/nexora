@@ -7,22 +7,26 @@
   position: relative;
 }
 
+// Matches .nx-field__control's plain underline — a select is just another
+// field in the same list, not a visually distinct boxed control.
 .nx-select__trigger {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 13px 16px;
-  border-radius: var(--nx-radius-sm);
-  border: 1px solid var(--nx-border);
-  background: var(--nx-bg-alt);
+  padding-block: 12px;
+  padding-inline: 2px;
+  border: none;
+  border-block-end: 1px solid var(--nx-border);
+  border-radius: 0;
+  background: transparent;
   color: var(--nx-text);
   font-family: inherit;
   font-size: 15px;
   text-align: start;
   cursor: pointer;
-  transition: border-color var(--nx-transition-fast), background var(--nx-transition-fast), box-shadow var(--nx-transition-fast);
+  transition: border-color var(--nx-transition-fast);
 
   &:hover {
     border-color: var(--nx-accent);
@@ -31,14 +35,11 @@
   &:focus-visible {
     outline: none;
     border-color: var(--nx-accent);
-    box-shadow: 0 0 0 4px var(--nx-accent-soft);
   }
 }
 
 .is-open .nx-select__trigger {
   border-color: var(--nx-accent);
-  background: var(--nx-surface);
-  box-shadow: 0 0 0 4px var(--nx-accent-soft);
 }
 
 .is-disabled .nx-select__trigger {

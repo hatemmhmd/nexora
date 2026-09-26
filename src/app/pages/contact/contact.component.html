@@ -68,7 +68,6 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="nx-contact__form">
           <div class="nx-field">
             <label class="nx-field__label" for="c-fullName">
-              <svg [lucideIcon]="'user'" [size]="16"></svg>
               {{ 'form.fields.fullName' | translate }}
             </label>
             <input id="c-fullName" type="text" class="nx-field__control" formControlName="fullName" [placeholder]="'form.placeholders.fullName' | translate" />
@@ -79,7 +78,6 @@
 
           <div class="nx-field">
             <label class="nx-field__label" for="c-email">
-              <svg [lucideIcon]="'mail'" [size]="16"></svg>
               {{ 'form.fields.email' | translate }}
             </label>
             <input id="c-email" type="email" class="nx-field__control" formControlName="email" [placeholder]="'form.placeholders.email' | translate" />
@@ -90,7 +88,6 @@
 
           <div class="nx-field">
             <label class="nx-field__label" for="c-message">
-              <svg [lucideIcon]="'file-text'" [size]="16"></svg>
               {{ 'contact.form.message' | translate }}
             </label>
             <textarea id="c-message" class="nx-field__control" formControlName="message" rows="5" [placeholder]="'contact.form.messagePlaceholder' | translate"></textarea>
