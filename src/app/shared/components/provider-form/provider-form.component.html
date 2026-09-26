@@ -107,9 +107,13 @@
       </div>
     </div>
 
-    <button type="submit" class="nx-btn-accent nx-provider-form__submit">
+    @if (submitError()) {
+      <p class="nx-field__error nx-provider-form__submit-error">{{ 'form.errors.submitFailed' | translate }}</p>
+    }
+
+    <button type="submit" class="nx-btn-accent nx-provider-form__submit" [disabled]="isSubmitting()">
       <svg [lucideIcon]="'send'" [size]="18"></svg>
-      {{ 'providers.form.submit' | translate }}
+      {{ (isSubmitting() ? 'form.submitting' : 'providers.form.submit') | translate }}
     </button>
   </form>
 }

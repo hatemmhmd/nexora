@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LucideDynamicIcon } from '@lucide/angular';
 import { COUNTRIES } from '../../../core/data/countries.data';
 import { BUDGET_OPTIONS, SERVICE_CATEGORY_OPTIONS } from '../../../core/data/form-options.data';
+import { FormSubmitService } from '../../../core/services/form-submit.service';
 import { SelectComponent } from '../select/select.component';
 
 @Component({
@@ -19,8 +20,11 @@ export class RequestFormComponent {
   readonly categories = SERVICE_CATEGORY_OPTIONS;
   readonly budgetOptions = BUDGET_OPTIONS;
   readonly isSubmitted = signal(false);
+  readonly isSubmitting = signal(false);
+  readonly submitError = signal(false);
 
   private readonly fb = new FormBuilder();
+  private readonly formSubmit = inject(FormSubmitService);
 
   readonly form = this.fb.nonNullable.group({
     fullName: ['', [Validators.required, Validators.minLength(2)]],
@@ -46,10 +50,20 @@ export class RequestFormComponent {
       return;
     }
 
-    // Placeholder for the NEXORA intake API — wire up once the backend
-    // endpoint is available.
-    this.isSubmitted.set(true);
-    this.form.reset();
+    this.isSubmitting.set(true);
+    this.submitError.set(false);
+
+    this.formSubmit.submit('New Service Request — NEXORA', this.form.getRawValue()).subscribe({
+      next: () => {
+        this.isSubmitting.set(false);
+        this.isSubmitted.set(true);
+        this.form.reset();
+      },
+      error: () => {
+        this.isSubmitting.set(false);
+        this.submitError.set(true);
+      },
+    });
   }
 
   submitAnother(): void {

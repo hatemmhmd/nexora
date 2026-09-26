@@ -96,9 +96,13 @@
             }
           </div>
 
-          <button type="submit" class="nx-btn-accent">
+          @if (submitError()) {
+            <span class="nx-field__error">{{ 'form.errors.submitFailed' | translate }}</span>
+          }
+
+          <button type="submit" class="nx-btn-accent" [disabled]="isSubmitting()">
             <svg [lucideIcon]="'send'" [size]="18"></svg>
-            {{ 'contact.form.submit' | translate }}
+            {{ (isSubmitting() ? 'form.submitting' : 'contact.form.submit') | translate }}
           </button>
         </form>
       }

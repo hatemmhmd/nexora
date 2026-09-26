@@ -140,14 +140,18 @@
       </div>
     </div>
 
+    @if (submitError()) {
+      <p class="nx-field__error nx-request-form__submit-error">{{ 'form.errors.submitFailed' | translate }}</p>
+    }
+
     <div class="nx-request-form__footer">
       <p class="nx-request-form__note">
         <svg [lucideIcon]="'shield-check'" [size]="15"></svg>
         {{ 'form.privacyNote' | translate }}
       </p>
-      <button type="submit" class="nx-btn-accent nx-request-form__submit">
+      <button type="submit" class="nx-btn-accent nx-request-form__submit" [disabled]="isSubmitting()">
         <svg [lucideIcon]="'send'" [size]="18"></svg>
-        {{ 'form.submit' | translate }}
+        {{ (isSubmitting() ? 'form.submitting' : 'form.submit') | translate }}
       </button>
     </div>
   </form>

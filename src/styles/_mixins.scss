@@ -82,6 +82,11 @@ body.lang-ar .nx-eyebrow--inverse {
   &:active {
     opacity: 0.85;
   }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
 
 @mixin btn-primary {
