@@ -63,7 +63,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding(), withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
     provideHttpClient(),
     provideTranslateService({ lang: 'en', fallbackLang: 'en' }),
-    provideTranslateHttpLoader({ prefix: '/i18n/', suffix: '.json' }),
+    provideTranslateHttpLoader({ prefix: 'i18n/', suffix: '.json' }),
     provideLucideIcons(
       LucideMenu,
       LucideX,
