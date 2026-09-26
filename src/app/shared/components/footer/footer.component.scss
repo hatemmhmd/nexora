@@ -12,7 +12,7 @@
     inset-block-start: 0;
     inset-inline: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(58, 111, 247, 0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(var(--nx-accent-rgb), 0.5), transparent);
   }
 }
 
@@ -92,7 +92,7 @@
   transition: color var(--nx-transition-fast);
 
   &:hover {
-    color: var(--nx-white);
+    color: var(--nx-blue-400);
   }
 }
 

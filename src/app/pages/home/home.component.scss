@@ -8,12 +8,12 @@
   position: relative;
   padding-block: clamp(64px, 11vw, 108px);
   overflow: hidden;
-  background: radial-gradient(120% 100% at 15% 0%, #142244 0%, var(--nx-navy-950) 55%), var(--nx-navy-950);
+  background: radial-gradient(120% 100% at 15% 0%, #241708 0%, var(--nx-navy-950) 55%), var(--nx-navy-950);
   color: var(--nx-text-inverse);
   // Crisp edge instead of a fade — a thin glow line marks the seam where
   // the dark hero meets the page, same idea as the footer's top border.
-  border-bottom: 1px solid rgba(58, 111, 247, 0.35);
-  box-shadow: 0 1px 32px rgba(58, 111, 247, 0.2);
+  border-bottom: 1px solid rgba(var(--nx-accent-rgb), 0.35);
+  box-shadow: 0 1px 32px rgba(var(--nx-accent-rgb), 0.2);
 
   &::before {
     content: '';
@@ -22,14 +22,14 @@
     top: -20%;
     width: 60%;
     height: 140%;
-    background: radial-gradient(circle, rgba(58, 111, 247, 0.16), transparent 65%);
+    background: radial-gradient(circle, rgba(var(--nx-accent-rgb), 0.16), transparent 65%);
     pointer-events: none;
   }
 }
 
 .nx-hero .nx-eyebrow {
   color: var(--nx-blue-400);
-  background: rgba(58, 111, 247, 0.14);
+  background: rgba(var(--nx-accent-rgb), 0.14);
 }
 
 .nx-hero__subtitle {
@@ -42,7 +42,7 @@
 
   &:hover {
     border-color: var(--nx-blue-400);
-    background: rgba(58, 111, 247, 0.12);
+    background: rgba(var(--nx-accent-rgb), 0.12);
   }
 }
 
@@ -135,7 +135,7 @@
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(58, 111, 247, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(var(--nx-accent-rgb), 0.08);
   color: var(--nx-blue-400);
   animation: nx-float 6s ease-in-out infinite;
 }
@@ -163,7 +163,7 @@
   border-radius: 50%;
   background: linear-gradient(135deg, var(--nx-blue-600), var(--nx-blue-400));
   border-color: transparent;
-  box-shadow: 0 20px 44px rgba(58, 111, 247, 0.4);
+  box-shadow: 0 20px 44px rgba(var(--nx-accent-rgb), 0.4);
   animation: none;
 }
 
@@ -177,9 +177,10 @@
 }
 
 .nx-hero__hub-mark {
+  font-family: var(--nx-font-heading-en);
   font-size: 30px;
-  font-weight: 800;
-  color: var(--nx-white);
+  font-weight: 700;
+  color: var(--nx-accent-ink);
   letter-spacing: -0.02em;
 }
 
@@ -353,7 +354,7 @@
 }
 
 .nx-why__card--lg {
-  background: linear-gradient(155deg, rgba(58, 111, 247, 0.16), rgba(255, 255, 255, 0.04));
+  background: linear-gradient(155deg, rgba(var(--nx-accent-rgb), 0.16), rgba(255, 255, 255, 0.04));
 
   @include bp-lg {
     grid-column: span 2;
@@ -378,7 +379,7 @@
 }
 
 .nx-why__icon {
-  background: rgba(58, 111, 247, 0.16);
+  background: rgba(var(--nx-accent-rgb), 0.16);
   color: var(--nx-blue-400);
 }
 
@@ -480,7 +481,7 @@ body.lang-ar .nx-compare__row--head .nx-compare__col {
   flex-direction: column;
   align-items: center;
   gap: 18px;
-  color: var(--nx-white);
+  color: var(--nx-accent-ink);
 
   h2 {
     font-size: clamp(26px, 3.6vw, 36px);
@@ -489,7 +490,7 @@ body.lang-ar .nx-compare__row--head .nx-compare__col {
 
   p {
     max-width: 520px;
-    opacity: 0.92;
+    opacity: 0.8;
   }
 }
 
@@ -502,11 +503,21 @@ body.lang-ar .nx-compare__row--head .nx-compare__col {
 }
 
 .nx-final-cta .nx-btn-accent {
-  background: var(--nx-white);
-  color: var(--nx-primary);
+  background: var(--nx-accent-ink);
+  color: var(--nx-white);
   box-shadow: none;
 
   &:hover {
-    background: var(--nx-slate-50);
+    background: #000;
+  }
+}
+
+.nx-final-cta .nx-btn-outline-inverse {
+  color: var(--nx-accent-ink);
+  border-color: rgba(22, 18, 11, 0.3);
+
+  &:hover {
+    background: rgba(22, 18, 11, 0.08);
+    border-color: rgba(22, 18, 11, 0.45);
   }
 }

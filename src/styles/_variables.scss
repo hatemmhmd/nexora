@@ -3,21 +3,22 @@
 // components never hardcode values (see docs in README).
 
 :root {
-  // Core palette
-  --nx-navy-950: #0b1220;
-  --nx-navy-900: #111827;
-  --nx-navy-800: #0d1a30;
-  --nx-blue-600: #2563eb;
-  --nx-blue-500: #3b82f6;
-  --nx-blue-400: #3a6ff7;
-  --nx-slate-50: #f8fafc;
-  --nx-slate-100: #eef2f8;
+  // Core palette — near-black neutrals + a single warm amber accent
+  // (editorial/premium direction, replacing the old navy/blue SaaS palette).
+  --nx-navy-950: #0a0a0a;
+  --nx-navy-900: #141414;
+  --nx-navy-800: #1c1a17;
+  --nx-blue-600: #c9821f;
+  --nx-blue-500: #e9a23f;
+  --nx-blue-400: #f3b968;
+  --nx-slate-50: #faf7f2;
+  --nx-slate-100: #f3ede2;
   --nx-white: #ffffff;
-  --nx-gray-200: #e2e8f0;
-  --nx-gray-300: #cbd5e1;
-  --nx-gray-400: #94a3b8;
-  --nx-gray-600: #475569;
-  --nx-charcoal: #1e2530;
+  --nx-gray-200: #e6ded0;
+  --nx-gray-300: #d3c8b4;
+  --nx-gray-400: #a89b83;
+  --nx-gray-600: #5c5344;
+  --nx-charcoal: #1d1a16;
 
   // Semantic tokens
   --nx-bg: var(--nx-white);
@@ -28,13 +29,15 @@
   --nx-text: var(--nx-navy-950);
   --nx-text-muted: var(--nx-gray-600);
   --nx-text-inverse: var(--nx-white);
-  --nx-text-inverse-muted: #aab4c8;
+  --nx-text-inverse-muted: #a89b83;
   --nx-border: var(--nx-gray-200);
   --nx-border-dark: rgba(255, 255, 255, 0.12);
   --nx-primary: var(--nx-navy-900);
   --nx-accent: var(--nx-blue-600);
-  --nx-accent-soft: rgba(37, 99, 235, 0.1);
+  --nx-accent-rgb: 201, 130, 31;
+  --nx-accent-soft: rgba(201, 130, 31, 0.1);
   --nx-accent-gradient: linear-gradient(135deg, var(--nx-blue-600), var(--nx-blue-400));
+  --nx-accent-ink: #16120b;
   --nx-header-bg: rgba(255, 255, 255, 0.86);
   --nx-overlay-hover: rgba(13, 26, 48, 0.04);
 
@@ -43,6 +46,10 @@
   --nx-radius-md: 14px;
   --nx-radius-lg: 22px;
   --nx-radius-full: 999px;
+  // Buttons use a small, architectural radius rather than a full pill —
+  // closer to the sharp-cornered editorial reference than a typical SaaS
+  // pill button.
+  --nx-radius-btn: 6px;
 
   // Shadows
   --nx-shadow-sm: 0 1px 2px rgba(13, 26, 48, 0.06);
@@ -55,10 +62,13 @@
   --nx-gutter: 24px;
   --nx-header-height: 76px;
 
-  // Typography
-  --nx-font-en: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  // Typography — display serif for headings, geometric sans for body/UI.
+  --nx-font-en: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   --nx-font-ar: 'Almarai', -apple-system, sans-serif;
   --nx-font: var(--nx-font-en);
+  --nx-font-heading-en: 'Fraunces', 'Poppins', serif;
+  --nx-font-heading-ar: 'Markazi Text', 'Almarai', serif;
+  --nx-font-heading: var(--nx-font-heading-en);
   --nx-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   // Motion
@@ -69,6 +79,7 @@
 
 body.lang-ar {
   --nx-font: var(--nx-font-ar);
+  --nx-font-heading: var(--nx-font-heading-ar);
 }
 
 // ---------------------------------------------------------------------------
@@ -78,21 +89,22 @@ body.lang-ar {
 // ---------------------------------------------------------------------------
 :root[data-theme='dark'] {
   --nx-bg: var(--nx-navy-950);
-  --nx-bg-alt: #121a2c;
-  --nx-bg-dark: #070b14;
-  --nx-surface: #101a2e;
-  --nx-surface-dark: #0a1120;
-  --nx-text: #f3f5f9;
-  --nx-text-muted: #97a3b8;
-  --nx-text-inverse: #f8fafc;
-  --nx-text-inverse-muted: #97a3b8;
+  --nx-bg-alt: #121212;
+  --nx-bg-dark: #050505;
+  --nx-surface: #141414;
+  --nx-surface-dark: #0d0d0d;
+  --nx-text: #f5f0e8;
+  --nx-text-muted: #a89b83;
+  --nx-text-inverse: #f8f5ef;
+  --nx-text-inverse-muted: #a89b83;
   --nx-border: rgba(255, 255, 255, 0.1);
   --nx-border-dark: rgba(255, 255, 255, 0.12);
-  --nx-primary: #24304c;
+  --nx-primary: #26221c;
   --nx-accent: var(--nx-blue-500);
-  --nx-accent-soft: rgba(59, 130, 246, 0.18);
+  --nx-accent-rgb: 233, 162, 63;
+  --nx-accent-soft: rgba(233, 162, 63, 0.18);
   --nx-accent-gradient: linear-gradient(135deg, var(--nx-blue-600), var(--nx-blue-400));
-  --nx-header-bg: rgba(11, 18, 32, 0.8);
+  --nx-header-bg: rgba(10, 10, 10, 0.8);
   --nx-overlay-hover: rgba(255, 255, 255, 0.06);
   --nx-icon-tile-sheen: rgba(255, 255, 255, 0.06);
 
