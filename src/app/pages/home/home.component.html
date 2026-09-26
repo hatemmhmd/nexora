@@ -14,57 +14,37 @@
       </div>
     </div>
 
+    <!-- Compass-style orbit diagram: the client at the top feeds into the
+         NEXORA hub, which radiates out to the three provider categories on
+         a clean N/E/S/W cross — a calmer, more deliberate mark than the old
+         scattered-node network diagram. -->
     <div class="nx-hero__visual" aria-hidden="true" nxReveal="2">
-      <svg class="nx-hero__lines" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path id="nxLine1" class="nx-hero__line" d="M18 54 L50 54" />
-        <path id="nxLine2" class="nx-hero__line" d="M50 54 L84 26" />
-        <path id="nxLine3" class="nx-hero__line" d="M50 54 L90 54" />
-        <path id="nxLine4" class="nx-hero__line" d="M50 54 L84 82" />
+      <div class="nx-hero__orbit-ring nx-hero__orbit-ring--outer"></div>
+      <div class="nx-hero__orbit-ring nx-hero__orbit-ring--inner"></div>
 
-        <circle class="nx-hero__pulse" r="1.1">
-          <animateMotion dur="3.2s" begin="0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
-            <mpath href="#nxLine1" />
-          </animateMotion>
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" repeatCount="indefinite" />
-        </circle>
-        <circle class="nx-hero__pulse" r="1.1">
-          <animateMotion dur="3.2s" begin="0.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
-            <mpath href="#nxLine2" />
-          </animateMotion>
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" begin="0.5s" repeatCount="indefinite" />
-        </circle>
-        <circle class="nx-hero__pulse" r="1.1">
-          <animateMotion dur="3.2s" begin="0.9s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
-            <mpath href="#nxLine3" />
-          </animateMotion>
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" begin="0.9s" repeatCount="indefinite" />
-        </circle>
-        <circle class="nx-hero__pulse" r="1.1">
-          <animateMotion dur="3.2s" begin="1.3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
-            <mpath href="#nxLine4" />
-          </animateMotion>
-          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" begin="1.3s" repeatCount="indefinite" />
-        </circle>
-      </svg>
-
-      <div class="nx-hero__node nx-hero__node--client">
-        <svg [lucideIcon]="'user'" [size]="18"></svg>
-        <span>{{ 'home.hero.visual.client' | translate }}</span>
-      </div>
+      <span class="nx-hero__spoke nx-hero__spoke--n"><span class="nx-hero__spoke-dot nx-hero__spoke-dot--v"></span></span>
+      <span class="nx-hero__spoke nx-hero__spoke--e"><span class="nx-hero__spoke-dot nx-hero__spoke-dot--h"></span></span>
+      <span class="nx-hero__spoke nx-hero__spoke--s"><span class="nx-hero__spoke-dot nx-hero__spoke-dot--v"></span></span>
+      <span class="nx-hero__spoke nx-hero__spoke--w"><span class="nx-hero__spoke-dot nx-hero__spoke-dot--h"></span></span>
 
       <div class="nx-hero__node nx-hero__node--hub">
         <div class="nx-hero__hub-ring"></div>
         <span class="nx-hero__hub-mark">N</span>
       </div>
 
+      <div class="nx-hero__node nx-hero__node--client">
+        <svg [lucideIcon]="'user'" [size]="18"></svg>
+        <span>{{ 'home.hero.visual.client' | translate }}</span>
+      </div>
+
       <div class="nx-hero__node nx-hero__node--p1">
-        <svg [lucideIcon]="'laptop'" [size]="16"></svg>
+        <svg [lucideIcon]="'laptop'" [size]="18"></svg>
       </div>
       <div class="nx-hero__node nx-hero__node--p2">
-        <svg [lucideIcon]="'palette'" [size]="16"></svg>
+        <svg [lucideIcon]="'palette'" [size]="18"></svg>
       </div>
       <div class="nx-hero__node nx-hero__node--p3">
-        <svg [lucideIcon]="'briefcase-business'" [size]="16"></svg>
+        <svg [lucideIcon]="'briefcase-business'" [size]="18"></svg>
       </div>
 
       <p class="nx-hero__caption">{{ 'home.hero.visual.caption' | translate }}</p>
