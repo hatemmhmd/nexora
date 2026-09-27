@@ -127,22 +127,30 @@ body.lang-ur .nx-footer__heading {
 // too and the two rules tie on specificity, so source order decides and
 // the override can silently lose.
 .nx-footer {
-  ::ng-deep .nx-lang-switch {
+  ::ng-deep .nx-lang-switch__trigger {
     border-color: var(--nx-border-dark);
     background: transparent;
+    color: var(--nx-text-inverse-muted);
 
-    .nx-lang-switch__option {
+    svg {
       color: var(--nx-text-inverse-muted);
+    }
 
-      &:hover {
-        color: var(--nx-white);
-      }
+    &:hover {
+      color: var(--nx-white);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.08);
 
-      &.is-active {
+      svg {
         color: var(--nx-white);
-        background: rgba(255, 255, 255, 0.14);
       }
     }
+  }
+
+  ::ng-deep .is-open .nx-lang-switch__trigger {
+    color: var(--nx-white);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
   }
 }
 

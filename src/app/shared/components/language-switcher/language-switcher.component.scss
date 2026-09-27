@@ -1,44 +1,139 @@
-// A small segmented control — a bordered track holding three pill-shaped
-// options, the active one filled solid — reads as a deliberate switch
-// rather than a row of plain text links.
 .nx-lang-switch {
+  position: relative;
+  display: inline-block;
+}
+
+.nx-lang-switch__trigger {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 3px;
+  gap: 7px;
+  padding: 8px 14px;
   border-radius: var(--nx-radius-full);
   border: 1px solid var(--nx-border);
-  background: var(--nx-bg-alt);
+  background: transparent;
+  color: var(--nx-text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: border-color var(--nx-transition-fast), background var(--nx-transition-fast);
+
+  svg {
+    flex-shrink: 0;
+    color: var(--nx-text-muted);
+  }
+
+  &:hover {
+    border-color: var(--nx-accent);
+    background: var(--nx-accent-soft);
+  }
+}
+
+.nx-lang-switch__chevron {
+  transition: transform var(--nx-transition-fast);
+}
+
+.is-open .nx-lang-switch__trigger {
+  border-color: var(--nx-accent);
+  background: var(--nx-accent-soft);
+}
+
+.is-open .nx-lang-switch__chevron {
+  transform: rotate(180deg);
+  color: var(--nx-accent);
+}
+
+.nx-lang-switch--compact .nx-lang-switch__trigger {
+  padding: 6px 11px;
+  font-size: 12px;
+}
+
+// Floating panel — same "elevated surface" language as the form select's
+// own dropdown, so every custom popover on the site reads as one family.
+.nx-lang-switch__panel {
+  position: absolute;
+  z-index: 30;
+  inset-inline-end: 0;
+  top: calc(100% + 8px);
+  min-width: 168px;
+  background: var(--nx-surface);
+  border: 1px solid var(--nx-border);
+  border-radius: var(--nx-radius-md);
+  box-shadow: var(--nx-shadow-lg);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  animation: nx-lang-panel-in 140ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.nx-lang-switch__panel--up {
+    top: auto;
+    bottom: calc(100% + 8px);
+    animation-name: nx-lang-panel-in-up;
+  }
+}
+
+@keyframes nx-lang-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nx-lang-panel-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .nx-lang-switch__option {
-  padding: 6px 13px;
-  border-radius: var(--nx-radius-full);
-  border: none;
-  background: transparent;
-  font: inherit;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--nx-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--nx-radius-sm);
   cursor: pointer;
-  transition: background var(--nx-transition-fast), color var(--nx-transition-fast);
+  transition: background var(--nx-transition-fast);
 
   &:hover {
-    color: var(--nx-text);
+    background: var(--nx-accent-soft);
   }
 
-  &.is-active {
-    background: var(--nx-accent);
-    color: var(--nx-accent-ink);
+  svg {
+    margin-inline-start: auto;
+    flex-shrink: 0;
+    color: var(--nx-accent);
   }
 }
 
-.nx-lang-switch--compact {
-  padding: 2px;
+.nx-lang-switch__option-code {
+  min-width: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--nx-text-muted);
+}
 
-  .nx-lang-switch__option {
-    padding: 5px 10px;
-    font-size: 11.5px;
+.nx-lang-switch__option-label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--nx-text);
+}
+
+.nx-lang-switch__option.is-selected {
+  .nx-lang-switch__option-code,
+  .nx-lang-switch__option-label {
+    color: var(--nx-accent);
   }
 }

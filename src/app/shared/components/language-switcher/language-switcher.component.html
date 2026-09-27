@@ -1,29 +1,34 @@
-<div class="nx-lang-switch" [class.nx-lang-switch--compact]="compact()" role="group" aria-label="Language">
+<div class="nx-lang-switch" [class.nx-lang-switch--compact]="compact()" [class.is-open]="isOpen()">
   <button
     type="button"
-    class="nx-lang-switch__option"
-    [class.is-active]="lang.currentLang() === 'en'"
-    (click)="lang.setLanguage('en')"
-    aria-label="Switch to English"
+    class="nx-lang-switch__trigger"
+    (click)="toggle()"
+    [attr.aria-expanded]="isOpen()"
+    aria-haspopup="listbox"
+    aria-label="Language"
   >
-    EN
+    <svg [lucideIcon]="'globe'" [size]="15"></svg>
+    <span class="nx-lang-switch__current">{{ current.nativeCode }}</span>
+    <svg class="nx-lang-switch__chevron" [lucideIcon]="'chevron-down'" [size]="15"></svg>
   </button>
-  <button
-    type="button"
-    class="nx-lang-switch__option"
-    [class.is-active]="lang.currentLang() === 'ar'"
-    (click)="lang.setLanguage('ar')"
-    aria-label="التبديل إلى العربية"
-  >
-    AR
-  </button>
-  <button
-    type="button"
-    class="nx-lang-switch__option"
-    [class.is-active]="lang.currentLang() === 'ur'"
-    (click)="lang.setLanguage('ur')"
-    aria-label="اردو میں تبدیل کریں"
-  >
-    UR
-  </button>
+
+  @if (isOpen()) {
+    <ul class="nx-lang-switch__panel" [class.nx-lang-switch__panel--up]="openUpward()" role="listbox">
+      @for (opt of languages; track opt.code) {
+        <li
+          class="nx-lang-switch__option"
+          [class.is-selected]="lang.currentLang() === opt.code"
+          role="option"
+          [attr.aria-selected]="lang.currentLang() === opt.code"
+          (click)="select(opt.code)"
+        >
+          <span class="nx-lang-switch__option-code">{{ opt.nativeCode }}</span>
+          <span class="nx-lang-switch__option-label">{{ opt.label }}</span>
+          @if (lang.currentLang() === opt.code) {
+            <svg [lucideIcon]="'check'" [size]="14"></svg>
+          }
+        </li>
+      }
+    </ul>
+  }
 </div>
