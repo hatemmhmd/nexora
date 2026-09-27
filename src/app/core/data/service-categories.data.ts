@@ -59,4 +59,16 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     descriptionKey: 'services.categories.other.description',
     itemKeys: ['services.categories.other.items.0', 'services.categories.other.items.1'],
   },
+  {
+    id: 'personal',
+    icon: 'home',
+    titleKey: 'services.categories.personal.title',
+    descriptionKey: 'services.categories.personal.description',
+    itemKeys: [
+      'services.categories.personal.items.0',
+      'services.categories.personal.items.1',
+      'services.categories.personal.items.2',
+      'services.categories.personal.items.3',
+    ],
+  },
 ];
