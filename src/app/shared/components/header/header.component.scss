@@ -64,37 +64,29 @@
   flex-shrink: 0;
 }
 
-// Header-scoped override: the shared language switcher is normally a
-// bordered, transparent pill (see language-switcher.component.scss); here
-// it becomes a solid accent pill, matching the reference's amber
-// location-pill button.
+// Header-scoped override: the shared language switcher's track becomes a
+// solid accent pill, matching the reference's amber location-pill button —
+// with the active segment inverted (dark chip on the amber track) so the
+// current language still reads clearly against the now-solid background.
 .nx-header__lang {
   ::ng-deep .nx-lang-switch {
     border-color: transparent;
     background: var(--nx-accent);
-    color: var(--nx-accent-ink);
-
-    svg {
-      display: none;
-    }
-
-    &:hover {
-      background: var(--nx-blue-400);
-    }
   }
 
   ::ng-deep .nx-lang-switch__option {
     color: var(--nx-accent-ink);
-    opacity: 0.6;
+    opacity: 0.65;
+
+    &:hover {
+      opacity: 1;
+    }
 
     &.is-active {
       opacity: 1;
+      background: var(--nx-accent-ink);
+      color: var(--nx-accent);
     }
-  }
-
-  ::ng-deep .nx-lang-switch__divider {
-    color: var(--nx-accent-ink);
-    opacity: 0.4;
   }
 }
 

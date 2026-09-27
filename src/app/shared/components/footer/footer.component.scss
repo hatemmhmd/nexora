@@ -120,16 +120,29 @@ body.lang-ur .nx-footer__heading {
   gap: 10px;
 }
 
-::ng-deep .nx-footer .nx-lang-switch {
-  border-color: var(--nx-border-dark);
-  color: var(--nx-text-inverse-muted);
+// Nesting ::ng-deep inside a selector that's still scoped to this
+// component (.nx-footer is the footer's own template root, not a foreign
+// ancestor) keeps the compiled specificity above the language-switcher's
+// own base rule — putting ::ng-deep right at the start unscopes .nx-footer
+// too and the two rules tie on specificity, so source order decides and
+// the override can silently lose.
+.nx-footer {
+  ::ng-deep .nx-lang-switch {
+    border-color: var(--nx-border-dark);
+    background: transparent;
 
-  svg {
-    color: var(--nx-text-inverse-muted);
-  }
+    .nx-lang-switch__option {
+      color: var(--nx-text-inverse-muted);
 
-  .nx-lang-switch__option.is-active {
-    color: var(--nx-white);
+      &:hover {
+        color: var(--nx-white);
+      }
+
+      &.is-active {
+        color: var(--nx-white);
+        background: rgba(255, 255, 255, 0.14);
+      }
+    }
   }
 }
 
