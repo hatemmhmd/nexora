@@ -53,13 +53,6 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: 'other',
-    icon: 'sparkles',
-    titleKey: 'services.categories.other.title',
-    descriptionKey: 'services.categories.other.description',
-    itemKeys: ['services.categories.other.items.0', 'services.categories.other.items.1'],
-  },
-  {
     id: 'personal',
     icon: 'home',
     titleKey: 'services.categories.personal.title',
@@ -70,5 +63,12 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       'services.categories.personal.items.2',
       'services.categories.personal.items.3',
     ],
+  },
+  {
+    id: 'other',
+    icon: 'sparkles',
+    titleKey: 'services.categories.other.title',
+    descriptionKey: 'services.categories.other.description',
+    itemKeys: ['services.categories.other.items.0', 'services.categories.other.items.1'],
   },
 ];
