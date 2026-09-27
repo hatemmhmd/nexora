@@ -54,8 +54,11 @@
 }
 
 body.lang-ar .nx-eyebrow,
-body.lang-ar .nx-eyebrow--inverse {
+body.lang-ar .nx-eyebrow--inverse,
+body.lang-ur .nx-eyebrow,
+body.lang-ur .nx-eyebrow--inverse {
   font-family: var(--nx-font);
+  letter-spacing: normal;
 
   &::before {
     content: none;

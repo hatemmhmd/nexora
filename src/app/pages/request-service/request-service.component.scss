@@ -62,9 +62,11 @@
   margin-block-end: 20px;
 }
 
-body.lang-ar .nx-request-page__steps-title {
+body.lang-ar .nx-request-page__steps-title,
+body.lang-ur .nx-request-page__steps-title {
   font-family: var(--nx-font);
   text-transform: none;
+  letter-spacing: normal;
 }
 
 .nx-request-page__step-list {
@@ -99,7 +101,8 @@ body.lang-ar .nx-request-page__steps-title {
   flex-shrink: 0;
 }
 
-body.lang-ar .nx-request-page__step-num {
+body.lang-ar .nx-request-page__step-num,
+body.lang-ur .nx-request-page__step-num {
   font-family: var(--nx-font);
 }
 

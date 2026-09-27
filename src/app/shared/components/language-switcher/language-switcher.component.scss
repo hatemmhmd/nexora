@@ -7,13 +7,11 @@
   border: 1px solid var(--nx-border);
   background: transparent;
   color: var(--nx-text);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
   transition: border-color var(--nx-transition-fast), background var(--nx-transition-fast);
 
   svg {
     color: var(--nx-text-muted);
+    flex-shrink: 0;
   }
 
   &:hover {
@@ -23,10 +21,21 @@
 }
 
 .nx-lang-switch__option {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--nx-text-muted);
+  cursor: pointer;
   transition: color var(--nx-transition-fast);
 
   &.is-active {
+    color: var(--nx-text);
+  }
+
+  &:hover {
     color: var(--nx-text);
   }
 }

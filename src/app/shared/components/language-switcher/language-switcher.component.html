@@ -1,12 +1,32 @@
-<button
-  type="button"
-  class="nx-lang-switch"
-  [class.nx-lang-switch--compact]="compact()"
-  (click)="lang.toggleLanguage()"
-  [attr.aria-label]="lang.isRtl ? 'Switch to English' : 'التبديل إلى العربية'"
->
+<div class="nx-lang-switch" [class.nx-lang-switch--compact]="compact()" role="group" aria-label="Language">
   <svg [lucideIcon]="'globe'" [size]="16"></svg>
-  <span class="nx-lang-switch__option" [class.is-active]="lang.currentLang() === 'en'">EN</span>
+  <button
+    type="button"
+    class="nx-lang-switch__option"
+    [class.is-active]="lang.currentLang() === 'en'"
+    (click)="lang.setLanguage('en')"
+    aria-label="Switch to English"
+  >
+    EN
+  </button>
   <span class="nx-lang-switch__divider">|</span>
-  <span class="nx-lang-switch__option" [class.is-active]="lang.currentLang() === 'ar'">AR</span>
-</button>
+  <button
+    type="button"
+    class="nx-lang-switch__option"
+    [class.is-active]="lang.currentLang() === 'ar'"
+    (click)="lang.setLanguage('ar')"
+    aria-label="التبديل إلى العربية"
+  >
+    AR
+  </button>
+  <span class="nx-lang-switch__divider">|</span>
+  <button
+    type="button"
+    class="nx-lang-switch__option"
+    [class.is-active]="lang.currentLang() === 'ur'"
+    (click)="lang.setLanguage('ur')"
+    aria-label="اردو میں تبدیل کریں"
+  >
+    UR
+  </button>
+</div>

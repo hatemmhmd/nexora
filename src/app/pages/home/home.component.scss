@@ -262,9 +262,11 @@
   }
 }
 
-body.lang-ar .nx-compare__row--head .nx-compare__col {
+body.lang-ar .nx-compare__row--head .nx-compare__col,
+body.lang-ur .nx-compare__row--head .nx-compare__col {
   font-family: var(--nx-font);
   text-transform: none;
+  letter-spacing: normal;
 }
 
 .nx-compare__label {

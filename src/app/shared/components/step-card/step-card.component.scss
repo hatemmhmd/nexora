@@ -76,7 +76,8 @@
   margin-block-end: 6px;
 }
 
-body.lang-ar .nx-step__number {
+body.lang-ar .nx-step__number,
+body.lang-ur .nx-step__number {
   font-family: var(--nx-font);
 }
 

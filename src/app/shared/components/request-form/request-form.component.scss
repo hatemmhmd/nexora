@@ -30,7 +30,8 @@
   color: var(--nx-accent);
 }
 
-body.lang-ar .nx-form-section__index {
+body.lang-ar .nx-form-section__index,
+body.lang-ur .nx-form-section__index {
   font-family: var(--nx-font);
 }
 

@@ -295,6 +295,10 @@ select {
   }
 }
 
+body.lang-ur .nx-field__label {
+  letter-spacing: normal;
+}
+
 // Plain underline instead of a filled, rounded box — quieter and closer to
 // the site's flat, bordered chrome than a boxed SaaS-style input. No focus
 // glow either; the border simply deepens to the accent color.
