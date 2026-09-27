@@ -91,6 +91,16 @@
           "Custom Requests",
           "Specialized Services"
         ]
+      },
+      "personal": {
+        "title": "Home & Personal Services",
+        "description": "Event planning, home visits, and personal care, coordinated wherever you are.",
+        "items": [
+          "Event, Party & Birthday Planning",
+          "At-Home Car Repair",
+          "Manicure & Pedicure",
+          "Services From Another Emirate"
+        ]
       }
     }
   },
