@@ -7,6 +7,11 @@
   height: 32px;
   width: auto;
   overflow: visible;
+  // The lockup's <text x="..."> coordinates assume LTR text-anchoring.
+  // Without this, an RTL ancestor (any Arabic/Urdu page, or an RTL
+  // container that — unlike the header link — doesn't force ltr itself)
+  // shifts both wordmarks left by their own width and they overlap the icon.
+  direction: ltr;
 }
 
 .nx-logo--icon {
