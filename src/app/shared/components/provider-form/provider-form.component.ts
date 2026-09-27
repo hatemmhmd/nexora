@@ -52,7 +52,7 @@ export class ProviderFormComponent {
     this.isSubmitting.set(true);
     this.submitError.set(false);
 
-    this.formSubmit.submit('New Provider Application — NEXORA', this.form.getRawValue()).subscribe({
+    this.formSubmit.submit('New Provider Application — MADAD', this.form.getRawValue()).subscribe({
       next: () => {
         this.isSubmitting.set(false);
         this.isSubmitted.set(true);

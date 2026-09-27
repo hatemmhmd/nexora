@@ -13,31 +13,45 @@
   height: 34px;
 }
 
-// Theme-aware by default: --nx-text already resolves to the brand's dark
-// navy (#0D1A30) in light mode and near-white in dark mode, so a plain
+// Theme-aware by default: --nx-text already resolves to the brand's near-
+// black in light mode and near-white in dark mode, so a plain
 // <app-logo-mark /> adapts automatically wherever the site theme applies.
-.nx-logo__ring {
-  stroke: var(--nx-text);
-  transition: stroke var(--nx-transition);
-}
-
-.nx-logo__word {
+.nx-logo__mark-a {
   fill: var(--nx-text);
   transition: fill var(--nx-transition);
 }
 
-.nx-logo__dot {
+.nx-logo__word-en {
+  fill: var(--nx-text);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  letter-spacing: 0.01em;
+  transition: fill var(--nx-transition);
+}
+
+// The accent square + Arabic wordmark stay the brand amber regardless of
+// site theme (mirrors the old accent dot's fixed color).
+.nx-logo__mark-b {
   fill: var(--nx-blue-400);
+  fill-opacity: 0.92;
+}
+
+.nx-logo__word-ar {
+  fill: var(--nx-blue-400);
+  font-family: 'Markazi Text', 'Almarai', serif;
+  font-weight: 700;
+  font-size: 42px;
 }
 
 // Forces the light-on-dark brand color for surfaces that are always dark
-// regardless of the site's own light/dark theme (footer, hero).
+// regardless of the site's own light/dark theme (footer, the hero).
 .nx-logo--inverse {
-  .nx-logo__ring {
-    stroke: #f3f5f9;
+  .nx-logo__mark-a {
+    fill: #f3f5f9;
   }
 
-  .nx-logo__word {
+  .nx-logo__word-en {
     fill: #f3f5f9;
   }
 }

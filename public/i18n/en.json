@@ -26,7 +26,7 @@
     "services": {
       "eyebrow": "Service Categories",
       "title": "Whatever You Need, We've Got You Connected.",
-      "description": "NEXORA connects you with trusted professionals and service providers across multiple industries.",
+      "description": "MADAD connects you with trusted professionals and service providers across multiple industries.",
       "cantFind": "Can't find what you need? Tell us what you're looking for.",
       "customCta": "Request a Custom Service"
     },
@@ -41,8 +41,8 @@
   "services": {
     "eyebrow": "Our Services",
     "pageTitle": "Whatever You Need, We've Got You Connected.",
-    "pageDescription": "NEXORA connects you with trusted professionals and service providers across multiple industries. These categories are examples — not a limitation.",
-    "customDescription": "NEXORA isn't limited to a fixed list of services. If you don't see what you're looking for, tell us about it and we'll find the right professional for the job.",
+    "pageDescription": "MADAD connects you with trusted professionals and service providers across multiple industries. These categories are examples — not a limitation.",
+    "customDescription": "MADAD isn't limited to a fixed list of services. If you don't see what you're looking for, tell us about it and we'll find the right professional for the job.",
     "categories": {
       "digital": {
         "title": "Digital & Technology",
@@ -107,7 +107,7 @@
   "howItWorks": {
     "eyebrow": "How It Works",
     "title": "Simple for You. Managed by Us.",
-    "pageDescription": "From your first message to the final delivery, NEXORA manages every step of the process so you don't have to.",
+    "pageDescription": "From your first message to the final delivery, MADAD manages every step of the process so you don't have to.",
     "steps": {
       "tell": {
         "title": "Tell Us What You Need",
@@ -123,18 +123,18 @@
       },
       "deliver": {
         "title": "You Get the Result",
-        "description": "Receive the completed service while NEXORA handles the coordination."
+        "description": "Receive the completed service while MADAD handles the coordination."
       }
     }
   },
   "comparison": {
     "eyebrow": "The Honest Comparison",
     "title": "Not an Agency. Not a Marketplace.",
-    "description": "Agencies manage well but do one thing. Marketplaces cover everything but leave you to manage it. NEXORA does both.",
+    "description": "Agencies manage well but do one thing. Marketplaces cover everything but leave you to manage it. MADAD does both.",
     "columns": {
       "agency": "Traditional Agency",
       "marketplace": "Marketplace",
-      "nexora": "NEXORA"
+      "nexora": "MADAD"
     },
     "rows": {
       "singleContact": "One contact for any service",
@@ -145,8 +145,8 @@
     }
   },
   "whyNexora": {
-    "eyebrow": "Why NEXORA",
-    "title": "Why Work With NEXORA?",
+    "eyebrow": "Why MADAD",
+    "title": "Why Work With MADAD?",
     "items": {
       "contact": {
         "title": "One Point of Contact",
@@ -177,7 +177,7 @@
   "whoWeServe": {
     "eyebrow": "Who We Serve",
     "title": "Built for Every Kind of Need.",
-    "description": "From individuals to enterprises, NEXORA adapts to how you work.",
+    "description": "From individuals to enterprises, MADAD adapts to how you work.",
     "items": {
       "individuals": {
         "title": "Individuals",
@@ -217,7 +217,7 @@
   "providers": {
     "eyebrow": "For Service Providers",
     "pageTitle": "Are You a Service Provider?",
-    "pageDescription": "Join the NEXORA network and get connected with businesses and customers looking for professional services.",
+    "pageDescription": "Join the MADAD network and get connected with businesses and customers looking for professional services.",
     "benefits": {
       "opportunities": {
         "title": "Access to New Opportunities",
@@ -228,7 +228,7 @@
         "description": "Reach individuals and businesses actively looking for the services you offer."
       },
       "coordination": {
-        "title": "NEXORA Handles Client Coordination",
+        "title": "MADAD Handles Client Coordination",
         "description": "We manage the client conversation, requirements, and logistics so you can focus on delivery."
       },
       "projects": {
@@ -242,7 +242,7 @@
     },
     "form": {
       "eyebrow": "Join the Network",
-      "title": "Apply to Join NEXORA",
+      "title": "Apply to Join MADAD",
       "description": "Tell us about your expertise and we'll reach out when a matching request comes in.",
       "fields": {
         "servicesOffered": "Services Offered",
@@ -256,14 +256,14 @@
       "submit": "Apply to Join",
       "success": {
         "title": "Application Received",
-        "message": "Thank you for your interest in joining NEXORA. Our team will review your application and reach out when a matching opportunity comes in."
+        "message": "Thank you for your interest in joining MADAD. Our team will review your application and reach out when a matching opportunity comes in."
       }
     }
   },
   "about": {
-    "eyebrow": "About NEXORA",
+    "eyebrow": "About MADAD",
     "pageTitle": "Connecting Needs With the Right Solutions.",
-    "paragraph1": "NEXORA was created to simplify the way people and businesses find and manage professional services. Instead of spending time searching for the right provider, comparing options, communicating with multiple vendors, and managing the process, customers can simply tell NEXORA what they need.",
+    "paragraph1": "MADAD was created to simplify the way people and businesses find and manage professional services. Instead of spending time searching for the right provider, comparing options, communicating with multiple vendors, and managing the process, customers can simply tell MADAD what they need.",
     "paragraph2": "We take care of finding the right connection and coordinating the service from start to finish — so you get one point of contact and one team accountable for the result.",
     "vision": {
       "title": "Vision",
@@ -284,20 +284,20 @@
     "title": "Frequently Asked Questions",
     "items": {
       "what": {
-        "question": "What is NEXORA?",
-        "answer": "NEXORA is a service coordination and business solutions company that connects customers with suitable professionals and service providers."
+        "question": "What is MADAD?",
+        "answer": "MADAD is a service coordination and business solutions company that connects customers with suitable professionals and service providers."
       },
       "direct": {
         "question": "Do you provide the services directly?",
-        "answer": "NEXORA coordinates services through its network of professionals, companies, freelancers, and service providers."
+        "answer": "MADAD coordinates services through its network of professionals, companies, freelancers, and service providers."
       },
       "custom": {
         "question": "Can I request a service that isn't listed?",
         "answer": "Yes. If you don't see the service you need, submit a custom request and tell us what you're looking for."
       },
       "money": {
-        "question": "How does NEXORA make money?",
-        "answer": "NEXORA earns revenue through service coordination, project management, sourcing, and the margin between the client service price and provider cost."
+        "question": "How does MADAD make money?",
+        "answer": "MADAD earns revenue through service coordination, project management, sourcing, and the margin between the client service price and provider cost."
       },
       "request": {
         "question": "How do I request a service?",
@@ -305,11 +305,11 @@
       },
       "companies": {
         "question": "Do you work with companies or individuals?",
-        "answer": "Both. NEXORA serves individuals, startups, small and medium businesses, enterprises, and organizations."
+        "answer": "Both. MADAD serves individuals, startups, small and medium businesses, enterprises, and organizations."
       },
       "where": {
-        "question": "Where does NEXORA operate?",
-        "answer": "Initially, NEXORA will focus on the UAE and Jordan, with plans to expand across the GCC."
+        "question": "Where does MADAD operate?",
+        "answer": "Initially, MADAD will focus on the UAE and Jordan, with plans to expand across the GCC."
       }
     }
   },
@@ -429,7 +429,7 @@
         },
         "sharing": {
           "heading": "Sharing With Providers",
-          "body": "To deliver a requested service, relevant project details may be shared with the professional or company NEXORA coordinates with. We do not sell personal data to third parties."
+          "body": "To deliver a requested service, relevant project details may be shared with the professional or company MADAD coordinates with. We do not sell personal data to third parties."
         },
         "security": {
           "heading": "Data Security",
@@ -446,23 +446,23 @@
       "sections": {
         "acceptance": {
           "heading": "Acceptance of Terms",
-          "body": "By using the NEXORA website or submitting a request, you agree to these terms and to our Privacy Policy."
+          "body": "By using the MADAD website or submitting a request, you agree to these terms and to our Privacy Policy."
         },
         "services": {
           "heading": "Nature of Our Services",
-          "body": "NEXORA is a service coordination and business solutions company. We identify, coordinate, and manage professionals and providers on your behalf; we are not a marketplace and do not directly perform the underlying services."
+          "body": "MADAD is a service coordination and business solutions company. We identify, coordinate, and manage professionals and providers on your behalf; we are not a marketplace and do not directly perform the underlying services."
         },
         "responsibilities": {
           "heading": "Client Responsibilities",
-          "body": "You agree to provide accurate information about your service request so that NEXORA can match you with a suitable provider and manage the process effectively."
+          "body": "You agree to provide accurate information about your service request so that MADAD can match you with a suitable provider and manage the process effectively."
         },
         "liability": {
           "heading": "Limitation of Liability",
-          "body": "While NEXORA coordinates and follows up on quality and delivery, the final service is performed by an independent professional or company. NEXORA's liability is limited to the coordination and management of the engagement."
+          "body": "While MADAD coordinates and follows up on quality and delivery, the final service is performed by an independent professional or company. MADAD's liability is limited to the coordination and management of the engagement."
         },
         "changes": {
           "heading": "Changes to These Terms",
-          "body": "NEXORA may update these terms from time to time. Continued use of the website after changes are posted constitutes acceptance of the revised terms."
+          "body": "MADAD may update these terms from time to time. Continued use of the website after changes are posted constitutes acceptance of the revised terms."
         }
       }
     }

@@ -1,16 +1,17 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /**
- * Renders the NEXORA mark. `variant="full"` shows the icon + wordmark
- * lockup (header/footer); `variant="icon"` shows only the connection-ring
- * symbol, used for the mobile collapsed state and anywhere a square mark
- * is needed (matches the brand assets at public/images/nexora-logo-*.svg).
+ * Renders the MADAD mark. `variant="full"` shows the icon + bilingual
+ * wordmark lockup (header/footer); `variant="icon"` shows only the two
+ * overlapping squares, used for the mobile collapsed state and anywhere a
+ * square mark is needed (matches the brand assets at public/images/madad-logo-*.svg).
  *
- * Color defaults to `var(--nx-text)`, which already flips with the site's
- * light/dark theme — so a plain `<app-logo-mark />` in the header just
- * works in both modes. `inverse` forces the light-on-dark brand color
- * (#F3F5F9) for surfaces that are always dark regardless of site theme
- * (footer, the hero).
+ * The neutral square + "MADAD" default to `var(--nx-text)`, which already
+ * flips with the site's light/dark theme — so a plain `<app-logo-mark />`
+ * in the header just works in both modes. `inverse` forces the light-on-dark
+ * brand color (#F3F5F9) for surfaces that are always dark regardless of site
+ * theme (footer, the hero). The accent square + "مدد" stay the brand amber
+ * in both cases.
  */
 @Component({
   selector: 'app-logo-mark',

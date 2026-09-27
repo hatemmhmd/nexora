@@ -51,7 +51,7 @@ export class ContactComponent {
     this.isSubmitting.set(true);
     this.submitError.set(false);
 
-    this.formSubmit.submit('New Contact Message — NEXORA', this.form.getRawValue()).subscribe({
+    this.formSubmit.submit('New Contact Message — MADAD', this.form.getRawValue()).subscribe({
       next: () => {
         this.isSubmitting.set(false);
         this.isSubmitted.set(true);

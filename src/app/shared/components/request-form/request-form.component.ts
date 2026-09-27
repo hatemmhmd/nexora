@@ -53,7 +53,7 @@ export class RequestFormComponent {
     this.isSubmitting.set(true);
     this.submitError.set(false);
 
-    this.formSubmit.submit('New Service Request — NEXORA', this.form.getRawValue()).subscribe({
+    this.formSubmit.submit('New Service Request — MADAD', this.form.getRawValue()).subscribe({
       next: () => {
         this.isSubmitting.set(false);
         this.isSubmitted.set(true);
