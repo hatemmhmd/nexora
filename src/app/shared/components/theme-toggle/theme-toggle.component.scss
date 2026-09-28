@@ -1,25 +1,80 @@
 .nx-theme-toggle {
+  --nx-tt-w: 52px;
+  --nx-tt-h: 28px;
+  --nx-tt-thumb: 22px;
+  --nx-tt-pad: 3px;
+
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: var(--nx-radius-full);
-  border: 1px solid var(--nx-border);
+  padding: 0;
+  border: none;
   background: transparent;
-  color: var(--nx-text-muted);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background var(--nx-transition-fast), border-color var(--nx-transition-fast), color var(--nx-transition-fast);
-
-  &:hover {
-    color: var(--nx-accent);
-    border-color: var(--nx-accent);
-    background: var(--nx-accent-soft);
-  }
 }
 
 .nx-theme-toggle--compact {
-  width: 34px;
-  height: 34px;
+  --nx-tt-w: 44px;
+  --nx-tt-h: 24px;
+  --nx-tt-thumb: 18px;
+}
+
+.nx-theme-toggle__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--nx-tt-w);
+  height: var(--nx-tt-h);
+  padding-inline: 6px;
+  border-radius: var(--nx-radius-full);
+  border: 1px solid var(--nx-border);
+  background: var(--nx-bg-alt);
+  transition: background var(--nx-transition-fast), border-color var(--nx-transition-fast);
+}
+
+.nx-theme-toggle:hover .nx-theme-toggle__track {
+  border-color: var(--nx-accent);
+}
+
+.nx-theme-toggle__mark {
+  position: relative;
+  z-index: 1;
+  color: var(--nx-text-muted);
+  opacity: 0.5;
+  transition: opacity var(--nx-transition-fast), color var(--nx-transition-fast);
+}
+
+.nx-theme-toggle:not(.is-dark) .nx-theme-toggle__mark--sun,
+.nx-theme-toggle.is-dark .nx-theme-toggle__mark--moon {
+  color: var(--nx-accent);
+  opacity: 0.9;
+}
+
+.nx-theme-toggle__thumb {
+  position: absolute;
+  inset-inline-start: var(--nx-tt-pad);
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--nx-tt-thumb);
+  height: var(--nx-tt-thumb);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nx-white);
+  color: var(--nx-accent);
+  box-shadow: var(--nx-shadow-sm);
+  transition: inset-inline-start var(--nx-transition) cubic-bezier(0.16, 1, 0.3, 1), background var(--nx-transition-fast), color var(--nx-transition-fast);
+
+  svg {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+.nx-theme-toggle.is-dark .nx-theme-toggle__thumb {
+  inset-inline-start: calc(var(--nx-tt-w) - var(--nx-tt-thumb) - var(--nx-tt-pad));
+  background: var(--nx-navy-900);
+  color: var(--nx-blue-400);
 }

@@ -2,9 +2,17 @@
   type="button"
   class="nx-theme-toggle"
   [class.nx-theme-toggle--compact]="compact()"
+  [class.is-dark]="theme.isDark"
+  role="switch"
   (click)="theme.toggleTheme()"
   [attr.aria-label]="theme.isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-  [attr.aria-pressed]="theme.isDark"
+  [attr.aria-checked]="theme.isDark"
 >
-  <svg [lucideIcon]="theme.isDark ? 'moon' : 'sun'" [size]="17"></svg>
+  <span class="nx-theme-toggle__track">
+    <svg class="nx-theme-toggle__mark nx-theme-toggle__mark--sun" [lucideIcon]="'sun'" [size]="11"></svg>
+    <svg class="nx-theme-toggle__mark nx-theme-toggle__mark--moon" [lucideIcon]="'moon'" [size]="11"></svg>
+    <span class="nx-theme-toggle__thumb">
+      <svg [lucideIcon]="theme.isDark ? 'moon' : 'sun'" [size]="12"></svg>
+    </span>
+  </span>
 </button>

@@ -266,7 +266,23 @@
 
   a.nx-btn-accent {
     justify-content: center;
-    padding-block: 12px;
+    padding-block: 14px;
+    gap: 10px;
+    box-shadow: 0 14px 32px rgba(var(--nx-accent-rgb), 0.35);
+    transition: box-shadow var(--nx-transition-fast), transform var(--nx-transition-fast);
+
+    &:hover,
+    &:active {
+      box-shadow: 0 16px 36px rgba(var(--nx-accent-rgb), 0.45);
+      transform: translateY(-1px);
+    }
+
+    svg {
+      box-sizing: content-box;
+      padding: 6px;
+      border-radius: var(--nx-radius-full);
+      background: rgba(255, 255, 255, 0.2);
+    }
   }
 }
 
@@ -276,15 +292,18 @@
   justify-content: center;
   gap: 8px;
 
-  ::ng-deep .nx-theme-toggle {
+  ::ng-deep .nx-theme-toggle__track {
     border-color: var(--nx-border-dark);
-    color: var(--nx-text-inverse-muted);
+    background: transparent;
+  }
 
-    &:hover {
-      color: var(--nx-white);
-      border-color: rgba(255, 255, 255, 0.3);
-      background: rgba(255, 255, 255, 0.08);
-    }
+  ::ng-deep .nx-theme-toggle__mark {
+    color: var(--nx-text-inverse-muted);
+  }
+
+  ::ng-deep .nx-theme-toggle:hover .nx-theme-toggle__track {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
   }
 }
 

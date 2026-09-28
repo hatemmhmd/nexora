@@ -154,12 +154,21 @@ body.lang-ur .nx-footer__heading {
   }
 }
 
-::ng-deep .nx-footer .nx-theme-toggle {
-  border-color: var(--nx-border-dark);
-  color: var(--nx-text-inverse-muted);
+// The footer is always dark regardless of the site's own theme, so the
+// toggle's track needs its own always-dark colors here (same nesting
+// pattern as the language-switcher override above — keeps .nx-footer's
+// own specificity point so this doesn't tie with the component's base rule).
+.nx-footer {
+  ::ng-deep .nx-theme-toggle__track {
+    border-color: var(--nx-border-dark);
+    background: transparent;
+  }
 
-  &:hover {
-    color: var(--nx-white);
+  ::ng-deep .nx-theme-toggle__mark {
+    color: var(--nx-text-inverse-muted);
+  }
+
+  ::ng-deep .nx-theme-toggle:hover .nx-theme-toggle__track {
     border-color: rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.08);
   }
