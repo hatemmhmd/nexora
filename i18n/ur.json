@@ -1,6 +1,7 @@
 {
   "a11y": {
-    "skipToContent": "مواد پر جائیں"
+    "skipToContent": "مواد پر جائیں",
+    "scrollToTop": "اوپر جائیں"
   },
   "nav": {
     "home": "ہوم",

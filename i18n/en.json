@@ -1,6 +1,7 @@
 {
   "a11y": {
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "scrollToTop": "Scroll to top"
   },
   "nav": {
     "home": "Home",
