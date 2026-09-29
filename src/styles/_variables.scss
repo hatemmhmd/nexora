@@ -63,14 +63,14 @@
   --nx-header-height: 76px;
 
   // Typography — display serif for headings, geometric sans for body/UI.
-  --nx-font-en: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --nx-font-en: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   --nx-font-ar: 'Almarai', -apple-system, sans-serif;
   // Nastaliq is Urdu's own reading convention — a Naskh-style Arabic font
   // (like Almarai) reads as visibly "wrong" to Urdu readers, so this gets
   // its own font rather than reusing the Arabic one.
   --nx-font-ur: 'Noto Nastaliq Urdu', 'Almarai', serif;
   --nx-font: var(--nx-font-en);
-  --nx-font-heading-en: 'Fraunces', 'Poppins', serif;
+  --nx-font-heading-en: 'Fraunces', 'Manrope', serif;
   --nx-font-heading-ar: 'Markazi Text', 'Almarai', serif;
   // Urdu has no separate display/body pairing tradition the way Latin or
   // Arabic do here — Nastaliq itself already reads as formal, so headings

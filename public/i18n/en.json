@@ -14,7 +14,7 @@
   "home": {
     "hero": {
       "eyebrow": "Service Coordination & Business Solutions",
-      "title": "One Contact. Any Service.",
+      "title": "MADAD — Extending What You Need.",
       "subtitle": "Tell us what you need. We find the right professional, coordinate the process, and manage your service from start to finish.",
       "primaryCta": "Request a Service",
       "secondaryCta": "Explore Services",
@@ -309,7 +309,7 @@
       },
       "where": {
         "question": "Where does MADAD operate?",
-        "answer": "Initially, MADAD will focus on the UAE and Jordan, with plans to expand across the GCC."
+        "answer": "MADAD currently operates in the UAE and Jordan."
       }
     }
   },
@@ -401,7 +401,7 @@
     "other": "Other"
   },
   "footer": {
-    "tagline": "One Contact. Any Service.",
+    "tagline": "MADAD — Extending What You Need.",
     "becomeProvider": "Become a Service Provider",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
