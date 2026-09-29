@@ -80,7 +80,8 @@ body.lang-ur .nx-eyebrow--inverse {
   cursor: pointer;
   white-space: nowrap;
   transition: background var(--nx-transition-fast), border-color var(--nx-transition-fast),
-    color var(--nx-transition-fast), opacity var(--nx-transition-fast);
+    color var(--nx-transition-fast), opacity var(--nx-transition-fast), transform var(--nx-transition-fast),
+    box-shadow var(--nx-transition-fast);
 
   &:active {
     opacity: 0.85;
@@ -109,7 +110,13 @@ body.lang-ur .nx-eyebrow--inverse {
   box-shadow: 0 10px 24px rgba(var(--nx-accent-rgb), 0.2);
 
   &:hover {
-    box-shadow: 0 10px 24px rgba(var(--nx-accent-rgb), 0.3);
+    box-shadow: 0 16px 34px rgba(var(--nx-accent-rgb), 0.38);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 18px rgba(var(--nx-accent-rgb), 0.3);
   }
 }
 

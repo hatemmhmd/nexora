@@ -260,22 +260,18 @@
 .nx-header__mobile-footer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
   margin-top: 10px;
   padding-top: 10px;
 
+  // Hover/active lift and glow come from the shared btn-accent mixin —
+  // this only adds the prominent resting shadow and icon badge specific
+  // to this full-width, closing-action placement.
   a.nx-btn-accent {
     justify-content: center;
     padding-block: 14px;
     gap: 10px;
     box-shadow: 0 14px 32px rgba(var(--nx-accent-rgb), 0.35);
-    transition: box-shadow var(--nx-transition-fast), transform var(--nx-transition-fast);
-
-    &:hover,
-    &:active {
-      box-shadow: 0 16px 36px rgba(var(--nx-accent-rgb), 0.45);
-      transform: translateY(-1px);
-    }
 
     svg {
       box-sizing: content-box;
@@ -286,11 +282,13 @@
   }
 }
 
-.nx-header__mobile-controls {
+// Secondary utility row — theme toggle and social links grouped together
+// so the CTA below reads as the one primary, closing action.
+.nx-header__mobile-utility {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 14px;
 
   ::ng-deep .nx-theme-toggle__track {
     border-color: var(--nx-border-dark);
@@ -307,11 +305,17 @@
   }
 }
 
+.nx-header__mobile-divider {
+  width: 1px;
+  height: 22px;
+  background: var(--nx-border-dark);
+  flex-shrink: 0;
+}
+
 .nx-header__mobile-social {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 14px;
 
   a {
     display: inline-flex;

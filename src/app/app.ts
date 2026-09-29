@@ -3,13 +3,14 @@ import { RouterOutlet } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { ScrollTopComponent } from './shared/components/scroll-top/scroll-top.component';
 import { LanguageService } from './core/services/language.service';
 import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TranslatePipe, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, TranslatePipe, HeaderComponent, FooterComponent, ScrollTopComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

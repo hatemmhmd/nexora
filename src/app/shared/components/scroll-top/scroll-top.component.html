@@ -1,0 +1,10 @@
+@if (visible()) {
+  <button
+    type="button"
+    class="nx-scroll-top"
+    (click)="scrollToTop()"
+    [attr.aria-label]="'a11y.scrollToTop' | translate"
+  >
+    <svg [lucideIcon]="'arrow-up'" [size]="18"></svg>
+  </button>
+}
