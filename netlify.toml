@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist/nexora/browser"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SPA fallback: client-side routes like /contact must resolve to index.html.
+# Status 200 (not 301) keeps the URL and still lets real static files win.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
