@@ -216,35 +216,16 @@
   animation: nx-header-mobile-in var(--nx-transition) cubic-bezier(0.16, 1, 0.3, 1);
 
   // Echo of the logo: two interlinked pill rings, huge and barely there.
-  // Desktop only — on phones they'd just add noise behind the links.
-  &::before,
-  &::after {
-    content: '';
-    display: none;
-    position: absolute;
-    z-index: -1;
-    width: 560px;
-    height: 320px;
-    border: 60px solid rgba(var(--nx-accent-rgb), 0.035);
-    border-radius: var(--nx-radius-full);
-    pointer-events: none;
-  }
-
-  &::before {
-    inset-block-end: -90px;
-    inset-inline-start: -140px;
-  }
-
-  &::after {
-    inset-block-end: -10px;
-    inset-inline-start: 160px;
-  }
-
+  // Desktop only — on phones they'd just add noise behind the links. Drawn
+  // as a background image rather than positioned pseudo-elements, because
+  // anything absolutely positioned past this scroll container's bottom edge
+  // makes it scrollable (and shows a scrollbar) even when the menu fits.
   @include bp-lg {
-    &::before,
-    &::after {
-      display: block;
-    }
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 480'%3E%3Crect x='60' y='60' width='500' height='360' rx='180' fill='none' stroke='%2321c9ae' stroke-opacity='.035' stroke-width='60'/%3E%3Crect x='350' y='60' width='500' height='360' rx='180' fill='none' stroke='%2321c9ae' stroke-opacity='.035' stroke-width='60'/%3E%3C/svg%3E")
+        no-repeat left 38% bottom -120px / 760px auto,
+      radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.14), transparent 70%),
+      var(--nx-bg-dark);
   }
 }
 
@@ -264,7 +245,9 @@
     flex-direction: row;
     align-items: stretch;
     gap: clamp(48px, 7vw, 120px);
-    padding-block: 40px 48px;
+    // Vertical sizing follows the viewport height so the whole menu fits on
+    // short laptop screens without needing its (hidden) scrollbar.
+    padding-block: clamp(16px, 4vh, 40px) clamp(20px, 5vh, 48px);
     padding-inline: 20px;
   }
 }
@@ -325,9 +308,10 @@
 
   @include bp-lg {
     gap: 22px;
-    padding-block: 16px;
-    font-size: clamp(30px, 3.4vw, 46px);
+    padding-block: clamp(8px, 1.9vh, 16px);
+    font-size: clamp(26px, min(3.4vw, 5.6vh), 46px);
     font-weight: 500;
+    line-height: 1.25;
     letter-spacing: 0;
   }
 

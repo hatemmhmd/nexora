@@ -50,17 +50,14 @@ html {
   }
 }
 
-// The full-screen nav overlay is always dark regardless of site theme, so
-// its own scrollbar needs the dark-mode thumb color even in light mode.
+// The full-screen nav overlay hides its scrollbar: it's an overlay, not a
+// page, and a visible bar reads as clutter against the menu. It still scrolls
+// with wheel/touch/keys on very short viewports.
 .nx-header__mobile {
-  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  scrollbar-width: none;
 
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.18);
-
-    &:hover {
-      background: rgba(var(--nx-accent-rgb), 0.6);
-    }
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
