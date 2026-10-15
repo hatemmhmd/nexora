@@ -4,44 +4,44 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
-    title: 'MADAD — One Contact. Any Service.',
+    title: 'Wisla — Connecting You to the Right Service',
   },
   {
     path: 'services',
     loadComponent: () => import('./pages/services/services.component').then((m) => m.ServicesComponent),
-    title: 'Services — MADAD',
+    title: 'Services — Wisla',
   },
   {
     path: 'how-it-works',
     loadComponent: () =>
       import('./pages/how-it-works/how-it-works.component').then((m) => m.HowItWorksComponent),
-    title: 'How It Works — MADAD',
+    title: 'How It Works — Wisla',
   },
   {
     path: 'about',
     loadComponent: () => import('./pages/about/about.component').then((m) => m.AboutComponent),
-    title: 'About — MADAD',
+    title: 'About — Wisla',
   },
   {
     path: 'providers',
     loadComponent: () => import('./pages/providers/providers.component').then((m) => m.ProvidersComponent),
-    title: 'For Service Providers — MADAD',
+    title: 'For Service Providers — Wisla',
   },
   {
     path: 'request-service',
     loadComponent: () =>
       import('./pages/request-service/request-service.component').then((m) => m.RequestServiceComponent),
-    title: 'Request a Service — MADAD',
+    title: 'Request a Service — Wisla',
   },
   {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact.component').then((m) => m.ContactComponent),
-    title: 'Contact — MADAD',
+    title: 'Contact — Wisla',
   },
   {
     path: 'privacy-policy',
     loadComponent: () => import('./pages/legal/legal-page.component').then((m) => m.LegalPageComponent),
-    title: 'Privacy Policy — MADAD',
+    title: 'Privacy Policy — Wisla',
     data: {
       titleKey: 'legal.privacy.title',
       sectionKeys: [
@@ -56,7 +56,7 @@ export const routes: Routes = [
   {
     path: 'terms',
     loadComponent: () => import('./pages/legal/legal-page.component').then((m) => m.LegalPageComponent),
-    title: 'Terms & Conditions — MADAD',
+    title: 'Terms & Conditions — Wisla',
     data: {
       titleKey: 'legal.terms.title',
       sectionKeys: [
@@ -71,6 +71,6 @@ export const routes: Routes = [
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
-    title: 'Page Not Found — MADAD',
+    title: 'Page Not Found — Wisla',
   },
 ];

@@ -8,7 +8,7 @@
   position: relative;
   padding-block: clamp(64px, 11vw, 108px);
   overflow: hidden;
-  background: radial-gradient(120% 100% at 15% 0%, #241708 0%, var(--nx-navy-950) 55%), var(--nx-navy-950);
+  background: radial-gradient(120% 100% at 15% 0%, #0f4547 0%, var(--nx-navy-950) 55%), var(--nx-navy-950);
   color: var(--nx-text-inverse);
   // Crisp edge instead of a fade — a thin glow line marks the seam where
   // the dark hero meets the page, same idea as the footer's top border.
