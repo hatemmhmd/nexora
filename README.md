@@ -1,6 +1,6 @@
-# Wisla
+# Yusra
 
-**Connecting You to the Right Service.** — corporate marketing site for Wisla, a service
+**Connecting You to the Right Service.** — corporate marketing site for Yusra, a service
 coordination and business solutions company. Built with Angular 20 (standalone
 components, signals), full English/Arabic i18n with RTL, and no state-management
 library — the site is fully static/presentational, so NgRx would be unused weight.
@@ -53,10 +53,10 @@ ng build              # production build, output in dist/nexora
 
 - The Request a Service, Provider application, and Contact forms are wired with Angular
   Reactive Forms and full client-side validation, but submission is currently a local
-  success-state placeholder — see the `// Placeholder for the Wisla … API` comments in
+  success-state placeholder — see the `// Placeholder for the Yusra … API` comments in
   `shared/components/request-form`, `provider-form`, and `pages/contact` for where to wire
   up the real backend endpoint.
 - Contact details (email/phone/WhatsApp/addresses) in `pages/contact` and the social links in
-  `shared/components/footer` are placeholders — update them with Wisla's real details before launch.
+  `shared/components/footer` are placeholders — update them with Yusra's real details before launch.
 - `pages/legal` (Privacy Policy / Terms & Conditions) is a structural template, not legal advice —
   have it reviewed before publishing.

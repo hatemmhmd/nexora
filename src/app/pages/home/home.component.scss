@@ -8,7 +8,7 @@
   position: relative;
   padding-block: clamp(64px, 11vw, 108px);
   overflow: hidden;
-  background: radial-gradient(120% 100% at 15% 0%, #0f4547 0%, var(--nx-navy-950) 55%), var(--nx-navy-950);
+  background: radial-gradient(120% 100% at 15% 0%, #3b4377 0%, var(--nx-navy-950) 55%), var(--nx-navy-950);
   color: var(--nx-text-inverse);
   // Crisp edge instead of a fade — a thin glow line marks the seam where
   // the dark hero meets the page, same idea as the footer's top border.
@@ -342,22 +342,25 @@ body.lang-ur .nx-compare__row--head .nx-compare__col {
   margin-block-start: 8px;
 }
 
+// Inverted against the box: the box is filled with the accent, so the
+// button is filled with the accent's ink and lettered in the accent.
 .nx-final-cta .nx-btn-accent {
   background: var(--nx-accent-ink);
-  color: var(--nx-white);
+  color: var(--nx-accent);
   box-shadow: none;
 
   &:hover {
-    background: #000;
+    background: var(--nx-accent-ink);
+    opacity: 0.9;
   }
 }
 
 .nx-final-cta .nx-btn-outline-inverse {
   color: var(--nx-accent-ink);
-  border-color: rgba(22, 18, 11, 0.3);
+  border-color: color-mix(in srgb, var(--nx-accent-ink) 35%, transparent);
 
   &:hover {
-    background: rgba(22, 18, 11, 0.08);
-    border-color: rgba(22, 18, 11, 0.45);
+    background: color-mix(in srgb, var(--nx-accent-ink) 10%, transparent);
+    border-color: color-mix(in srgb, var(--nx-accent-ink) 55%, transparent);
   }
 }

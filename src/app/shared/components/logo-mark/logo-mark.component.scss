@@ -10,7 +10,7 @@
   // The lockup's <text x="..."> coordinates assume LTR text-anchoring.
   // Without this, an RTL ancestor (any Arabic/Urdu page, or an RTL
   // container that — unlike the header link — doesn't force ltr itself)
-  // shifts both wordmarks left by their own width and they overlap the icon.
+  // shifts both wordmarks left by their own width and they overlap.
   direction: ltr;
 }
 
@@ -18,67 +18,46 @@
   height: 30px;
 }
 
-// Narrow phones: the full lockup is ~6:1, so it needs to shrink to leave
-// room for the language pill and menu button in the header.
+// Narrow phones: leave room for the language pill and menu button.
 @media (max-width: 400px) {
   .nx-logo--full {
-    height: 24px;
+    height: 26px;
   }
 }
 
-// Theme-aware by default: --nx-text resolves to the brand's deep teal in
-// light mode and near-white in dark mode, so a plain <app-logo-mark />
-// adapts automatically wherever the site theme applies.
-.nx-logo__ring-a,
-.nx-logo__ring-b {
-  fill: none;
-  stroke-width: 26.5;
-}
-
-.nx-logo__ring-a {
-  stroke: var(--nx-text);
-  transition: stroke var(--nx-transition);
-}
-
-// The second ring and wordmark accent follow the theme's teal
-// (--nx-accent is the deeper teal in light mode, the brighter one in dark).
-.nx-logo__ring-b {
-  stroke: var(--nx-accent);
+// Theme-aware by default: --nx-text is navy in light mode and cream in dark
+// mode, so a plain <app-logo-mark /> adapts wherever the site theme applies.
+// The mark is a single-color wordmark — no accent, matching the brand file.
+.nx-logo__word-ar,
+.nx-logo__word-en {
+  fill: var(--nx-text);
+  transition: fill var(--nx-transition);
 }
 
 .nx-logo__word-ar {
-  fill: var(--nx-text);
   font-family: 'Almarai', 'Markazi Text', sans-serif;
   font-weight: 800;
-  font-size: 124px;
-  transition: fill var(--nx-transition);
+  font-size: 141px;
 }
 
 .nx-logo__word-en {
-  fill: var(--nx-text);
-  fill-opacity: 0.8;
   font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 800;
-  font-size: 117px;
-  letter-spacing: 0.04em;
-  transition: fill var(--nx-transition);
+  font-weight: 700;
+  font-size: 132px;
+  letter-spacing: 0.16em;
 }
 
-// Forces the light-on-dark brand color for surfaces that are always dark
+.nx-logo__monogram {
+  font-weight: 700;
+  font-size: 100px;
+  letter-spacing: 0;
+}
+
+// Forces the cream-on-dark brand color for surfaces that are always dark
 // regardless of the site's own light/dark theme (footer, the hero).
 .nx-logo--inverse {
-  .nx-logo__ring-a {
-    stroke: #f4f6f6;
-  }
-
-  // Always the brighter teal here — the light theme's deeper one is too
-  // dark against these surfaces.
-  .nx-logo__ring-b {
-    stroke: var(--nx-blue-500);
-  }
-
   .nx-logo__word-ar,
   .nx-logo__word-en {
-    fill: #f4f6f6;
+    fill: var(--nx-cream);
   }
 }

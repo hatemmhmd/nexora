@@ -1,16 +1,13 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /**
- * Renders the Wisla mark. `variant="full"` shows the icon + bilingual
- * wordmark lockup (header/footer); `variant="icon"` shows only the two
- * interlinked rings, used anywhere a square mark is needed (matches the
- * brand assets at public/images/wisla-logo-*.svg).
+ * Renders the Yusra wordmark: the Arabic name beside the spaced Latin caps,
+ * as in the brand file. `variant="full"` is the lockup (header/footer);
+ * `variant="icon"` is just the Latin "Y" monogram, for square placements.
  *
- * The first ring and the wordmark default to `var(--nx-text)`, which already
- * flips with the site's light/dark theme — so a plain `<app-logo-mark />`
- * in the header just works in both modes. `inverse` forces the light-on-dark
- * colors for surfaces that are always dark regardless of site theme (footer,
- * the hero). The second ring is always the brand teal.
+ * It is a single-color mark: `var(--nx-text)` (navy in light mode, cream in
+ * dark mode) so a plain <app-logo-mark /> adapts to the site theme. `inverse`
+ * forces cream for surfaces that are always dark (footer, the hero).
  */
 @Component({
   selector: 'app-logo-mark',

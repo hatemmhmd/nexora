@@ -4,44 +4,44 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
-    title: 'Wisla — Connecting You to the Right Service',
+    title: 'Yusra — Connecting You to the Right Service',
   },
   {
     path: 'services',
     loadComponent: () => import('./pages/services/services.component').then((m) => m.ServicesComponent),
-    title: 'Services — Wisla',
+    title: 'Services — Yusra',
   },
   {
     path: 'how-it-works',
     loadComponent: () =>
       import('./pages/how-it-works/how-it-works.component').then((m) => m.HowItWorksComponent),
-    title: 'How It Works — Wisla',
+    title: 'How It Works — Yusra',
   },
   {
     path: 'about',
     loadComponent: () => import('./pages/about/about.component').then((m) => m.AboutComponent),
-    title: 'About — Wisla',
+    title: 'About — Yusra',
   },
   {
     path: 'providers',
     loadComponent: () => import('./pages/providers/providers.component').then((m) => m.ProvidersComponent),
-    title: 'For Service Providers — Wisla',
+    title: 'For Service Providers — Yusra',
   },
   {
     path: 'request-service',
     loadComponent: () =>
       import('./pages/request-service/request-service.component').then((m) => m.RequestServiceComponent),
-    title: 'Request a Service — Wisla',
+    title: 'Request a Service — Yusra',
   },
   {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact.component').then((m) => m.ContactComponent),
-    title: 'Contact — Wisla',
+    title: 'Contact — Yusra',
   },
   {
     path: 'privacy-policy',
     loadComponent: () => import('./pages/legal/legal-page.component').then((m) => m.LegalPageComponent),
-    title: 'Privacy Policy — Wisla',
+    title: 'Privacy Policy — Yusra',
     data: {
       titleKey: 'legal.privacy.title',
       sectionKeys: [
@@ -56,7 +56,7 @@ export const routes: Routes = [
   {
     path: 'terms',
     loadComponent: () => import('./pages/legal/legal-page.component').then((m) => m.LegalPageComponent),
-    title: 'Terms & Conditions — Wisla',
+    title: 'Terms & Conditions — Yusra',
     data: {
       titleKey: 'legal.terms.title',
       sectionKeys: [
@@ -71,6 +71,6 @@ export const routes: Routes = [
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
-    title: 'Page Not Found — Wisla',
+    title: 'Page Not Found — Yusra',
   },
 ];

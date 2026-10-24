@@ -98,12 +98,12 @@
     }
 
     &:hover {
-      background: var(--nx-blue-400);
+      background: var(--nx-accent-hover);
     }
   }
 
   ::ng-deep .is-open .nx-lang-switch__trigger {
-    background: var(--nx-blue-400);
+    background: var(--nx-accent-hover);
   }
 }
 
@@ -171,13 +171,15 @@
     background: var(--nx-white);
 
     .nx-header__burger-line {
-      background: var(--nx-accent-ink);
+      background: var(--nx-navy-950);
     }
   }
 }
 
+// Fixed navy, not accent-ink: the square is always white, and in the light
+// theme accent-ink is cream, which would vanish on it.
 .nx-header__burger.is-open .nx-header__burger-line {
-  background: var(--nx-accent-ink);
+  background: var(--nx-navy-950);
 
   &:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
@@ -204,7 +206,7 @@
   z-index: 90;
   isolation: isolate;
   background:
-    radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.14), transparent 70%),
+    radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.07), transparent 70%),
     var(--nx-bg-dark);
   display: flex;
   flex-direction: column;
@@ -222,9 +224,9 @@
   // makes it scrollable (and shows a scrollbar) even when the menu fits.
   @include bp-lg {
     background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 480'%3E%3Crect x='60' y='60' width='500' height='360' rx='180' fill='none' stroke='%2321c9ae' stroke-opacity='.035' stroke-width='60'/%3E%3Crect x='350' y='60' width='500' height='360' rx='180' fill='none' stroke='%2321c9ae' stroke-opacity='.035' stroke-width='60'/%3E%3C/svg%3E")
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 480'%3E%3Crect x='60' y='60' width='500' height='360' rx='180' fill='none' stroke='%23edecda' stroke-opacity='.03' stroke-width='60'/%3E%3Crect x='350' y='60' width='500' height='360' rx='180' fill='none' stroke='%23edecda' stroke-opacity='.03' stroke-width='60'/%3E%3C/svg%3E")
         no-repeat left 38% bottom -120px / 760px auto,
-      radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.14), transparent 70%),
+      radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.07), transparent 70%),
       var(--nx-bg-dark);
   }
 }
