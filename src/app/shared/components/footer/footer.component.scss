@@ -173,3 +173,11 @@ body.lang-ur .nx-footer__heading {
     background: rgba(255, 255, 255, 0.08);
   }
 }
+
+// The footer has room, so the stacked logotype can be larger than in the
+// header (same nested ::ng-deep pattern as the overrides above).
+.nx-footer {
+  ::ng-deep .nx-logo--full {
+    height: 76px;
+  }
+}
