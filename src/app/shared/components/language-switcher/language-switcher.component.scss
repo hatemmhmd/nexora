@@ -105,14 +105,17 @@
   cursor: pointer;
   transition: background var(--nx-transition-fast);
 
+  // The panel is a themed floating surface (--nx-surface), so its states use
+  // the theme's text / alt-background tokens, not the accent: inside the
+  // always-dark footer the accent is white, which vanished on this panel.
   &:hover {
-    background: var(--nx-accent-soft);
+    background: var(--nx-bg-alt);
   }
 
   svg {
     margin-inline-start: auto;
     flex-shrink: 0;
-    color: var(--nx-accent);
+    color: var(--nx-text);
   }
 }
 
@@ -132,8 +135,14 @@
 }
 
 .nx-lang-switch__option.is-selected {
-  .nx-lang-switch__option-code,
+  background: var(--nx-bg-alt);
+
+  .nx-lang-switch__option-code {
+    color: var(--nx-text);
+  }
+
   .nx-lang-switch__option-label {
-    color: var(--nx-accent);
+    color: var(--nx-text);
+    font-weight: 800;
   }
 }

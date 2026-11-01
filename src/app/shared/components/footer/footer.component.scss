@@ -152,7 +152,10 @@ body.lang-ur .nx-footer__heading {
     }
   }
 
-  ::ng-deep .is-open .nx-lang-switch__trigger {
+  // `.nx-lang-switch.is-open` (not a bare `.is-open`) so this out-ranks the
+  // switcher's own open-state rule rather than tying with it — a tie is
+  // settled by stylesheet order, which differs between dev and production.
+  ::ng-deep .nx-lang-switch.is-open .nx-lang-switch__trigger {
     color: var(--nx-white);
     border-color: rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.08);

@@ -99,11 +99,23 @@
 
     &:hover {
       background: var(--nx-accent-hover);
+      border-color: transparent;
     }
   }
 
-  ::ng-deep .is-open .nx-lang-switch__trigger {
+  // `.nx-lang-switch.is-open` rather than a bare `.is-open`, so this out-ranks
+  // the switcher's own open-state rule instead of tying with it: a tie is
+  // settled by stylesheet order, which differs between dev and production
+  // builds (in production the pill lost its fill but kept its white text).
+  ::ng-deep .nx-lang-switch.is-open .nx-lang-switch__trigger {
     background: var(--nx-accent-hover);
+    border-color: transparent;
+  }
+
+  // The open chevron is accent-coloured by default, which is the pill's own
+  // colour here — use the pill's text colour so it stays visible.
+  ::ng-deep .nx-lang-switch.is-open .nx-lang-switch__chevron {
+    color: var(--nx-accent-ink);
   }
 }
 
