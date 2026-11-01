@@ -54,7 +54,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'personal',
-    icon: 'home',
+    icon: 'house',
     titleKey: 'services.categories.personal.title',
     descriptionKey: 'services.categories.personal.description',
     itemKeys: [

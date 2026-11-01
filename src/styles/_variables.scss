@@ -3,47 +3,48 @@
 // components never hardcode values (see docs in README).
 
 :root {
-  // Core palette — a navy + cream duotone straight from the logo
-  // (#272b4a / #edecda). There is no third brand color, so the accent is
-  // navy on the light theme and cream on the dark theme (see the dark
-  // block and the always-dark surfaces at the bottom of this file).
-  --nx-navy-950: #272b4a;
-  --nx-navy-900: #323860;
-  --nx-navy-800: #3d4472;
-  --nx-blue-600: #272b4a;
-  --nx-blue-500: #edecda;
-  --nx-blue-400: #f6f5e8;
-  --nx-slate-50: #e4e3cf;
-  --nx-slate-100: #dcdbc4;
+  // Core palette — a neutral black / white scale. There is no brand hue, so
+  // the accent is black on the light theme and white on the dark theme (see
+  // the dark block and the always-dark surfaces at the bottom of this file).
+  // Token names are historic: --nx-navy-* is the near-black ink scale,
+  // --nx-blue-* are the accent shades and --nx-cream is plain white.
+  --nx-navy-950: #0a0a0b;
+  --nx-navy-900: #18181b;
+  --nx-navy-800: #27272a;
+  --nx-blue-600: #0a0a0b;
+  --nx-blue-500: #f4f4f5;
+  --nx-blue-400: #ffffff;
+  --nx-slate-50: #f5f5f6;
+  --nx-slate-100: #ececee;
   --nx-white: #ffffff;
-  --nx-cream: #edecda;
-  --nx-gray-200: #d2d1b8;
-  --nx-gray-300: #bcbba2;
-  --nx-gray-400: #8d91ab;
-  --nx-gray-600: #4f5476;
-  --nx-charcoal: #1e2240;
+  --nx-cream: #ffffff;
+  --nx-gray-200: #e4e4e7;
+  --nx-gray-300: #d4d4d8;
+  --nx-gray-400: #a1a1aa;
+  --nx-gray-600: #52525b;
+  --nx-charcoal: #18181b;
 
   // Semantic tokens
   --nx-bg: var(--nx-cream);
   --nx-bg-alt: var(--nx-slate-50);
   --nx-bg-dark: var(--nx-navy-950);
-  --nx-surface: #f7f6ec;
+  --nx-surface: #ffffff;
   --nx-surface-dark: var(--nx-navy-900);
   --nx-text: var(--nx-navy-950);
   --nx-text-muted: var(--nx-gray-600);
-  --nx-text-inverse: #f3f2e6;
-  --nx-text-inverse-muted: #a6aac4;
+  --nx-text-inverse: #fafafa;
+  --nx-text-inverse-muted: #a1a1aa;
   --nx-border: var(--nx-gray-200);
-  --nx-border-dark: rgba(237, 236, 218, 0.14);
+  --nx-border-dark: rgba(255, 255, 255, 0.12);
   --nx-primary: var(--nx-navy-900);
   --nx-accent: var(--nx-blue-600);
-  --nx-accent-rgb: 39, 43, 74;
-  --nx-accent-soft: rgba(39, 43, 74, 0.08);
+  --nx-accent-rgb: 10, 10, 11;
+  --nx-accent-soft: rgba(10, 10, 11, 0.06);
   --nx-accent-gradient: linear-gradient(135deg, var(--nx-navy-950), var(--nx-navy-800));
   --nx-accent-hover: var(--nx-navy-800);
   --nx-accent-ink: var(--nx-cream);
-  --nx-header-bg: rgba(237, 236, 218, 0.86);
-  --nx-overlay-hover: rgba(39, 43, 74, 0.05);
+  --nx-header-bg: rgba(255, 255, 255, 0.86);
+  --nx-overlay-hover: rgba(10, 10, 11, 0.04);
 
   // Radii
   --nx-radius-sm: 8px;
@@ -56,9 +57,9 @@
   --nx-radius-btn: 6px;
 
   // Shadows
-  --nx-shadow-sm: 0 1px 2px rgba(39, 43, 74, 0.07);
-  --nx-shadow-md: 0 8px 24px rgba(39, 43, 74, 0.09);
-  --nx-shadow-lg: 0 24px 56px rgba(39, 43, 74, 0.15);
+  --nx-shadow-sm: 0 1px 2px rgba(10, 10, 11, 0.07);
+  --nx-shadow-md: 0 8px 24px rgba(10, 10, 11, 0.09);
+  --nx-shadow-lg: 0 24px 56px rgba(10, 10, 11, 0.15);
 
   // Layout
   --nx-container: 1220px;
@@ -106,25 +107,25 @@ body.lang-ur {
 // ---------------------------------------------------------------------------
 :root[data-theme='dark'] {
   --nx-bg: var(--nx-navy-950);
-  --nx-bg-alt: #212541;
-  --nx-bg-dark: #1a1d36;
-  --nx-surface: #313761;
-  --nx-surface-dark: #1f2340;
-  --nx-text: #edecda;
-  --nx-text-muted: #a6aac4;
-  --nx-text-inverse: #f3f2e6;
-  --nx-text-inverse-muted: #a6aac4;
-  --nx-border: rgba(237, 236, 218, 0.12);
-  --nx-border-dark: rgba(237, 236, 218, 0.14);
-  --nx-primary: #3d4472;
+  --nx-bg-alt: #111113;
+  --nx-bg-dark: #050506;
+  --nx-surface: #17171a;
+  --nx-surface-dark: #0e0e10;
+  --nx-text: #f4f4f5;
+  --nx-text-muted: #a1a1aa;
+  --nx-text-inverse: #fafafa;
+  --nx-text-inverse-muted: #a1a1aa;
+  --nx-border: rgba(255, 255, 255, 0.1);
+  --nx-border-dark: rgba(255, 255, 255, 0.12);
+  --nx-primary: #27272a;
   --nx-accent: var(--nx-blue-500);
-  --nx-accent-rgb: 237, 236, 218;
-  --nx-accent-soft: rgba(237, 236, 218, 0.12);
+  --nx-accent-rgb: 244, 244, 245;
+  --nx-accent-soft: rgba(255, 255, 255, 0.1);
   --nx-accent-gradient: linear-gradient(135deg, var(--nx-blue-500), var(--nx-blue-400));
   --nx-accent-hover: var(--nx-blue-400);
   --nx-accent-ink: var(--nx-navy-950);
-  --nx-header-bg: rgba(39, 43, 74, 0.8);
-  --nx-overlay-hover: rgba(237, 236, 218, 0.06);
+  --nx-header-bg: rgba(10, 10, 11, 0.8);
+  --nx-overlay-hover: rgba(255, 255, 255, 0.06);
 
   --nx-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --nx-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
@@ -140,8 +141,8 @@ body.lang-ur {
 .nx-footer,
 .nx-header__mobile {
   --nx-accent: var(--nx-blue-500);
-  --nx-accent-rgb: 237, 236, 218;
-  --nx-accent-soft: rgba(237, 236, 218, 0.12);
+  --nx-accent-rgb: 244, 244, 245;
+  --nx-accent-soft: rgba(255, 255, 255, 0.1);
   --nx-accent-gradient: linear-gradient(135deg, var(--nx-blue-500), var(--nx-blue-400));
   --nx-accent-hover: var(--nx-blue-400);
   --nx-accent-ink: var(--nx-navy-950);

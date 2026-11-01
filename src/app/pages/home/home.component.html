@@ -14,6 +14,28 @@
       </div>
       <p class="nx-hero__tagline">{{ 'home.hero.visual.caption' | translate }}</p>
     </div>
+
+    <!-- The six service categories as a board; a highlight sweeps through them. -->
+    <div class="nx-hero__visual" nxReveal aria-hidden="true">
+      <div class="nx-board">
+        <div class="nx-board__bar">
+          <span class="nx-board__dots"><i></i><i></i><i></i></span>
+          <span class="nx-board__title">{{ 'home.services.eyebrow' | translate }}</span>
+        </div>
+        <ul class="nx-board__grid">
+          @for (category of categories; track category.id; let i = $index) {
+            <li class="nx-board__tile" [style.--i]="i">
+              <span class="nx-board__top">
+                <span class="nx-board__icon"><svg [lucideIcon]="category.icon" [size]="20"></svg></span>
+                <span class="nx-board__num">0{{ i + 1 }}</span>
+              </span>
+              <span class="nx-board__label">{{ category.titleKey | translate }}</span>
+              <span class="nx-board__meta">{{ category.itemKeys[0] | translate }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
