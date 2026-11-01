@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /**
- * Renders the Yusra wordmark: the Arabic name beside the spaced Latin caps,
- * as in the brand file. `variant="full"` is the lockup (header/footer);
- * `variant="icon"` is just the Latin "Y" monogram, for square placements.
+ * Renders the Yusra logo (brand files live in public/images/brand): a mark of
+ * two arms that merge into one stem — two parties meeting at a single point —
+ * beside the Arabic name and the spaced Latin caps. `variant="full"` is the
+ * lockup (header/footer); `variant="icon"` is the mark alone.
  *
- * It is a single-color mark: `var(--nx-text)` (navy in light mode, cream in
- * dark mode) so a plain <app-logo-mark /> adapts to the site theme. `inverse`
- * forces cream for surfaces that are always dark (footer, the hero).
+ * Words are outlines, not live text. Colour follows `var(--nx-text)` (black in
+ * light mode, white in dark mode); `inverse` forces white for surfaces that
+ * stay dark in both themes (footer, hero, the nav overlay).
  */
 @Component({
   selector: 'app-logo-mark',

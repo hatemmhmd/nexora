@@ -4,18 +4,13 @@
 }
 
 .nx-logo {
-  height: 34px;
+  height: 36px;
   width: auto;
   overflow: visible;
-  // The lockup's <text x="..."> coordinates assume LTR text-anchoring.
-  // Without this, an RTL ancestor (any Arabic/Urdu page, or an RTL
-  // container that — unlike the header link — doesn't force ltr itself)
-  // shifts both wordmarks left by their own width and they overlap.
-  direction: ltr;
 }
 
 .nx-logo--icon {
-  height: 30px;
+  height: 32px;
 }
 
 // Narrow phones: leave room for the language pill and menu button.
@@ -25,37 +20,37 @@
   }
 }
 
-// Theme-aware by default: --nx-text is navy in light mode and cream in dark
-// mode, so a plain <app-logo-mark /> adapts wherever the site theme applies.
-// The mark is a single-color wordmark — no accent, matching the brand file.
+// Everything follows --nx-text (black in light mode, white in dark mode), so
+// a plain <app-logo-mark /> adapts to the site theme. The words are outlines,
+// not live text, so no font has to load for the logo to render correctly.
+.nx-logo__arm-a,
+.nx-logo__arm-b {
+  fill: none;
+  stroke: var(--nx-text);
+  stroke-width: 15;
+  transition: stroke var(--nx-transition);
+}
+
+// The second arm (the "service" joining the stem) is the quieter half of the
+// mark, drawn underneath the first so they merge into one stem.
+.nx-logo__arm-b {
+  opacity: 0.5;
+}
+
 .nx-logo__word-ar,
 .nx-logo__word-en {
   fill: var(--nx-text);
   transition: fill var(--nx-transition);
 }
 
-.nx-logo__word-ar {
-  font-family: 'Almarai', 'Markazi Text', sans-serif;
-  font-weight: 800;
-  font-size: 141px;
-}
-
-.nx-logo__word-en {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 700;
-  font-size: 132px;
-  letter-spacing: 0.16em;
-}
-
-.nx-logo__monogram {
-  font-weight: 700;
-  font-size: 100px;
-  letter-spacing: 0;
-}
-
-// Forces the cream-on-dark brand color for surfaces that are always dark
-// regardless of the site's own light/dark theme (footer, the hero).
+// Forces white-on-dark for surfaces that are always dark regardless of the
+// site's own light/dark theme (footer, the hero, the nav overlay).
 .nx-logo--inverse {
+  .nx-logo__arm-a,
+  .nx-logo__arm-b {
+    stroke: var(--nx-cream);
+  }
+
   .nx-logo__word-ar,
   .nx-logo__word-en {
     fill: var(--nx-cream);
