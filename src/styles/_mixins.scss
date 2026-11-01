@@ -98,8 +98,12 @@ body.lang-ur .nx-eyebrow--inverse {
   background: var(--nx-primary);
   color: var(--nx-text-inverse);
 
+  // The accent is black on the light theme and white on the dark one, so the
+  // text flips with it via the accent's ink; keeping the inverse text colour
+  // here made the label vanish on hover in dark mode.
   &:hover {
     background: var(--nx-accent);
+    color: var(--nx-accent-ink);
   }
 }
 

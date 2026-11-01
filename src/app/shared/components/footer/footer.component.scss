@@ -54,16 +54,21 @@
     border-radius: var(--nx-radius-full);
     background: rgba(255, 255, 255, 0.08);
     color: var(--nx-text-inverse-muted);
-    transition: background var(--nx-transition-fast), color var(--nx-transition-fast);
+    transition: background var(--nx-transition-fast), color var(--nx-transition-fast),
+      transform var(--nx-transition-fast);
 
     svg {
       width: 16px;
       height: 16px;
     }
 
-    &:hover {
+    // On the footer the accent is white, so the icon needs the dark ink —
+    // white-on-white made the icon vanish on hover.
+    &:hover,
+    &:focus-visible {
       background: var(--nx-accent);
-      color: var(--nx-white);
+      color: var(--nx-accent-ink);
+      transform: translateY(-2px);
     }
   }
 }
