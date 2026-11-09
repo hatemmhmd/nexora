@@ -1,30 +1,18 @@
 import { ChangeDetectionStrategy, Component, HostListener, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { TranslatePipe } from '@ngx-translate/core';
-import { LucideDynamicIcon } from '@lucide/angular';
-import { NAV_ITEMS } from '../../../core/data/nav-items.data';
+import { RouterLink } from '@angular/router';
 import { LogoMarkComponent } from '../logo-mark/logo-mark.component';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
-import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
+import { MobileMenuComponent } from '../mobile-menu/mobile-menu.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    TranslatePipe,
-    LucideDynamicIcon,
-    LogoMarkComponent,
-    LanguageSwitcherComponent,
-    ThemeToggleComponent,
-  ],
+  imports: [RouterLink, LogoMarkComponent, LanguageSwitcherComponent, MobileMenuComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  readonly navItems = NAV_ITEMS;
   readonly isMobileMenuOpen = signal(false);
   readonly isScrolled = signal(false);
 

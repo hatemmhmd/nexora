@@ -233,6 +233,12 @@ $grain: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 wi
     @content;
   }
 }
+// The mirror of bp-lg, for styles that only exist below it (phones and tablets).
+@mixin below-lg {
+  @media (max-width: 991.98px) {
+    @content;
+  }
+}
 // Wider than bp-lg on purpose: the header needs room for six nav labels
 // (including two-word ones like "How It Works" and "For Providers") plus
 // the logo and the language/theme/CTA cluster without wrapping.

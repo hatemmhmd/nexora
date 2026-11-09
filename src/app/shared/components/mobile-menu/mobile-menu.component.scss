@@ -1,0 +1,499 @@
+@use '../../../../styles/mixins' as *;
+
+$nx-sheet-radius: 30px;
+
+// ---------------------------------------------------------------------------
+// Nav overlay
+//
+// Phones and tablets: a soft sheet that drops from the top of the screen,
+// behind the (transparent) header, over a dimmed and blurred page. From lg: a
+// full-screen two-column takeover below the header.
+//
+// The overlay is always in the DOM and only toggles `.is-open`, so every part
+// animates in and out with plain transitions (no timers, no @if). While closed
+// it is `visibility: hidden` (out of the tab order and the a11y tree) and
+// `inert`. Anything that should only exist on phones sits in below-lg, anything
+// desktop-only in bp-lg, so neither has to undo the other.
+// ---------------------------------------------------------------------------
+.nx-header__mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  pointer-events: none;
+  // Only turns hidden once the exit animation has played.
+  transition: visibility 0s linear 420ms;
+
+  &.is-open {
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  // Scrim: dims and softly blurs the page; a tap on it closes the menu.
+  @include below-lg {
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(var(--nx-slate-dark-rgb), 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      transition: opacity 380ms ease;
+    }
+
+    &.is-open::before {
+      opacity: 1;
+    }
+  }
+
+  // Desktop: fills everything below the sticky header and has its own scroll
+  // if the content is tall. Always dark, whatever the site theme. The echo of
+  // the logo (two interlinked pill rings, huge and barely there) is drawn as a
+  // background image rather than positioned pseudo-elements, because anything
+  // absolutely positioned past this scroll container's bottom edge makes it
+  // scrollable even when the menu fits.
+  @include bp-lg {
+    inset-block-start: var(--nx-header-height);
+    overflow-x: hidden;
+    overflow-y: auto;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 480'%3E%3Crect x='60' y='60' width='500' height='360' rx='180' fill='none' stroke='%23ffe4c1' stroke-opacity='.05' stroke-width='60'/%3E%3Crect x='350' y='60' width='500' height='360' rx='180' fill='none' stroke='%23ffe4c1' stroke-opacity='.05' stroke-width='60'/%3E%3C/svg%3E")
+        no-repeat left 38% bottom -120px / 760px auto,
+      radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.09), transparent 70%),
+      var(--nx-dark-gradient);
+    opacity: 0;
+    transition: opacity 320ms ease, visibility 0s linear 320ms;
+
+    &.is-open {
+      opacity: 1;
+    }
+  }
+}
+
+// Phones: the sheet itself. Its top padding is the header's height, so the bar
+// sits on it; the content then runs down to the CTA and the sheet ends there
+// (it is as tall as its content, not the screen), with rounded bottom corners.
+// It is revealed with a clip-path "curtain" rather than a slide, which keeps
+// the corners crisp and never exposes an edge of the page above it.
+.nx-header__mobile-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-block: 4px 16px;
+  padding-inline: 16px;
+
+  @include below-lg {
+    position: relative;
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    // Only scrolls on very short screens; no bar needed, the cut-off CTA says it.
+    scrollbar-width: none;
+    padding-block: calc(var(--nx-header-height) + 10px) max(22px, env(safe-area-inset-bottom));
+    background:
+      radial-gradient(90% 46% at 100% 0%, rgba(var(--nx-cream-rgb), 0.1), transparent 70%),
+      radial-gradient(80% 40% at 0% 100%, color-mix(in srgb, var(--nx-beige) 13%, transparent), transparent 72%),
+      var(--nx-dark-gradient);
+    clip-path: inset(0 0 100% 0 round 0 0 #{$nx-sheet-radius} #{$nx-sheet-radius});
+    transition: clip-path 360ms cubic-bezier(0.65, 0, 0.35, 1);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // A hairline of light along the bottom edge, like the footer's top edge.
+    &::after {
+      content: '';
+      position: absolute;
+      inset-inline: 14%;
+      inset-block-end: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(var(--nx-cream-rgb), 0.32), transparent);
+      pointer-events: none;
+    }
+  }
+
+  // Same container + gutters as the header bar, so on wide screens the menu
+  // content lines up under the logo and the burger instead of stretching edge
+  // to edge: links on one side, an info/CTA panel on the other.
+  @include bp-lg {
+    flex-direction: row;
+    align-items: stretch;
+    gap: clamp(48px, 7vw, 120px);
+    // Vertical sizing follows the viewport height so the whole menu fits on
+    // short laptop screens without needing its (hidden) scrollbar.
+    padding-block: clamp(16px, 4vh, 40px) clamp(20px, 5vh, 48px);
+    padding-inline: 20px;
+  }
+}
+
+.nx-header__mobile.is-open .nx-header__mobile-inner {
+  @include below-lg {
+    clip-path: inset(0 0 0 0 round 0 0 #{$nx-sheet-radius} #{$nx-sheet-radius});
+    transition: clip-path 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+.nx-header__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-block: 2px 14px;
+
+  @include bp-lg {
+    flex: 1.3;
+    justify-content: center;
+    gap: 0;
+    padding-block: 0;
+  }
+}
+
+// Phones: big, calm serif rows with no divider lines; the current page gets a
+// soft tinted pill and a round arrow, the others stay a little quieter. They
+// are pulled out 12px on each side so the *text* lines up with the logo while
+// the pill has room to breathe. From lg: big display type in uppercase, divider
+// rows, an index number and an arrow that slides in on hover / for the current
+// page.
+//
+// Each row fades and rises in turn on open (`--i` is its position) and drops
+// out quickly on close.
+.nx-header__mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-inline: -12px;
+  padding: 14px 12px;
+  border-radius: 18px;
+  font-family: var(--nx-font-heading);
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--nx-text-inverse) 78%, transparent);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    color var(--nx-transition-fast),
+    background var(--nx-transition-fast),
+    padding var(--nx-transition);
+
+  @include below-lg {
+    &:hover,
+    &.is-active {
+      background: rgba(var(--nx-cream-rgb), 0.08);
+    }
+
+    &:active {
+      background: rgba(var(--nx-cream-rgb), 0.14);
+    }
+  }
+
+  @include bp-lg {
+    gap: 22px;
+    margin-inline: 0;
+    padding: clamp(8px, 1.9vh, 16px) 0;
+    border-radius: 0;
+    border-block-end: 1px solid var(--nx-border-dark);
+    font-size: clamp(26px, min(3.4vw, 5.6vh), 46px);
+    text-transform: uppercase;
+    letter-spacing: 0;
+    line-height: 1.25;
+    color: var(--nx-text-inverse);
+  }
+
+  &:hover,
+  &.is-active {
+    color: var(--nx-text-inverse);
+
+    .nx-header__mobile-index {
+      opacity: 1;
+    }
+
+    .nx-header__mobile-arrow {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  &:hover {
+    @include bp-lg {
+      padding-inline-start: 12px;
+    }
+  }
+}
+
+.nx-header__mobile.is-open .nx-header__mobile-link {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 520ms ease calc(170ms + var(--i, 0) * 55ms),
+    transform 680ms cubic-bezier(0.16, 1, 0.3, 1) calc(170ms + var(--i, 0) * 55ms),
+    color var(--nx-transition-fast),
+    background var(--nx-transition-fast),
+    padding var(--nx-transition);
+}
+
+.nx-header__mobile-index {
+  min-width: 24px;
+  font-family: var(--nx-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--nx-text-inverse);
+  opacity: 0.4;
+  transition: opacity var(--nx-transition-fast);
+
+  @include bp-lg {
+    min-width: 40px;
+    font-size: 13px;
+    opacity: 0.6;
+  }
+}
+
+.nx-header__mobile-label {
+  flex: 1;
+}
+
+// Uses the standalone `translate` property so it composes with the
+// .nx-flip-rtl mirroring (which owns `transform`) instead of fighting it.
+// Phones: a small round chip, shown on the current page only.
+.nx-header__mobile-arrow {
+  display: block;
+  flex-shrink: 0;
+  box-sizing: content-box;
+  width: 16px;
+  height: 16px;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(var(--nx-cream-rgb), 0.12);
+  color: var(--nx-text-inverse);
+  opacity: 0;
+  translate: -8px 0;
+  transition: opacity var(--nx-transition-fast), translate var(--nx-transition);
+
+  @include bp-lg {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    translate: -10px 0;
+  }
+}
+
+:host-context([dir='rtl']) .nx-header__mobile-arrow {
+  translate: 8px 0;
+
+  @include bp-lg {
+    translate: 10px 0;
+  }
+}
+
+// Info / action panel next to the links on wide screens: brand line, where
+// we operate, then the utility row and the primary CTA pinned to the bottom.
+// On phones only the footer (CTA + utility row) is shown.
+.nx-header__mobile-aside {
+  display: flex;
+  flex-direction: column;
+
+  @include bp-lg {
+    flex: 1;
+    max-width: 440px;
+    justify-content: space-between;
+    padding-inline-start: clamp(32px, 4vw, 64px);
+    border-inline-start: 1px solid var(--nx-border-dark);
+  }
+}
+
+.nx-header__mobile-intro {
+  display: none;
+
+  @include bp-lg {
+    display: block;
+  }
+}
+
+.nx-header__mobile-tagline {
+  margin-block-end: 20px;
+  font-family: var(--nx-font-heading);
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.4;
+  color: var(--nx-text-inverse);
+}
+
+.nx-header__mobile-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--nx-border-dark);
+    border-radius: var(--nx-radius-full);
+    font-size: 13px;
+    color: var(--nx-text-inverse-muted);
+
+    svg {
+      color: var(--nx-blue-400);
+    }
+  }
+}
+
+// Phones: a hairline under the links, then the CTA, then the utility row (the
+// DOM order is utility → CTA, which is how the desktop panel reads, so it is
+// flipped here). Fades in after the last link.
+.nx-header__mobile-footer {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+  margin-top: 4px;
+  padding-top: 22px;
+  border-block-start: 1px solid rgba(var(--nx-cream-rgb), 0.1);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 180ms ease, transform 180ms ease;
+
+  @include bp-lg {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-block-start: 0;
+  }
+
+  // Hover/active lift and glow come from the shared btn-accent mixin —
+  // this only adds the prominent resting shadow and icon badge specific
+  // to this full-width, closing-action placement.
+  a.nx-btn-accent {
+    justify-content: center;
+    padding-block: 16px;
+    gap: 10px;
+    border-radius: 16px;
+    box-shadow: 0 14px 30px rgba(var(--nx-accent-rgb), 0.26);
+
+    svg {
+      box-sizing: content-box;
+      padding: 6px;
+      border-radius: var(--nx-radius-full);
+      // Tinted from the button's own ink so the badge reads on a white button
+      // (dark theme) as well as on a black one (light theme).
+      background: color-mix(in srgb, var(--nx-accent-ink) 14%, transparent);
+    }
+
+    @include bp-lg {
+      padding-block: 14px;
+      border-radius: var(--nx-radius-btn);
+      box-shadow: 0 14px 32px rgba(var(--nx-accent-rgb), 0.35);
+    }
+  }
+}
+
+.nx-header__mobile.is-open .nx-header__mobile-footer {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 520ms ease calc(170ms + var(--i, 0) * 55ms),
+    transform 680ms cubic-bezier(0.16, 1, 0.3, 1) calc(170ms + var(--i, 0) * 55ms);
+}
+
+// Secondary utility row — theme toggle and social links. Phones: toggle on one
+// side, icons on the other. Desktop: grouped in the middle, with a divider.
+.nx-header__mobile-utility {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  @include bp-lg {
+    justify-content: center;
+  }
+
+  ::ng-deep .nx-theme-toggle__track {
+    border-color: var(--nx-border-dark);
+    background: transparent;
+  }
+
+  ::ng-deep .nx-theme-toggle__mark {
+    color: var(--nx-text-inverse-muted);
+  }
+
+  ::ng-deep .nx-theme-toggle:hover .nx-theme-toggle__track {
+    border-color: rgba(var(--nx-cream-rgb), 0.35);
+    background: rgba(var(--nx-cream-rgb), 0.1);
+  }
+}
+
+.nx-header__mobile-divider {
+  display: none;
+  width: 1px;
+  height: 22px;
+  background: var(--nx-border-dark);
+  flex-shrink: 0;
+
+  @include bp-lg {
+    display: block;
+  }
+}
+
+.nx-header__mobile-social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--nx-radius-full);
+    background: rgba(var(--nx-cream-rgb), 0.1);
+    color: var(--nx-text-inverse-muted);
+    transition: background var(--nx-transition-fast), color var(--nx-transition-fast);
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    @include bp-lg {
+      width: 32px;
+      height: 32px;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &:hover {
+      background: var(--nx-accent);
+      color: var(--nx-accent-ink);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nx-header__mobile,
+  .nx-header__mobile::before,
+  .nx-header__mobile-inner,
+  .nx-header__mobile-link,
+  .nx-header__mobile-footer {
+    transition-duration: 1ms !important;
+    transition-delay: 0s !important;
+  }
+}
