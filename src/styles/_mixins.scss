@@ -143,8 +143,8 @@ body.lang-ur .nx-eyebrow--inverse {
   border-color: var(--nx-border-dark);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(var(--nx-cream-rgb), 0.1);
+    border-color: rgba(var(--nx-cream-rgb), 0.3);
   }
 }
 
@@ -163,6 +163,39 @@ body.lang-ur .nx-eyebrow--inverse {
   color: var(--nx-accent);
   flex-shrink: 0;
   transition: border-color var(--nx-transition-fast), background var(--nx-transition-fast);
+}
+
+// Film grain, a fine slate noise. Laid over the gradient with soft-light it breaks
+// up the banding a smooth gradient shows on 8-bit screens and gives it a bit of
+// texture; it is invisible on the flat dark areas.
+$grain: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27220%27 height=%27220%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%27.9%27 numOctaves=%272%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix values=%270 0 0 0 .21 0 0 0 0 .25 0 0 0 0 .34 0 0 0 .55 0%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E');
+
+// The top of a screen (hero, page headers, 404): --nx-sky-top, then easing into the
+// page colour over $ramp (100% = the whole section), lit by soft glows and a little
+// grain so it reads like a dusk sky rather than a flat band. The ramp is spread
+// over several stops and mixed in oklab, so there is no visible band or muddy
+// middle. The top layer lands on --nx-bg (cream in the light theme, slate-dark in
+// the dark one), above the grain, so the section always meets the page cleanly.
+@mixin sky($ramp) {
+  background: linear-gradient(180deg, var(--nx-sky-top) calc(100% - #{$ramp}), var(--nx-bg));
+  background:
+    linear-gradient(180deg, transparent calc(100% - #{$ramp} * 0.3), var(--nx-bg) 100%),
+    $grain,
+    radial-gradient(ellipse 52% 46% at 82% 14%, var(--nx-glow-cloud), transparent 72%),
+    radial-gradient(ellipse 70% calc(#{$ramp} * 1.15) at 90% calc(100% - #{$ramp} * 0.25), var(--nx-glow-warm), transparent 68%),
+    radial-gradient(ellipse 55% calc(#{$ramp} * 0.95) at 6% calc(100% - #{$ramp} * 0.2), var(--nx-glow-cool), transparent 70%),
+    linear-gradient(
+    in oklab 180deg,
+    var(--nx-sky-top) 0,
+    var(--nx-sky-top) calc(100% - #{$ramp}),
+    color-mix(in oklab, var(--nx-sky-top) 92%, var(--nx-bg)) calc(100% - #{$ramp} * 0.86),
+    color-mix(in oklab, var(--nx-sky-top) 78%, var(--nx-bg)) calc(100% - #{$ramp} * 0.72),
+    color-mix(in oklab, var(--nx-sky-top) 55%, var(--nx-bg)) calc(100% - #{$ramp} * 0.52),
+    color-mix(in oklab, var(--nx-sky-top) 30%, var(--nx-bg)) calc(100% - #{$ramp} * 0.34),
+    color-mix(in oklab, var(--nx-sky-top) 12%, var(--nx-bg)) calc(100% - #{$ramp} * 0.17),
+    var(--nx-bg) 100%
+  );
+  background-blend-mode: normal, soft-light, normal, normal, normal, normal;
 }
 
 @mixin focus-ring {

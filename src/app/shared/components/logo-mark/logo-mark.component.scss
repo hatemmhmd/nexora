@@ -3,16 +3,17 @@
   align-items: center;
 }
 
-// The logotype is stacked (Arabic over Latin, about 1.7:1), so it needs more
-// height than a one-line lockup to keep the Latin caps readable.
+// The lockup is the Arabic word with the Latin name tucked under it (about
+// 2.4:1), so it needs a little more height than a one-line logo to keep the
+// Latin letters readable.
 .nx-logo {
-  height: 54px;
+  height: 52px;
   width: auto;
   overflow: visible;
 }
 
 .nx-logo--icon {
-  height: 44px;
+  height: 32px;
 }
 
 @media (max-width: 400px) {
@@ -21,26 +22,16 @@
   }
 }
 
-// Everything follows --nx-text (black in light mode, white in dark mode), so
+// One tone: it follows --nx-text (black in light mode, white in dark mode), so
 // a plain <app-logo-mark /> adapts to the site theme. The letters are
 // outlines, not live text, so no font has to load for the logo to be right.
-.nx-logo__ink,
-.nx-logo__shared {
+.nx-logo__ink {
   fill: var(--nx-text);
   transition: fill var(--nx-transition);
 }
 
-// The sin and the S are the same sound, so they share the quieter tone and
-// the thin axis that joins them.
-.nx-logo__shared {
-  opacity: 0.5;
-}
-
 // Forces white-on-dark for surfaces that are always dark regardless of the
 // site's own light/dark theme (footer, the hero, the nav overlay).
-.nx-logo--inverse {
-  .nx-logo__ink,
-  .nx-logo__shared {
-    fill: var(--nx-cream);
-  }
+.nx-logo--inverse .nx-logo__ink {
+  fill: var(--nx-cream);
 }

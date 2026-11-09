@@ -1,7 +1,11 @@
+@use '../../../styles/mixins' as *;
+
+// Opens with the same sky as every other page.
 .nx-not-found {
   min-height: 60vh;
   display: flex;
   align-items: center;
+  @include sky(100%);
 }
 
 .nx-not-found__inner {

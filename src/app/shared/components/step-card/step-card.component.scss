@@ -46,6 +46,7 @@
   @include bp-md {
     width: auto;
     height: 2px;
+    min-height: 0;
     flex: 1;
     margin: 0;
     margin-inline-start: 12px;

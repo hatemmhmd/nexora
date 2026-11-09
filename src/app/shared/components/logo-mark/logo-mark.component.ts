@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /**
- * Renders the Yusra logotype (brand files live in public/images/brand): the
- * Arabic name stacked over the spaced Latin caps, joined where they share a
- * sound — the sin and the S sit on one thin axis, in the quieter tone.
- * `variant="full"` is the logotype (header/footer); `variant="icon"` is just
- * that sin-over-S pair.
+ * Renders the Yusra logo (brand files live in public/images/brand): the heavy
+ * Arabic word with its bar and diamond dots, and the Latin name tucked under
+ * it at the left. `variant="full"` is the whole lockup (header/footer);
+ * `variant="icon"` is the Arabic word alone.
  *
  * Letters are outlines, not live text. Colour follows `var(--nx-text)` (black
  * in light mode, white in dark mode); `inverse` forces white for surfaces that

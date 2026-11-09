@@ -3,48 +3,82 @@
 // components never hardcode values (see docs in README).
 
 :root {
-  // Core palette — a neutral black / white scale. There is no brand hue, so
-  // the accent is black on the light theme and white on the dark theme (see
-  // the dark block and the always-dark surfaces at the bottom of this file).
-  // Token names are historic: --nx-navy-* is the near-black ink scale,
-  // --nx-blue-* are the accent shades and --nx-cream is plain white.
-  --nx-navy-950: #0a0a0b;
-  --nx-navy-900: #18181b;
-  --nx-navy-800: #27272a;
-  --nx-blue-600: #0a0a0b;
-  --nx-blue-500: #f4f4f5;
-  --nx-blue-400: #ffffff;
-  --nx-slate-50: #f5f5f6;
-  --nx-slate-100: #ececee;
-  --nx-white: #ffffff;
-  --nx-cream: #ffffff;
-  --nx-gray-200: #e4e4e7;
-  --nx-gray-300: #d4d4d8;
-  --nx-gray-400: #a1a1aa;
-  --nx-gray-600: #52525b;
-  --nx-charcoal: #18181b;
+  // Brand palette — five tones, nothing else. Every other colour on the site
+  // is one of these, a mix of two of them (color-mix) or one of them at
+  // partial opacity, so the identity stays closed and consistent.
+  --nx-slate-dark: #364057;
+  --nx-slate: #65727f;
+  --nx-gray: #8f98a5;
+  --nx-beige: #decbb5;
+  --nx-cream: #ffe4c1;
+
+  // The palette as raw channels, for translucent tints (rgba(var(--x), .1)).
+  --nx-slate-dark-rgb: 54, 64, 87;
+  --nx-slate-rgb: 101, 114, 127;
+  --nx-cream-rgb: 255, 228, 193;
+
+  // Mixes: a lifted slate-dark for layered dark surfaces, and an ink for muted
+  // text that still clears AA on cream (plain slate does not).
+  --nx-slate-deep: color-mix(in srgb, var(--nx-slate-dark) 78%, var(--nx-slate));
+  --nx-slate-ink: color-mix(in srgb, var(--nx-slate-dark) 70%, var(--nx-slate));
+
+  // Token names below are historic: --nx-navy-* is the dark ink scale,
+  // --nx-blue-* are the accent shades and --nx-white is the light text tone
+  // used on dark surfaces (cream, there is no pure white anywhere).
+  --nx-navy-950: var(--nx-slate-dark);
+  --nx-navy-900: var(--nx-slate-deep);
+  --nx-navy-800: var(--nx-slate-ink);
+  --nx-blue-600: var(--nx-slate-dark);
+  --nx-blue-500: var(--nx-cream);
+  --nx-blue-400: var(--nx-cream);
+  --nx-slate-50: color-mix(in srgb, var(--nx-cream) 50%, var(--nx-beige));
+  --nx-slate-100: color-mix(in srgb, var(--nx-cream) 25%, var(--nx-beige));
+  --nx-white: var(--nx-cream);
+  --nx-gray-200: var(--nx-beige);
+  --nx-gray-300: color-mix(in srgb, var(--nx-beige) 55%, var(--nx-gray));
+  --nx-gray-400: var(--nx-slate);
+  --nx-gray-600: var(--nx-slate-ink);
+  --nx-charcoal: var(--nx-slate-dark);
 
   // Semantic tokens
   --nx-bg: var(--nx-cream);
   --nx-bg-alt: var(--nx-slate-50);
-  --nx-bg-dark: var(--nx-navy-950);
-  --nx-surface: #ffffff;
-  --nx-surface-dark: var(--nx-navy-900);
-  --nx-text: var(--nx-navy-950);
-  --nx-text-muted: var(--nx-gray-600);
-  --nx-text-inverse: #fafafa;
-  --nx-text-inverse-muted: #a1a1aa;
-  --nx-border: var(--nx-gray-200);
-  --nx-border-dark: rgba(255, 255, 255, 0.12);
-  --nx-primary: var(--nx-navy-900);
+  --nx-bg-dark: var(--nx-slate-dark);
+  --nx-surface: var(--nx-cream);
+  --nx-surface-dark: var(--nx-slate-deep);
+  --nx-text: var(--nx-slate-dark);
+  --nx-text-muted: var(--nx-slate-ink);
+  --nx-text-inverse: var(--nx-cream);
+  --nx-text-inverse-muted: var(--nx-beige);
+  --nx-border: color-mix(in srgb, var(--nx-slate-dark) 16%, transparent);
+  --nx-border-dark: rgba(var(--nx-cream-rgb), 0.16);
+  --nx-primary: var(--nx-slate-dark);
   --nx-accent: var(--nx-blue-600);
-  --nx-accent-rgb: 10, 10, 11;
-  --nx-accent-soft: rgba(10, 10, 11, 0.06);
-  --nx-accent-gradient: linear-gradient(135deg, var(--nx-navy-950), var(--nx-navy-800));
-  --nx-accent-hover: var(--nx-navy-800);
+  --nx-accent-rgb: var(--nx-slate-dark-rgb);
+  --nx-accent-soft: rgba(var(--nx-slate-dark-rgb), 0.07);
+  --nx-accent-gradient: linear-gradient(135deg, var(--nx-slate-dark), var(--nx-slate-deep));
+  --nx-accent-hover: var(--nx-slate-deep);
   --nx-accent-ink: var(--nx-cream);
-  --nx-header-bg: rgba(255, 255, 255, 0.86);
-  --nx-overlay-hover: rgba(10, 10, 11, 0.04);
+  --nx-header-bg: color-mix(in srgb, var(--nx-cream) 84%, transparent);
+  --nx-overlay-hover: rgba(var(--nx-slate-dark-rgb), 0.05);
+  // The one functional tone outside the palette: form errors have to read as
+  // "wrong" at a glance, and none of the five tones does.
+  --nx-danger: #b42318;
+
+  // The always-dark band (footer, 'why', CTA boxes, nav overlay).
+  --nx-dark-gradient: linear-gradient(180deg, var(--nx-slate-dark), var(--nx-slate-deep));
+
+  // Soft light for the hero and page headers (see the sky() mixin): a warm glow
+  // rising from the lower right, a cool one from the lower left and a faint
+  // slate cloud at the top right. Tints of the palette, nothing new.
+  --nx-glow-warm: color-mix(in srgb, var(--nx-beige) 85%, transparent);
+  --nx-glow-cool: color-mix(in srgb, var(--nx-slate) 20%, transparent);
+  --nx-glow-cloud: color-mix(in srgb, var(--nx-slate) 15%, transparent);
+  // Where the sky starts at the very top: a soft gray-slate, light enough for
+  // slate-dark text. The dark theme starts from slate-dark itself.
+  --nx-sky-top: color-mix(in oklab, var(--nx-gray) 64%, var(--nx-cream));
+  // Frosted panel that sits on the sky (the hero's services board).
+  --nx-glass: color-mix(in srgb, var(--nx-cream) 58%, transparent);
 
   // Radii
   --nx-radius-sm: 8px;
@@ -56,10 +90,11 @@
   // pill button.
   --nx-radius-btn: 6px;
 
-  // Shadows
-  --nx-shadow-sm: 0 1px 2px rgba(10, 10, 11, 0.07);
-  --nx-shadow-md: 0 8px 24px rgba(10, 10, 11, 0.09);
-  --nx-shadow-lg: 0 24px 56px rgba(10, 10, 11, 0.15);
+  // Shadows — soft and slate-tinted, never black.
+  --nx-shadow-rgb: 54, 64, 87;
+  --nx-shadow-sm: 0 1px 2px rgba(var(--nx-shadow-rgb), 0.08);
+  --nx-shadow-md: 0 8px 24px rgba(var(--nx-shadow-rgb), 0.1);
+  --nx-shadow-lg: 0 24px 56px rgba(var(--nx-shadow-rgb), 0.16);
 
   // Layout
   --nx-container: 1220px;
@@ -102,48 +137,57 @@ body.lang-ur {
 
 // ---------------------------------------------------------------------------
 // Dark theme — toggled via [data-theme="dark"] on <html> (see ThemeService).
-// Same token names, dark values. Components never branch on theme directly;
-// they just read the token.
+// Same token names, dark values: slate-dark becomes the page, cream becomes the
+// ink. Components never branch on theme directly; they just read the token.
 // ---------------------------------------------------------------------------
 :root[data-theme='dark'] {
-  --nx-bg: var(--nx-navy-950);
-  --nx-bg-alt: #111113;
-  --nx-bg-dark: #050506;
-  --nx-surface: #17171a;
-  --nx-surface-dark: #0e0e10;
-  --nx-text: #f4f4f5;
-  --nx-text-muted: #a1a1aa;
-  --nx-text-inverse: #fafafa;
-  --nx-text-inverse-muted: #a1a1aa;
-  --nx-border: rgba(255, 255, 255, 0.1);
-  --nx-border-dark: rgba(255, 255, 255, 0.12);
-  --nx-primary: #27272a;
+  --nx-bg: var(--nx-slate-dark);
+  --nx-bg-alt: color-mix(in srgb, var(--nx-slate-dark) 88%, var(--nx-slate));
+  --nx-bg-dark: var(--nx-slate-dark);
+  --nx-surface: color-mix(in srgb, var(--nx-slate-dark) 84%, var(--nx-slate));
+  --nx-surface-dark: var(--nx-slate-deep);
+  --nx-text: var(--nx-cream);
+  --nx-text-muted: color-mix(in srgb, var(--nx-beige) 84%, var(--nx-slate-dark));
+  --nx-text-inverse: var(--nx-cream);
+  --nx-text-inverse-muted: var(--nx-beige);
+  --nx-border: rgba(var(--nx-cream-rgb), 0.14);
+  --nx-border-dark: rgba(var(--nx-cream-rgb), 0.16);
+  --nx-primary: color-mix(in srgb, var(--nx-slate-dark) 62%, var(--nx-slate));
   --nx-accent: var(--nx-blue-500);
-  --nx-accent-rgb: 244, 244, 245;
-  --nx-accent-soft: rgba(255, 255, 255, 0.1);
-  --nx-accent-gradient: linear-gradient(135deg, var(--nx-blue-500), var(--nx-blue-400));
-  --nx-accent-hover: var(--nx-blue-400);
-  --nx-accent-ink: var(--nx-navy-950);
-  --nx-header-bg: rgba(10, 10, 11, 0.8);
-  --nx-overlay-hover: rgba(255, 255, 255, 0.06);
-
-  --nx-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --nx-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --nx-shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.5);
+  --nx-accent-rgb: var(--nx-cream-rgb);
+  --nx-accent-soft: rgba(var(--nx-cream-rgb), 0.1);
+  --nx-accent-gradient: linear-gradient(135deg, var(--nx-cream), var(--nx-beige));
+  --nx-accent-hover: var(--nx-beige);
+  --nx-accent-ink: var(--nx-slate-dark);
+  --nx-header-bg: color-mix(in srgb, var(--nx-slate-dark) 82%, transparent);
+  --nx-overlay-hover: rgba(var(--nx-cream-rgb), 0.06);
+  --nx-danger: #ffab9c;
+  // On a slate-dark page the glows only need to hint at light.
+  --nx-glow-warm: color-mix(in srgb, var(--nx-beige) 16%, transparent);
+  --nx-glow-cool: color-mix(in srgb, var(--nx-gray) 14%, transparent);
+  --nx-glow-cloud: color-mix(in srgb, var(--nx-slate) 40%, transparent);
+  --nx-sky-top: var(--nx-slate-dark);
+  --nx-glass: rgba(var(--nx-cream-rgb), 0.07);
+  --nx-gray-300: color-mix(in srgb, var(--nx-slate) 60%, var(--nx-gray));
+  --nx-gray-400: var(--nx-gray);
+  --nx-gray-600: var(--nx-beige);
+  --nx-shadow-rgb: 22, 27, 40;
+  --nx-shadow-sm: 0 1px 2px rgba(var(--nx-shadow-rgb), 0.35);
+  --nx-shadow-md: 0 8px 24px rgba(var(--nx-shadow-rgb), 0.4);
+  --nx-shadow-lg: 0 24px 56px rgba(var(--nx-shadow-rgb), 0.5);
 }
 
-// Always-dark surfaces (hero, 'why' band, how-it-works CTA, footer, nav
-// overlay): in the light theme --nx-accent is navy, which would disappear on
-// these navy backgrounds, so they use the dark theme's cream accent instead.
-.nx-hero,
+// Always-dark surfaces ('why' band, CTA box, footer, nav overlay): in the light
+// theme --nx-accent is slate-dark, which would disappear on these slate-dark
+// backgrounds, so they use the dark theme's cream accent instead.
 .nx-why--dark,
 .nx-how-cta__box,
 .nx-footer,
 .nx-header__mobile {
   --nx-accent: var(--nx-blue-500);
-  --nx-accent-rgb: 244, 244, 245;
-  --nx-accent-soft: rgba(255, 255, 255, 0.1);
-  --nx-accent-gradient: linear-gradient(135deg, var(--nx-blue-500), var(--nx-blue-400));
-  --nx-accent-hover: var(--nx-blue-400);
-  --nx-accent-ink: var(--nx-navy-950);
+  --nx-accent-rgb: var(--nx-cream-rgb);
+  --nx-accent-soft: rgba(var(--nx-cream-rgb), 0.1);
+  --nx-accent-gradient: linear-gradient(135deg, var(--nx-cream), var(--nx-beige));
+  --nx-accent-hover: var(--nx-beige);
+  --nx-accent-ink: var(--nx-slate-dark);
 }

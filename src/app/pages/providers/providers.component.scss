@@ -1,9 +1,5 @@
 @use '../../../styles/mixins' as *;
 
-.nx-provider-benefits {
-  padding-block-end: 0;
-}
-
 .nx-provider-benefits__grid {
   grid-template-columns: 1fr;
 
@@ -11,8 +7,26 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  // Six tracks, two per card, so a short last row can sit centred under the
+  // full ones instead of leaving an empty cell at one side.
   @include bp-lg {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+
+    > * {
+      grid-column: span 2;
+    }
+
+    > :nth-child(3n + 1):nth-last-child(2) {
+      grid-column: 2 / span 2;
+    }
+
+    > :nth-child(3n + 2):last-child {
+      grid-column: 4 / span 2;
+    }
+
+    > :nth-child(3n + 1):last-child {
+      grid-column: 3 / span 2;
+    }
   }
 }
 

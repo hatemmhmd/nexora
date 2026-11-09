@@ -26,16 +26,12 @@
 
   &.is-scrolled {
     border-color: var(--nx-border);
-    box-shadow: 0 4px 24px rgba(13, 26, 48, 0.06);
+    box-shadow: 0 4px 24px rgba(var(--nx-shadow-rgb), 0.1);
 
     &::after {
       opacity: 1;
     }
   }
-}
-
-:host-context([data-theme='dark']) .nx-header.is-scrolled {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 .nx-header__bar {
@@ -87,7 +83,7 @@
 // itself is left on its default floating-surface style — it's an overlay,
 // not part of the pill, so it doesn't need to match.
 .nx-header__lang {
-  ::ng-deep .nx-lang-switch__trigger {
+  ::ng-deep .nx-lang-switch .nx-lang-switch__trigger {
     border-color: transparent;
     background: var(--nx-accent);
     color: var(--nx-accent-ink);
@@ -218,8 +214,8 @@
   z-index: 90;
   isolation: isolate;
   background:
-    radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.07), transparent 70%),
-    var(--nx-bg-dark);
+    radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.09), transparent 70%),
+    var(--nx-dark-gradient);
   display: flex;
   flex-direction: column;
   // Kept as a safety net for very short viewports, but the link/footer
@@ -236,10 +232,10 @@
   // makes it scrollable (and shows a scrollbar) even when the menu fits.
   @include bp-lg {
     background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 480'%3E%3Crect x='60' y='60' width='500' height='360' rx='180' fill='none' stroke='%23ffffff' stroke-opacity='.03' stroke-width='60'/%3E%3Crect x='350' y='60' width='500' height='360' rx='180' fill='none' stroke='%23ffffff' stroke-opacity='.03' stroke-width='60'/%3E%3C/svg%3E")
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 480'%3E%3Crect x='60' y='60' width='500' height='360' rx='180' fill='none' stroke='%23ffe4c1' stroke-opacity='.05' stroke-width='60'/%3E%3Crect x='350' y='60' width='500' height='360' rx='180' fill='none' stroke='%23ffe4c1' stroke-opacity='.05' stroke-width='60'/%3E%3C/svg%3E")
         no-repeat left 38% bottom -120px / 760px auto,
-      radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.07), transparent 70%),
-      var(--nx-bg-dark);
+      radial-gradient(70% 55% at 88% 0%, rgba(var(--nx-accent-rgb), 0.09), transparent 70%),
+      var(--nx-dark-gradient);
   }
 }
 
@@ -487,8 +483,8 @@
   }
 
   ::ng-deep .nx-theme-toggle:hover .nx-theme-toggle__track {
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(var(--nx-cream-rgb), 0.35);
+    background: rgba(var(--nx-cream-rgb), 0.1);
   }
 }
 
@@ -511,7 +507,7 @@
     width: 32px;
     height: 32px;
     border-radius: var(--nx-radius-full);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(var(--nx-cream-rgb), 0.1);
     color: var(--nx-text-inverse-muted);
     transition: background var(--nx-transition-fast), color var(--nx-transition-fast);
 

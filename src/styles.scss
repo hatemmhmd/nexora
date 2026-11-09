@@ -21,7 +21,7 @@ html {
 }
 
 :root[data-theme='dark'] html {
-  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  scrollbar-color: rgba(var(--nx-cream-rgb), 0.22) transparent;
 }
 
 ::-webkit-scrollbar {
@@ -43,7 +43,7 @@ html {
 }
 
 :root[data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(var(--nx-cream-rgb), 0.22);
 
   &:hover {
     background: rgba(var(--nx-accent-rgb), 0.6);
@@ -164,6 +164,19 @@ select {
   @include section-spacing;
 }
 
+// A quieter beige band, so consecutive light sections do not all share one
+// background. It eases in and out over its first and last 80px instead of
+// starting and ending on a hard line.
+.nx-section--alt {
+  background: linear-gradient(
+    180deg,
+    var(--nx-bg) 0,
+    var(--nx-bg-alt) 80px,
+    var(--nx-bg-alt) calc(100% - 80px),
+    var(--nx-bg) 100%
+  );
+}
+
 // Faint dot-grid texture for otherwise-flat light sections — fades out
 // toward the edges so it reads as depth, not a busy pattern.
 .nx-section--texture {
@@ -201,7 +214,7 @@ select {
 .nx-eyebrow--inverse {
   @include eyebrow;
   color: var(--nx-white);
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(var(--nx-cream-rgb), 0.12);
 }
 
 .nx-text-muted {
@@ -333,9 +346,11 @@ textarea.nx-field__control {
   }
 }
 
+// Validation needs a colour that says "wrong" on sight, which nothing in the
+// five-tone palette does, so this is the one functional tone outside it.
 .nx-field__error {
   font-size: 13px;
-  color: #dc2626;
+  color: var(--nx-danger);
 }
 
 // ---------------------------------------------------------------------------
@@ -394,10 +409,13 @@ textarea.nx-field__control {
 
 // ---------------------------------------------------------------------------
 // Shared inner-page header (Services, How It Works, About, Providers, Contact…)
+// The same sky as the home hero (see the sky() mixin), so every page opens the
+// same way.
 // ---------------------------------------------------------------------------
 .nx-page-header {
-  padding-block: clamp(48px, 8vw, 84px) clamp(32px, 5vw, 56px);
-  background: var(--nx-bg-alt);
+  padding-block: clamp(48px, 8vw, 84px) clamp(64px, 8vw, 104px);
+  @include sky(100%);
+  color: var(--nx-text);
 
   h1 {
     font-size: clamp(32px, 5vw, 48px);

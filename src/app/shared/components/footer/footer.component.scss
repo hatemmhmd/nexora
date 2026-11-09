@@ -2,7 +2,7 @@
 
 .nx-footer {
   position: relative;
-  background: var(--nx-bg-dark);
+  background: var(--nx-dark-gradient);
   color: var(--nx-text-inverse-muted);
   padding-block-start: 72px;
 
@@ -52,7 +52,7 @@
     width: 38px;
     height: 38px;
     border-radius: var(--nx-radius-full);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(var(--nx-cream-rgb), 0.1);
     color: var(--nx-text-inverse-muted);
     transition: background var(--nx-transition-fast), color var(--nx-transition-fast),
       transform var(--nx-transition-fast);
@@ -132,7 +132,7 @@ body.lang-ur .nx-footer__heading {
 // too and the two rules tie on specificity, so source order decides and
 // the override can silently lose.
 .nx-footer {
-  ::ng-deep .nx-lang-switch__trigger {
+  ::ng-deep .nx-lang-switch .nx-lang-switch__trigger {
     border-color: var(--nx-border-dark);
     background: transparent;
     color: var(--nx-text-inverse-muted);
@@ -143,8 +143,8 @@ body.lang-ur .nx-footer__heading {
 
     &:hover {
       color: var(--nx-white);
-      border-color: rgba(255, 255, 255, 0.3);
-      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(var(--nx-cream-rgb), 0.35);
+      background: rgba(var(--nx-cream-rgb), 0.1);
 
       svg {
         color: var(--nx-white);
@@ -157,8 +157,8 @@ body.lang-ur .nx-footer__heading {
   // settled by stylesheet order, which differs between dev and production.
   ::ng-deep .nx-lang-switch.is-open .nx-lang-switch__trigger {
     color: var(--nx-white);
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(var(--nx-cream-rgb), 0.35);
+    background: rgba(var(--nx-cream-rgb), 0.1);
   }
 }
 
@@ -177,12 +177,12 @@ body.lang-ur .nx-footer__heading {
   }
 
   ::ng-deep .nx-theme-toggle:hover .nx-theme-toggle__track {
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(var(--nx-cream-rgb), 0.35);
+    background: rgba(var(--nx-cream-rgb), 0.1);
   }
 }
 
-// The footer has room, so the stacked logotype can be larger than in the
+// The footer has room, so the logo can be larger than in the
 // header (same nested ::ng-deep pattern as the overrides above).
 .nx-footer {
   ::ng-deep .nx-logo--full {
